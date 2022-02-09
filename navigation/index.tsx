@@ -35,7 +35,7 @@ const BottomTab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
   return (
-    <BottomTab.Navigator>
+    <BottomTab.Navigator initialRouteName="Home">
       <BottomTab.Screen
         name="Home"
         component={HomeScreen}

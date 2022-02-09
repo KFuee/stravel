@@ -21,11 +21,7 @@ const Stack = createNativeStackNavigator();
 const RootNavigator = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Root"
-        component={BottomTabNavigator}
-        options={{ headerShown: false }}
-      />
+      <Stack.Screen name="Root" component={BottomTabNavigator} />
     </Stack.Navigator>
   );
 };
@@ -38,7 +34,11 @@ const BottomTabNavigator = () => {
       initialRouteName="Home"
       tabBar={(props) => <TabBar {...props} />}
     >
-      <BottomTab.Screen name="Home" component={HomeScreen} />
+      <BottomTab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ headerShown: false }}
+      />
       <BottomTab.Screen name="Search" component={SearchScreen} />
     </BottomTab.Navigator>
   );

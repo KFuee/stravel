@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     height: 59,
     padding: 10,
     flexDirection: "row",
+    justifyContent: "space-between",
     alignItems: "center",
     borderRadius: 5,
     borderWidth: 2,

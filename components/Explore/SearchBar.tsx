@@ -3,7 +3,7 @@ import { FontAwesome } from "@expo/vector-icons";
 
 const SearchBar = (props: any) => {
   return (
-    <View style={styles.container}>
+    <View style={{ paddingHorizontal: 16 }}>
       <View style={styles.sBarContainer}>
         <TextInput
           style={styles.input}
@@ -29,19 +29,13 @@ const SearchBar = (props: any) => {
 export default SearchBar;
 
 const styles = StyleSheet.create({
-  container: {
-    width: "91.8%",
-    marginHorizontal: 16,
-    backgroundColor: "#fff",
-  },
   sBarContainer: {
     height: 59,
     padding: 10,
     flexDirection: "row",
-    backgroundColor: "#fff",
     alignItems: "center",
-    borderRadius: 4,
-    borderWidth: 3,
+    borderRadius: 5,
+    borderWidth: 2,
     borderColor: "#E0E2EB",
   },
   input: {

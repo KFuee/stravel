@@ -1,8 +1,6 @@
-import { Dimensions, View, StyleSheet, Pressable } from "react-native";
+import { View, StyleSheet, Pressable } from "react-native";
 
 import TabBarIcon from "./TabBarIcon";
-
-const { width } = Dimensions.get("window");
 
 const TabBar = ({ state, descriptors, navigation }: any) => {
   return (
@@ -70,7 +68,7 @@ const styles = StyleSheet.create({
     bottom: 25,
     backgroundColor: "#FFFFFF",
     borderRadius: 100,
-    marginHorizontal: width * 0.1,
+    marginHorizontal: 20,
 
     shadowColor: "#000",
     shadowOffset: {

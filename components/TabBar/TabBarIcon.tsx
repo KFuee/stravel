@@ -8,8 +8,14 @@ const TabBarIcon = (props: {
   return (
     <FontAwesome
       name={props.name}
-      size={24}
-      style={{ width: 24, height: 24 }}
+      size={28}
+      style={{
+        width: 28,
+        height: 28,
+        textAlign: "center",
+        textAlignVertical: "center",
+        lineHeight: 28,
+      }}
       color={props.isFocused ? "#FCFCFD" : "#000000"}
     />
   );

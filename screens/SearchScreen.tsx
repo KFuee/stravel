@@ -1,11 +1,9 @@
 import { View, Text, StyleSheet } from "react-native";
-import { StatusBar } from "expo-status-bar";
 
 const SearchScreen = () => {
   return (
     <View style={styles.container}>
       <Text>Search Screen</Text>
-      <StatusBar style="auto" />
     </View>
   );
 };

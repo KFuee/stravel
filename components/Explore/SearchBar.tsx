@@ -8,6 +8,7 @@ const SearchBar = (props: any) => {
         <TextInput
           style={styles.input}
           placeholder="Buscar"
+          placeholderTextColor="#52577A"
           value={props.searchPhrase}
           onChangeText={props.setSearchPhrase}
           onFocus={() => props.setClicked(true)}
@@ -40,7 +41,7 @@ const styles = StyleSheet.create({
     borderColor: "#E0E2EB",
   },
   input: {
-    fontSize: 20,
     width: "90%",
+    fontSize: 20,
   },
 });

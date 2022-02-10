@@ -2,6 +2,7 @@ import { useState } from "react";
 import { SafeAreaView, Text, StyleSheet, Platform } from "react-native";
 
 import SearchBar from "../components/Explore/SearchBar";
+import Categories from "../components/Explore/Categories";
 
 const SearchScreen = () => {
   const [searchPhrase, setSearchPhrase] = useState("");
@@ -17,6 +18,8 @@ const SearchScreen = () => {
         clicked={clicked}
         setClicked={setClicked}
       />
+
+      <Categories />
     </SafeAreaView>
   );
 };

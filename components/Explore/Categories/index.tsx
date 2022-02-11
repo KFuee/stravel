@@ -1,34 +1,7 @@
 import { View, Text, ScrollView, StyleSheet } from "react-native";
 
+import { categories } from "../../../data/exploreData";
 import CategoryCard from "./CategoryCard";
-
-const categories = [
-  {
-    id: 1,
-    title: "Hoteles",
-    image: require("../../../assets/images/hotels-category.jpg"),
-  },
-  {
-    id: 2,
-    title: "Restaurantes",
-    image: require("../../../assets/images/restaurants-category.jpg"),
-  },
-  {
-    id: 3,
-    title: "Museos",
-    image: require("../../../assets/images/museums-category.jpg"),
-  },
-  {
-    id: 4,
-    title: "Monumetos",
-    image: require("../../../assets/images/monuments-category.jpg"),
-  },
-  {
-    id: 5,
-    title: "Parques",
-    image: require("../../../assets/images/parks-category.jpg"),
-  },
-];
 
 const Categories = () => {
   return (

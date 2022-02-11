@@ -1,23 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 
+import { nearbyAttractions } from "../../../data/exploreData";
 import SuggestedPlaceCard from "./SuggestedPlaceCard";
-
-const nearbyAttractions = [
-  {
-    id: 1,
-    category: "Hoteles",
-    title: "Hotel de la plaza",
-    rating: 4.5,
-    image: require("../../../assets/images/hotels-category.jpg"),
-  },
-  {
-    id: 2,
-    category: "Museo",
-    title: "Museo de arte",
-    rating: 3.4,
-    image: require("../../../assets/images/museums-category.jpg"),
-  },
-];
 
 const NearbyAttractions = () => {
   return (

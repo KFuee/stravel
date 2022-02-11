@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
     height: 153,
     marginBottom: 14,
   },
+
   content: {
     flex: 1,
     overflow: "hidden",
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     position: "relative",
   },
+
   category: {
     position: "absolute",
     zIndex: 1,
@@ -59,6 +61,7 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     color: "#fff",
   },
+
   titleContainer: {
     width: "100%",
     height: "100%",
@@ -67,6 +70,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
+
   title: {
     fontSize: 16,
     fontWeight: "bold",
@@ -74,11 +78,13 @@ const styles = StyleSheet.create({
     letterSpacing: 0.03,
     color: "#fff",
   },
+
   ratingContainer: {
     left: 12,
     bottom: 12,
     position: "absolute",
   },
+
   ratingText: {
     fontSize: 14,
     fontWeight: "bold",
@@ -86,6 +92,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.03,
     color: "#FFF",
   },
+
   bookmarkContainer: {
     top: 12,
     right: 12,

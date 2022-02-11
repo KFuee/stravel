@@ -25,12 +25,14 @@ const styles = StyleSheet.create({
     width: 150,
     height: 200,
   },
+
   content: {
     flex: 1,
     overflow: "hidden",
     resizeMode: "cover",
     borderRadius: 5,
   },
+
   textContainer: {
     width: "100%",
     height: "100%",
@@ -38,6 +40,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "rgba(255, 71, 96, 0.5)",
   },
+
   titleText: {
     fontSize: 18,
     fontWeight: "bold",

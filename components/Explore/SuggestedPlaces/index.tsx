@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     marginTop: 28,
     paddingHorizontal: 16,
   },
+
   title: {
     fontSize: 16,
     fontWeight: "bold",

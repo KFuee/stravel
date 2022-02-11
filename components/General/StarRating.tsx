@@ -46,12 +46,14 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
+
   ratingText: {
     fontSize: 16,
     fontWeight: "bold",
     color: "#FFF",
     marginRight: 10,
   },
+
   starIcon: {
     width: 18,
     height: 18,

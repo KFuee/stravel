@@ -41,4 +41,11 @@ export const nearbyAttractions = [
     rating: 3.4,
     image: require("../assets/images/museums-category.jpg"),
   },
+  {
+    id: 3,
+    category: "Monumento",
+    title: "Monumento de la catedral",
+    rating: 4.5,
+    image: require("../assets/images/monuments-category.jpg"),
+  },
 ];

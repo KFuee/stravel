@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 26,
   },
+
   title: {
     paddingHorizontal: 16,
     fontSize: 16,
@@ -44,6 +45,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     textTransform: "uppercase",
   },
+
   cardsContainer: {
     flexDirection: "row",
   },

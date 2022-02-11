@@ -1,30 +1,36 @@
 import { View, StyleSheet, Pressable } from "react-native";
+import { FontAwesome } from "@expo/vector-icons";
 
 import TabBarIcon from "./TabBarIcon";
 
-const TabBar = ({ state, descriptors, navigation }: any) => {
+// icon typeof FontAwesome
+interface Tab {
+  name: string;
+  icon: React.ComponentProps<typeof FontAwesome>["name"];
+}
+
+const tabs: Tab[] = [
+  { name: "Home", icon: "home" },
+  { name: "Explore", icon: "search" },
+  { name: "Routes", icon: "street-view" },
+];
+
+const TabBar = ({ state, navigation }: any) => {
   return (
     <View style={{ marginHorizontal: 20 }}>
       <View style={styles.container}>
-        {state.routes.map((route: any, index: number) => {
-          const { options } = descriptors[route.key];
-          const label =
-            options.tabBarLabel !== undefined
-              ? options.tabBarLabel
-              : options.title !== undefined
-              ? options.title
-              : route.name;
-
+        {tabs.map((tab, index) => {
+          const { name, icon }: Tab = tab;
           const isFocused = state.index === index;
 
           const onPress = () => {
             const event = navigation.emit({
               type: "tabPress",
-              target: route.key,
+              target: name,
             });
 
             if (!isFocused && !event.defaultPrevented) {
-              navigation.navigate(route.name);
+              navigation.navigate(name);
             }
           };
 
@@ -50,10 +56,7 @@ const TabBar = ({ state, descriptors, navigation }: any) => {
                     padding: 15,
                   }}
                 >
-                  <TabBarIcon
-                    name={label.toLowerCase()}
-                    isFocused={isFocused}
-                  />
+                  <TabBarIcon name={icon} isFocused={isFocused} />
                 </View>
               </Pressable>
             </View>

@@ -9,7 +9,7 @@ import ExploreScreen from "../screens/ExploreScreen";
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <RootNavigator />
+      <BottomTabNavigator />
     </NavigationContainer>
   );
 };
@@ -18,10 +18,27 @@ export default Navigation;
 
 const Stack = createNativeStackNavigator();
 
-const RootNavigator = () => {
+const stackScreenOptions = {
+  headerLargeTitle: true,
+  headerTransparent: true,
+  headerSearchBarOptions: {
+    placeholder: "Buscar",
+    cancelButtonText: "Cancelar",
+  },
+};
+
+const StackHome = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Root" component={BottomTabNavigator} />
+    <Stack.Navigator screenOptions={stackScreenOptions}>
+      <Stack.Screen name="First" component={HomeScreen} />
+    </Stack.Navigator>
+  );
+};
+
+const StackExplore = () => {
+  return (
+    <Stack.Navigator screenOptions={stackScreenOptions}>
+      <Stack.Screen name="First" component={ExploreScreen} />
     </Stack.Navigator>
   );
 };
@@ -31,12 +48,11 @@ const BottomTab = createBottomTabNavigator();
 const BottomTabNavigator = () => {
   return (
     <BottomTab.Navigator
-      initialRouteName="Home"
       tabBar={(props) => <TabBar {...props} />}
       screenOptions={{ headerShown: false }}
     >
-      <BottomTab.Screen name="Home" component={HomeScreen} />
-      <BottomTab.Screen name="Search" component={ExploreScreen} />
+      <BottomTab.Screen name="Home" component={StackHome} />
+      <BottomTab.Screen name="Explore" component={StackExplore} />
     </BottomTab.Navigator>
   );
 };

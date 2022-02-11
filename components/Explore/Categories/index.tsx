@@ -5,7 +5,7 @@ import CategoryCard from "./CategoryCard";
 
 const Categories = () => {
   return (
-    <View style={styles.container}>
+    <View>
       <Text style={styles.title}>Categorías</Text>
 
       <ScrollView
@@ -32,10 +32,6 @@ const Categories = () => {
 export default Categories;
 
 const styles = StyleSheet.create({
-  container: {
-    marginTop: 26,
-  },
-
   title: {
     paddingHorizontal: 16,
     fontSize: 16,

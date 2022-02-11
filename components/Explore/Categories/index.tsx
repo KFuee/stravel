@@ -6,27 +6,27 @@ const categories = [
   {
     id: 1,
     title: "Hoteles",
-    image: require("../../assets/images/hotels-category.jpg"),
+    image: require("../../../assets/images/hotels-category.jpg"),
   },
   {
     id: 2,
     title: "Restaurantes",
-    image: require("../../assets/images/restaurants-category.jpg"),
+    image: require("../../../assets/images/restaurants-category.jpg"),
   },
   {
     id: 3,
     title: "Museos",
-    image: require("../../assets/images/museums-category.jpg"),
+    image: require("../../../assets/images/museums-category.jpg"),
   },
   {
     id: 4,
     title: "Monumetos",
-    image: require("../../assets/images/monuments-category.jpg"),
+    image: require("../../../assets/images/monuments-category.jpg"),
   },
   {
     id: 5,
     title: "Parques",
-    image: require("../../assets/images/parks-category.jpg"),
+    image: require("../../../assets/images/parks-category.jpg"),
   },
 ];
 
@@ -60,19 +60,18 @@ export default Categories;
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 26,
+    marginTop: 26,
   },
   title: {
     paddingHorizontal: 16,
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: "bold",
     lineHeight: 25,
     letterSpacing: 0.03,
     marginBottom: 16,
-    fontVariant: ["small-caps"],
+    textTransform: "uppercase",
   },
   cardsContainer: {
     flexDirection: "row",
-    marginBottom: 16,
   },
 });

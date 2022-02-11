@@ -1,30 +1,41 @@
 import { useState } from "react";
-import { SafeAreaView, Text, StyleSheet, Platform } from "react-native";
+import {
+  SafeAreaView,
+  Text,
+  StyleSheet,
+  Platform,
+  ScrollView,
+} from "react-native";
 
 import SearchBar from "../components/Explore/SearchBar";
 import Categories from "../components/Explore/Categories";
+import SuggestedPlaces from "../components/Explore/SuggestedPlaces";
 
-const SearchScreen = () => {
+const ExploreScreen = () => {
   const [searchPhrase, setSearchPhrase] = useState("");
   const [clicked, setClicked] = useState(false);
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Explorar</Text>
+      <ScrollView>
+        <Text style={styles.title}>Explorar</Text>
 
-      <SearchBar
-        searchPhrase={searchPhrase}
-        setSearchPhrase={setSearchPhrase}
-        clicked={clicked}
-        setClicked={setClicked}
-      />
+        <SearchBar
+          searchPhrase={searchPhrase}
+          setSearchPhrase={setSearchPhrase}
+          clicked={clicked}
+          setClicked={setClicked}
+        />
 
-      <Categories />
+        <Categories />
+
+        <SuggestedPlaces />
+      </ScrollView>
     </SafeAreaView>
   );
 };
 
-export default SearchScreen;
+export default ExploreScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -34,7 +45,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    marginVertical: 16,
+    marginBottom: 16,
     paddingHorizontal: 16,
     fontSize: 30,
     fontWeight: "bold",

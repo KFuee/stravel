@@ -91,8 +91,8 @@ const styles = StyleSheet.create({
   itemsContainer: {
     flex: 1,
     justifyContent: "center",
+    marginVertical: 6,
     alignItems: "center",
-    marginVertical: 8,
     borderRadius: 1,
     borderColor: "#333B42",
   },

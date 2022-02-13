@@ -48,4 +48,11 @@ export const nearbyAttractions = [
     rating: 4.5,
     image: require("../assets/images/monuments-category.jpg"),
   },
+  {
+    id: 4,
+    category: "Restaurante",
+    title: "Restaurante de la plaza",
+    rating: 4.5,
+    image: require("../assets/images/restaurants-category.jpg"),
+  },
 ];

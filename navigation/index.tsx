@@ -18,18 +18,13 @@ export default Navigation;
 
 const Stack = createNativeStackNavigator();
 
-const stackScreenOptions = {
-  headerLargeTitle: true,
-  headerTransparent: true,
-  headerSearchBarOptions: {
-    placeholder: "Buscar",
-    cancelButtonText: "Cancelar",
-  },
-};
-
 const StackHome = () => {
   return (
-    <Stack.Navigator screenOptions={stackScreenOptions}>
+    <Stack.Navigator
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Stack.Screen name="First" component={HomeScreen} />
     </Stack.Navigator>
   );
@@ -37,7 +32,16 @@ const StackHome = () => {
 
 const StackExplore = () => {
   return (
-    <Stack.Navigator screenOptions={stackScreenOptions}>
+    <Stack.Navigator
+      screenOptions={{
+        headerLargeTitle: true,
+        headerTransparent: false,
+        headerSearchBarOptions: {
+          placeholder: "Buscar",
+          cancelButtonText: "Cancelar",
+        },
+      }}
+    >
       <Stack.Screen name="First" component={ExploreScreen} />
     </Stack.Navigator>
   );

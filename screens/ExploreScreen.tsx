@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { SafeAreaView, StyleSheet, ScrollView } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 
 import Categories from "../components/Explore/Categories";
 import SuggestedPlaces from "../components/Explore/SuggestedPlaces";
@@ -13,13 +13,16 @@ const ExploreScreen = ({ navigation }: any) => {
   }, []);
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <Categories />
+    <ScrollView
+      // Mirar si hay mejor forma de hacelo en IOS
+      contentInset={{ bottom: 49 }}
+      contentInsetAdjustmentBehavior="automatic"
+      style={styles.container}
+    >
+      <Categories />
 
-        <SuggestedPlaces />
-      </ScrollView>
-    </SafeAreaView>
+      <SuggestedPlaces />
+    </ScrollView>
   );
 };
 

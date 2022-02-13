@@ -1,11 +1,30 @@
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  Platform,
+} from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
 
 import StarRating from "../../General/StarRating";
 
-const NearbyAttractionCard = ({ id, category, title, rating, image }: any) => {
+const NearbyAttractionCard = ({
+  category,
+  title,
+  rating,
+  image,
+  isLast,
+}: any) => {
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        isLast && (Platform.OS === "web" || Platform.OS === "android")
+          ? { marginBottom: 100 }
+          : { marginBottom: 14 },
+      ]}
+    >
       <ImageBackground source={image} style={styles.content}>
         <Text style={styles.category}>{category}</Text>
 
@@ -31,7 +50,6 @@ const styles = StyleSheet.create({
   container: {
     width: "100%",
     height: 153,
-    marginBottom: 14,
   },
 
   content: {
@@ -47,7 +65,6 @@ const styles = StyleSheet.create({
     zIndex: 1,
     left: 12,
     top: 12,
-    width: 75,
     height: 25,
     padding: 4,
     textAlign: "center",

@@ -17,6 +17,7 @@ const NearbyAttractions = () => {
             title={nearbyAttraction.title}
             rating={nearbyAttraction.rating}
             image={nearbyAttraction.image}
+            isLast={nearbyAttraction.id === nearbyAttractions.length}
           />
         );
       })}

@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "rgba(255, 71, 96, 0.5)",
+    backgroundColor: "rgba(150, 71, 96, 0.5)",
   },
 
   titleText: {

@@ -22,7 +22,7 @@ export default WelcomeBanner;
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    height: 350,
+    height: 455,
   },
 
   contentContainer: {

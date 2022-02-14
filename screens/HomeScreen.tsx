@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 
 import WelcomeBanner from "../components/Home/WelcomeBanner";
+import Suggestions from "../components/Home/Suggestions";
 
 const HomeScreen = ({ navigation }: any) => {
   // Establece el título de la vista con useEfect
@@ -14,6 +15,8 @@ const HomeScreen = ({ navigation }: any) => {
   return (
     <View style={styles.container}>
       <WelcomeBanner />
+
+      <Suggestions />
     </View>
   );
 };

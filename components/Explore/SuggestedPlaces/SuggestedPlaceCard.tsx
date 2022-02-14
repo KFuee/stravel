@@ -9,7 +9,7 @@ import { FontAwesome } from "@expo/vector-icons";
 
 import StarRating from "../../General/StarRating";
 
-const NearbyAttractionCard = ({
+const SuggestedPlaceCard = ({
   category,
   title,
   rating,
@@ -44,7 +44,7 @@ const NearbyAttractionCard = ({
   );
 };
 
-export default NearbyAttractionCard;
+export default SuggestedPlaceCard;
 
 const styles = StyleSheet.create({
   container: {

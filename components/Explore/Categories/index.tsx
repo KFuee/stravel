@@ -8,11 +8,7 @@ const Categories = () => {
     <SafeAreaView>
       <Text style={styles.title}>Categorías</Text>
 
-      <ScrollView
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}
-        style={styles.cardsContainer}
-      >
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {categories.map((category) => {
           return (
             <CategoryCard
@@ -40,9 +36,5 @@ const styles = StyleSheet.create({
     lineHeight: 25,
     letterSpacing: 0.03,
     textTransform: "uppercase",
-  },
-
-  cardsContainer: {
-    flexDirection: "row",
   },
 });

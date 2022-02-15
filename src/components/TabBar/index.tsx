@@ -10,8 +10,8 @@ interface Tab {
 }
 
 const tabs: Tab[] = [
-  { name: "Home", icon: "home" },
-  { name: "Explore", icon: "search" },
+  { name: "HomeTab", icon: "home" },
+  { name: "ExploreTab", icon: "search" },
   { name: "Routes", icon: "street-view" },
 ];
 

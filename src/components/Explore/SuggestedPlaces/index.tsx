@@ -1,31 +1,7 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from 'react-native';
 
-import { nearbyAttractions } from "../../../data/exploreData";
-import SuggestedPlaceCard from "./SuggestedPlaceCard";
-
-const NearbyAttractions = () => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Lugares sugeridos</Text>
-
-      {nearbyAttractions.map((nearbyAttraction) => {
-        return (
-          <SuggestedPlaceCard
-            key={nearbyAttraction.id}
-            id={nearbyAttraction.id}
-            category={nearbyAttraction.category}
-            title={nearbyAttraction.title}
-            rating={nearbyAttraction.rating}
-            image={nearbyAttraction.image}
-            isLast={nearbyAttraction.id === nearbyAttractions.length}
-          />
-        );
-      })}
-    </View>
-  );
-};
-
-export default NearbyAttractions;
+import { nearbyAttractions } from '../../../data/exploreData';
+import SuggestedPlaceCard from './SuggestedPlaceCard';
 
 const styles = StyleSheet.create({
   container: {
@@ -35,10 +11,32 @@ const styles = StyleSheet.create({
 
   title: {
     fontSize: 16,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     lineHeight: 25,
     letterSpacing: 0.03,
     marginBottom: 16,
-    textTransform: "uppercase",
+    textTransform: 'uppercase',
   },
 });
+
+function NearbyAttractions() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Lugares sugeridos</Text>
+
+      {nearbyAttractions.map(nearbyAttraction => (
+        <SuggestedPlaceCard
+          key={nearbyAttraction.id}
+          id={nearbyAttraction.id}
+          category={nearbyAttraction.category}
+          title={nearbyAttraction.title}
+          rating={nearbyAttraction.rating}
+          image={nearbyAttraction.image}
+          isLast={nearbyAttraction.id === nearbyAttractions.length}
+        />
+      ))}
+    </View>
+  );
+}
+
+export default NearbyAttractions;

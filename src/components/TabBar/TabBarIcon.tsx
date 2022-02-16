@@ -1,24 +1,27 @@
-import * as React from "react";
-import { FontAwesome } from "@expo/vector-icons";
+import * as React from 'react';
+import { FontAwesome } from '@expo/vector-icons';
 
-const TabBarIcon = (props: {
-  name: React.ComponentProps<typeof FontAwesome>["name"];
+function TabBarIcon({
+  name,
+  isFocused,
+}: {
+  name: React.ComponentProps<typeof FontAwesome>['name'];
   isFocused: boolean;
-}) => {
+}) {
   return (
     <FontAwesome
-      name={props.name}
+      name={name}
       size={28}
       style={{
         width: 28,
         height: 28,
-        textAlign: "center",
-        textAlignVertical: "center",
+        textAlign: 'center',
+        textAlignVertical: 'center',
         lineHeight: 28,
       }}
-      color={props.isFocused ? "#FCFCFD" : "#000000"}
+      color={isFocused ? '#FCFCFD' : '#000000'}
     />
   );
-};
+}
 
 export default TabBarIcon;

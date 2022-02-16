@@ -7,10 +7,14 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "lint": "eslint --ext .ts,.tsx src/",
+    "lint:fix": "eslint --fix --ext .ts,.tsx src/",
+    "format": "prettier --write ./src"
   },
   "dependencies": {
-    "@expo/vector-icons": "^12.0.5",
+    "@expo/vector-icons": "^12.0.0",
+    "@expo/webpack-config": "^0.16.18",
     "@react-navigation/bottom-tabs": "^6.2.0",
     "@react-navigation/native": "^6.0.8",
     "@react-navigation/native-stack": "^6.5.0",
@@ -20,12 +24,26 @@
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
+    "react-native-gesture-handler": "~2.1.0",
+    "react-native-reanimated": "~2.3.1",
+    "react-native-safe-area-context": "3.3.2",
     "react-native-web": "0.17.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
     "@types/react": "~17.0.21",
     "@types/react-native": "~0.64.12",
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-plugin-react-native": "^4.0.0",
+    "prettier": "2.5.1",
     "typescript": "~4.3.5"
   },
   "private": true

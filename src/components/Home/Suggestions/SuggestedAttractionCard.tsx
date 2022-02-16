@@ -1,6 +1,39 @@
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import { View, Text, StyleSheet, ImageBackground } from 'react-native';
 
-const SuggestedAttractionCard = ({ id, title, image, isLast }: any) => {
+const styles = StyleSheet.create({
+  container: {
+    width: 260,
+    height: 140,
+    borderRadius: 5,
+    backgroundColor: 'red',
+  },
+
+  content: {
+    flex: 1,
+    overflow: 'hidden',
+    resizeMode: 'cover',
+    borderRadius: 5,
+  },
+
+  titleContainer: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+
+  title: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    lineHeight: 20,
+    letterSpacing: 0.03,
+    color: '#fff',
+  },
+});
+
+function SuggestedAttractionCard({ id, title, image, isLast }: any) {
   return (
     <View
       style={[
@@ -16,39 +49,6 @@ const SuggestedAttractionCard = ({ id, title, image, isLast }: any) => {
       </ImageBackground>
     </View>
   );
-};
+}
 
 export default SuggestedAttractionCard;
-
-const styles = StyleSheet.create({
-  container: {
-    width: 260,
-    height: 140,
-    borderRadius: 5,
-    backgroundColor: "red",
-  },
-
-  content: {
-    flex: 1,
-    overflow: "hidden",
-    resizeMode: "cover",
-    borderRadius: 5,
-  },
-
-  titleContainer: {
-    width: "100%",
-    height: "100%",
-    position: "absolute",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
-
-  title: {
-    fontSize: 16,
-    fontWeight: "bold",
-    lineHeight: 20,
-    letterSpacing: 0.03,
-    color: "#fff",
-  },
-});

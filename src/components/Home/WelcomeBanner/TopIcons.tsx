@@ -1,7 +1,35 @@
-import { SafeAreaView, View, StyleSheet } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { SafeAreaView, View, StyleSheet } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
 
-const TopIcons = () => {
+const styles = StyleSheet.create({
+  iconsContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+
+  rightIconsContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+
+  iconContainer: {
+    width: 40,
+    height: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(61, 65, 92, 0.5)',
+    borderRadius: 80,
+  },
+
+  icon: {
+    width: 26,
+    height: 26,
+    textAlign: 'center',
+  },
+});
+
+function TopIcons() {
   return (
     <SafeAreaView>
       <View style={styles.iconsContainer}>
@@ -31,34 +59,6 @@ const TopIcons = () => {
       </View>
     </SafeAreaView>
   );
-};
+}
 
 export default TopIcons;
-
-const styles = StyleSheet.create({
-  iconsContainer: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-
-  rightIconsContainer: {
-    display: "flex",
-    flexDirection: "row",
-  },
-
-  iconContainer: {
-    width: 40,
-    height: 40,
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "rgba(61, 65, 92, 0.5)",
-    borderRadius: 80,
-  },
-
-  icon: {
-    width: 26,
-    height: 26,
-    textAlign: "center",
-  },
-});

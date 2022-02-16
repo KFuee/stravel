@@ -6,30 +6,30 @@ export type Category = {
 export const categories: Category[] = [
   {
     id: 1,
-    title: "Todo",
+    title: 'Todo',
   },
   {
     id: 2,
-    title: "Hoteles",
+    title: 'Hoteles',
   },
   {
     id: 3,
-    title: "Compras",
+    title: 'Compras',
   },
   {
     id: 4,
-    title: "Hostelería",
+    title: 'Hostelería',
   },
   {
     id: 5,
-    title: "Arte",
+    title: 'Arte',
   },
   {
     id: 6,
-    title: "Eventos",
+    title: 'Eventos',
   },
   {
     id: 7,
-    title: "Otros",
+    title: 'Otros',
   },
 ];

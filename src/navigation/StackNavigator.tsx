@@ -1,11 +1,11 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Home Screens
-import HomeScreen from "../screens/HomeScreen";
+import HomeScreen from '../screens/HomeScreen';
 
 // Explore Screens
-import ExploreScreen from "../screens/Explore/ExploreScreen";
-import CategoryScreen from "../screens/Explore/CategoryScreen";
+import ExploreScreen from '../screens/Explore/ExploreScreen';
+import CategoryScreen from '../screens/Explore/CategoryScreen';
 
 // Definición de tipos para las rutas del stack
 export type RootStackParamList = {
@@ -16,7 +16,7 @@ export type RootStackParamList = {
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-export const StackHome = () => {
+export function StackHome() {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -26,9 +26,9 @@ export const StackHome = () => {
       <Stack.Screen name="Home" component={HomeScreen} />
     </Stack.Navigator>
   );
-};
+}
 
-export const StackExplore = () => {
+export function StackExplore() {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -38,8 +38,8 @@ export const StackExplore = () => {
           headerLargeTitle: true,
           headerTransparent: false,
           headerSearchBarOptions: {
-            placeholder: "Buscar",
-            cancelButtonText: "Cancelar",
+            placeholder: 'Buscar',
+            cancelButtonText: 'Cancelar',
           },
         }}
       />
@@ -51,4 +51,4 @@ export const StackExplore = () => {
       />
     </Stack.Navigator>
   );
-};
+}

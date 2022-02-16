@@ -1,10 +1,20 @@
-import { View, Text, ScrollView, StyleSheet } from "react-native";
+import { View, Text, ScrollView, StyleSheet } from 'react-native';
 
-import { getCategoryAttractions } from "../../../data/exploreData";
+import { getCategoryAttractions } from '../../../data/exploreData';
 
-import SuggestedAttractionCard from "./SuggestedAttractionCard";
+import SuggestedAttractionCard from './SuggestedAttractionCard';
 
-const SelectedCategory = ({ category }: any) => {
+const styles = StyleSheet.create({
+  noItemsText: {
+    paddingLeft: 16,
+    fontSize: 16,
+    fontWeight: 'bold',
+    lineHeight: 20,
+    letterSpacing: 0.03,
+  },
+});
+
+function SelectedCategory({ category }: any) {
   const attractions = getCategoryAttractions(category);
 
   return (
@@ -39,16 +49,6 @@ const SelectedCategory = ({ category }: any) => {
       </ScrollView>
     </View>
   );
-};
+}
 
 export default SelectedCategory;
-
-const styles = StyleSheet.create({
-  noItemsText: {
-    paddingLeft: 16,
-    fontSize: 16,
-    fontWeight: "bold",
-    lineHeight: 20,
-    letterSpacing: 0.03,
-  },
-});

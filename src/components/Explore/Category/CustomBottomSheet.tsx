@@ -2,7 +2,10 @@ import { useCallback, useMemo, useRef } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 
+import SuggestedPlaceCard from '../SuggestedPlaces/SuggestedPlaceCard';
 import PlacesMap from './PlacesMap';
+
+import { nearbyAttractions } from '../../../data/exploreData';
 
 const styles = StyleSheet.create({
   container: {
@@ -11,19 +14,19 @@ const styles = StyleSheet.create({
 
   contentContainer: {
     marginHorizontal: 16,
-    backgroundColor: 'white',
+    backgroundColor: '#FFF',
   },
 
   itemContainer: {
     padding: 6,
-    marginVertical: 6,
-    backgroundColor: '#eee',
+    backgroundColor: '#EEE',
   },
 
   listTitle: {
     fontSize: 16,
     fontWeight: 'bold',
-    marginVertical: 8,
+    marginTop: 6,
+    marginBottom: 16,
     marginHorizontal: 16,
   },
 });
@@ -31,15 +34,9 @@ const styles = StyleSheet.create({
 function CustomBottomSheet() {
   const sheetRef = useRef<BottomSheet>(null);
 
-  const data = useMemo(
-    () =>
-      Array(50)
-        .fill(0)
-        .map((_, index) => `Item hotel-${index}`),
-    [],
-  );
+  const data = useMemo(() => nearbyAttractions, []);
 
-  const snapPoints = useMemo(() => ['25%', '50%', '90%'], []);
+  const snapPoints = useMemo(() => ['50%', '90%'], []);
 
   const handleSheetChange = useCallback(index => {
     // eslint-disable-next-line no-console
@@ -48,9 +45,15 @@ function CustomBottomSheet() {
 
   const renderItem = useCallback(
     ({ item }) => (
-      <View style={styles.itemContainer}>
-        <Text>{item}</Text>
-      </View>
+      <SuggestedPlaceCard
+        key={item.id}
+        id={item.id}
+        category={item.category}
+        title={item.title}
+        rating={item.rating}
+        image={item.image}
+        isLast={item.id === item.length}
+      />
     ),
     [],
   );
@@ -70,7 +73,6 @@ function CustomBottomSheet() {
 
         <BottomSheetFlatList
           data={data}
-          keyExtractor={i => i}
           renderItem={renderItem}
           contentContainerStyle={styles.contentContainer}
         />

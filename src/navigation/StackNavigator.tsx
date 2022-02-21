@@ -47,7 +47,9 @@ export function StackExplore() {
       <Stack.Screen
         name="Category"
         component={CategoryScreen}
-        options={({ route }) => ({ title: route.params.title })}
+        options={({ route }) => ({
+          title: route.params.title,
+        })}
       />
     </Stack.Navigator>
   );

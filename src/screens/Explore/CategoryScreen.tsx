@@ -1,10 +1,10 @@
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import BottomSheet from '../../components/Explore/Category/CustomBottomSheet';
 
-function CategoryScreen() {
+function CategoryScreen({ route }: any) {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <BottomSheet />
+      <BottomSheet category={route.params.title} />
     </GestureHandlerRootView>
   );
 }

@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function CustomBottomSheet() {
+function CustomBottomSheet({ category }: any) {
   const sheetRef = useRef<BottomSheet>(null);
 
   const data = useMemo(() => nearbyAttractions, []);
@@ -68,7 +68,7 @@ function CustomBottomSheet() {
         onChange={handleSheetChange}
       >
         <Text style={styles.listTitle}>
-          56 resultados para &quot;Hoteles&quot;
+          56 resultados para &quot;{category}&quot;
         </Text>
 
         <BottomSheetFlatList

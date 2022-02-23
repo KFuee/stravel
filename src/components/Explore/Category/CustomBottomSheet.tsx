@@ -2,7 +2,7 @@ import { useCallback, useMemo, useRef } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 
-import SuggestedPlaceCard from '../SuggestedPlaces/SuggestedPlaceCard';
+import PlaceCard from './PlaceCard';
 import PlacesMap from './PlacesMap';
 
 import { nearbyAttractions } from '../../../data/exploreData';
@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
   contentContainer: {
     marginHorizontal: 16,
     backgroundColor: '#FFF',
+    paddingBottom: 20,
   },
 
   itemContainer: {
@@ -45,7 +46,7 @@ function CustomBottomSheet({ category }: any) {
 
   const renderItem = useCallback(
     ({ item }) => (
-      <SuggestedPlaceCard
+      <PlaceCard
         key={item.id}
         id={item.id}
         category={item.category}

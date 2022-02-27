@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     marginTop: 6,
+    // todo: comprobar
     marginBottom: 20,
     marginHorizontal: 16,
   },

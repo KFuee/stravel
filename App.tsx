@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import {
   SafeAreaProvider,
   initialWindowMetrics,
@@ -8,6 +9,7 @@ import Navigation from './src/navigation';
 export default function App() {
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+      <StatusBar />
       <Navigation />
     </SafeAreaProvider>
   );

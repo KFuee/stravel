@@ -1,33 +1,39 @@
-import { View, StyleSheet, Dimensions } from 'react-native';
-import MapView from 'react-native-maps';
+import { StyleSheet, Dimensions } from 'react-native';
+import MapView, { Marker } from 'react-native-maps';
+
+import { nearbyAttractions } from '../../../data/exploreData';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-
   map: {
     width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    height: Dimensions.get('window').height - 80,
   },
 });
 
-function PlacesMap() {
+function PlacesMap({ mapPadding }: any) {
   return (
-    <View style={styles.container}>
-      <MapView
-        style={styles.map}
-        initialRegion={{
-          latitude: 41.65039,
-          longitude: -0.8888,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}
-      />
-    </View>
+    <MapView
+      style={styles.map}
+      initialRegion={{
+        latitude: 41.64914814886517,
+        longitude: -0.8890772467553941,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }}
+      showsPointsOfInterest={false}
+      showsUserLocation={false}
+      mapPadding={mapPadding}
+    >
+      {nearbyAttractions.map(place => (
+        <Marker
+          key={place.id}
+          coordinate={{
+            latitude: place.coordinates.latitude,
+            longitude: place.coordinates.longitude,
+          }}
+        />
+      ))}
+    </MapView>
   );
 }
 

@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useRef } from 'react';
+import { useCallback, useMemo } from 'react';
 import { Text, StyleSheet } from 'react-native';
 import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 
@@ -7,12 +7,6 @@ import PlaceCard from './PlaceCard';
 import { nearbyAttractions } from '../../../data/exploreData';
 
 const styles = StyleSheet.create({
-  contentContainer: {
-    marginHorizontal: 16,
-    backgroundColor: '#FFF',
-    paddingBottom: 20,
-  },
-
   listTitle: {
     fontSize: 16,
     fontWeight: 'bold',
@@ -20,13 +14,17 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     marginHorizontal: 16,
   },
+
+  contentContainer: {
+    marginHorizontal: 16,
+    backgroundColor: '#FFF',
+    paddingBottom: 20,
+  },
 });
 
-function CustomBottomSheet({ category, onChange, currentIndex }: any) {
-  const sheetRef = useRef<BottomSheet>(null);
-
+function CustomBottomSheet({ ref, index, onChange, category }: any) {
+  // memoized values
   const data = useMemo(() => nearbyAttractions, []);
-
   const snapPoints = useMemo(() => ['25%', '50%', '100%'], []);
 
   const renderItem = useCallback(
@@ -46,11 +44,11 @@ function CustomBottomSheet({ category, onChange, currentIndex }: any) {
 
   return (
     <BottomSheet
-      ref={sheetRef}
-      index={currentIndex}
+      ref={ref}
+      index={index}
       snapPoints={snapPoints}
       onChange={onChange}
-      backgroundStyle={{ borderRadius: currentIndex !== 2 ? 16 : 0 }}
+      backgroundStyle={{ borderRadius: index !== 2 ? 16 : 0 }}
     >
       <Text style={styles.listTitle}>
         56 resultados para &quot;{category}&quot;

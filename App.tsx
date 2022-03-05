@@ -10,6 +10,7 @@ export default function App() {
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <StatusBar />
+
       <Navigation />
     </SafeAreaProvider>
   );

@@ -1,4 +1,4 @@
-import React from 'react';
+import { ComponentProps } from 'react';
 import { View, StyleSheet, Pressable } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
@@ -8,7 +8,7 @@ import TabBarIcon from './TabBarIcon';
 interface Tab {
   id: number;
   name: string;
-  icon: React.ComponentProps<typeof FontAwesome>['name'];
+  icon: ComponentProps<typeof FontAwesome>['name'];
 }
 
 const tabs: Tab[] = [
@@ -46,7 +46,12 @@ const styles = StyleSheet.create({
   },
 });
 
-function TabBar({ state, navigation }: any) {
+function TabBar({ descriptors, state, navigation }: any) {
+  const focusedOptions = descriptors[state.routes[state.index].key].options;
+  if (focusedOptions?.tabBarStyle?.display === 'none') {
+    return null;
+  }
+
   return (
     <View style={{ marginHorizontal: 20 }}>
       <View style={styles.container}>

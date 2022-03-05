@@ -11,7 +11,11 @@ const BottomTabNavigator = createBottomTabNavigator();
 
 function TabNavigator() {
   const renderTabBar = (props: BottomTabBarProps) => (
-    <TabBar state={props.state} navigation={props.navigation} />
+    <TabBar
+      descriptors={props.descriptors}
+      state={props.state}
+      navigation={props.navigation}
+    />
   );
 
   return (

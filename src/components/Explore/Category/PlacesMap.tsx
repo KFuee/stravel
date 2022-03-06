@@ -9,10 +9,10 @@ const styles = StyleSheet.create({
   },
 });
 
-function PlacesMap({ ref, mapPadding, latitudeDelta, longitudeDelta }: any) {
+function PlacesMap({ mapRef, mapPadding, latitudeDelta, longitudeDelta }: any) {
   return (
     <MapView
-      ref={ref}
+      ref={mapRef}
       provider={PROVIDER_GOOGLE}
       style={styles.map}
       mapPadding={mapPadding}

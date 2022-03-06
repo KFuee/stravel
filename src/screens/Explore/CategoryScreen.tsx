@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet, Dimensions, StatusBar } from 'react-native';
 import MapView, { EdgePadding } from 'react-native-maps';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import BottomSheet from '@gorhom/bottom-sheet';
@@ -13,10 +13,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 24,
-  },
-
-  map: {
-    ...StyleSheet.absoluteFillObject,
   },
 });
 
@@ -40,7 +36,9 @@ function CategoryScreen({ route }: any) {
   const headerHeight = useHeaderHeight();
 
   // constants
-  const viewHeight = SCREEN_HEIGHT - headerHeight;
+  const statusBarHeight =
+    (StatusBar.currentHeight === 24 ? 0 : StatusBar.currentHeight) || 0;
+  const viewHeight = SCREEN_HEIGHT - headerHeight + statusBarHeight;
 
   useEffect(() => {
     setMapPadding({
@@ -72,14 +70,14 @@ function CategoryScreen({ route }: any) {
   return (
     <GestureHandlerRootView style={styles.container}>
       <PlacesMap
-        ref={mapRef}
+        mapRef={mapRef}
         mapPadding={mapPadding}
         latitudeDelta={LATITUDE_DELTA}
         longitudeDelta={LONGITUDE_DELTA}
       />
 
       <CustomBottomSheet
-        ref={sheetRef}
+        sheetRef={sheetRef}
         index={currentSheetIndex}
         onChange={handleSheetChange}
         category={route.params.title}

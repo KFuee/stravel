@@ -1,6 +1,6 @@
-import { StyleSheet, View, Image, Text } from 'react-native';
-import LocationDetails from '../components/Attraction/LocationDetails';
-import StarRating from '../components/General/StarRating';
+import { StyleSheet, View, Image } from 'react-native';
+
+import AttractionInformation from '../components/Attraction/Information';
 
 import { getAttraction } from '../data/exploreData';
 
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     overflow: 'hidden',
-    backgroundColor: '#000000',
+    backgroundColor: '#FFF',
   },
 
   cover: {
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
 
-  infoContainer: {
+  contentContainer: {
     position: 'absolute',
     bottom: 0,
     left: 0,
@@ -30,12 +30,6 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 16,
     backgroundColor: '#FFF',
   },
-
-  title: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    marginBottom: 16,
-  },
 });
 
 function AttractionView({ route }: any) {
@@ -46,12 +40,8 @@ function AttractionView({ route }: any) {
     <View style={styles.container}>
       <Image source={attraction?.image} style={styles.cover} />
 
-      <View style={styles.infoContainer}>
-        <Text style={styles.title}>{attraction?.title}</Text>
-
-        <LocationDetails streetAdress={attraction?.address} />
-
-        <StarRating rating={attraction?.rating} textColor="#000000" />
+      <View style={styles.contentContainer}>
+        <AttractionInformation attraction={attraction} />
       </View>
     </View>
   );

@@ -1,4 +1,5 @@
 import { StyleSheet, View, Image, Text } from 'react-native';
+import StarRating from '../components/General/StarRating';
 
 import { getAttraction } from '../data/exploreData';
 
@@ -21,8 +22,9 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 24,
+    fontSize: 16,
     fontWeight: 'bold',
+    marginBottom: 8,
   },
 });
 
@@ -36,6 +38,8 @@ function AttractionView({ route }: any) {
 
       <View style={styles.infoContainer}>
         <Text style={styles.title}>{attraction?.title}</Text>
+
+        <StarRating rating={attraction?.rating} textColor="#000000" />
       </View>
     </View>
   );

@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
   ratingText: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#FFF',
     marginRight: 10,
   },
 
@@ -20,7 +19,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function StarRating({ rating }: any) {
+function StarRating({ rating, textColor }: any) {
   const stars = [];
 
   const roundRating = Math.round(rating);
@@ -51,7 +50,7 @@ function StarRating({ rating }: any) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.ratingText}>{rating}</Text>
+      <Text style={[styles.ratingText, { color: textColor }]}>{rating}</Text>
 
       {stars}
     </View>

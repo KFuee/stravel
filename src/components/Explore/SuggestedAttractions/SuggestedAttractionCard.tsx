@@ -131,7 +131,7 @@ function SuggestedAttractionCard({
           </View>
 
           <View style={styles.ratingContainer}>
-            <StarRating rating={rating} />
+            <StarRating rating={rating} textColor="#FFF" />
           </View>
         </ImageBackground>
       </View>

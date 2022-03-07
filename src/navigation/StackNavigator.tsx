@@ -15,6 +15,7 @@ import CategoryScreen from '../screens/Explore/CategoryScreen';
 // Attraction Components
 import BackButton from '../components/Header/General/BackButton';
 import BookmarkButton from '../components/Header/Attraction/BookmarkButton';
+import AttractionInfoModal from '../components/Attraction/Information/InfoModal';
 
 // Definición de tipos para las rutas del stack
 export type RootStackParamList = {
@@ -22,6 +23,7 @@ export type RootStackParamList = {
   Explore: undefined;
   Category: { title: string };
   Attraction: { id: string };
+  AttractionInfo: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -91,6 +93,18 @@ export function StackExplore({ navigation, route }: any) {
           title: '',
           headerLeft: () => renderAttractionLeftButtons(attractionNavigation),
           headerRight: () => renderAttractionRightButtons(attractionNavigation),
+        })}
+      />
+
+      <Stack.Screen
+        name="AttractionInfo"
+        component={AttractionInfoModal}
+        options={({ navigation: attractionInfoNavigation }) => ({
+          presentation: 'modal',
+          headerTransparent: true,
+          title: '',
+          headerLeft: () =>
+            renderAttractionLeftButtons(attractionInfoNavigation),
         })}
       />
     </Stack.Navigator>

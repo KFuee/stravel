@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 
 import Categories from '../../components/Explore/Categories';
-import SuggestedPlaces from '../../components/Explore/SuggestedPlaces';
+import SuggestedAttractions from '../../components/Explore/SuggestedAttractions';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,7 +28,7 @@ function ExploreScreen({ navigation }: any) {
     >
       <Categories />
 
-      <SuggestedPlaces />
+      <SuggestedAttractions />
     </ScrollView>
   );
 }

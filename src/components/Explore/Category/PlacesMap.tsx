@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 
-import { nearbyAttractions } from '../../../data/exploreData';
+import { attractions } from '../../../data/exploreData';
 
 const styles = StyleSheet.create({
   map: {
@@ -24,12 +24,12 @@ function PlacesMap({ mapRef, mapPadding, latitudeDelta, longitudeDelta }: any) {
       }}
       toolbarEnabled={false}
     >
-      {nearbyAttractions.map(place => (
+      {attractions.map(attraction => (
         <Marker
-          key={place.id}
+          key={attraction.id}
           coordinate={{
-            latitude: place.coordinates.latitude,
-            longitude: place.coordinates.longitude,
+            latitude: attraction.coordinates.latitude,
+            longitude: attraction.coordinates.longitude,
           }}
         />
       ))}

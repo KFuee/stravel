@@ -4,10 +4,20 @@ import {
   StyleSheet,
   ImageBackground,
   Platform,
+  TouchableOpacity,
 } from 'react-native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
 
+import { RootStackParamList } from '../../../navigation/StackNavigator';
+
 import StarRating from '../../General/StarRating';
+
+type AttractionScreenProps = NativeStackNavigationProp<
+  RootStackParamList,
+  'Attraction'
+>;
 
 const styles = StyleSheet.create({
   container: {
@@ -86,33 +96,47 @@ const styles = StyleSheet.create({
   },
 });
 
-function SuggestedPlaceCard({ category, title, rating, image, isLast }: any) {
+function SuggestedAttractionCard({
+  id,
+  category,
+  title,
+  rating,
+  image,
+  isLast,
+}: any) {
+  const navigation = useNavigation<AttractionScreenProps>();
+
   return (
-    <View
-      style={[
-        styles.container,
-        isLast && (Platform.OS === 'web' || Platform.OS === 'android')
-          ? { marginBottom: 100 }
-          : { marginBottom: 14 },
-      ]}
+    <TouchableOpacity
+      onPress={() => navigation.navigate('Attraction', { id })}
+      activeOpacity={0.8}
     >
-      <ImageBackground source={image} style={styles.content}>
-        <Text style={styles.category}>{category}</Text>
+      <View
+        style={[
+          styles.container,
+          isLast && (Platform.OS === 'web' || Platform.OS === 'android')
+            ? { marginBottom: 100 }
+            : { marginBottom: 14 },
+        ]}
+      >
+        <ImageBackground source={image} style={styles.content}>
+          <Text style={styles.category}>{category}</Text>
 
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>{title}</Text>
-        </View>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>{title}</Text>
+          </View>
 
-        <View style={styles.bookmarkContainer}>
-          <FontAwesome name="bookmark-o" size={20} color="#FFF" />
-        </View>
+          <View style={styles.bookmarkContainer}>
+            <FontAwesome name="bookmark-o" size={20} color="#FFF" />
+          </View>
 
-        <View style={styles.ratingContainer}>
-          <StarRating rating={rating} />
-        </View>
-      </ImageBackground>
-    </View>
+          <View style={styles.ratingContainer}>
+            <StarRating rating={rating} />
+          </View>
+        </ImageBackground>
+      </View>
+    </TouchableOpacity>
   );
 }
 
-export default SuggestedPlaceCard;
+export default SuggestedAttractionCard;

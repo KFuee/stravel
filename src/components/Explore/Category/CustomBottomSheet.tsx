@@ -4,7 +4,7 @@ import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 
 import PlaceCard from './PlaceCard';
 
-import { nearbyAttractions } from '../../../data/exploreData';
+import { attractions } from '../../../data/exploreData';
 
 const styles = StyleSheet.create({
   listTitle: {
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 
 function CustomBottomSheet({ sheetRef, index, onChange, category }: any) {
   // memoized values
-  const data = useMemo(() => nearbyAttractions, []);
+  const data = useMemo(() => attractions, []);
   const snapPoints = useMemo(() => ['25%', '50%', '100%'], []);
 
   const renderItem = useCallback(

@@ -1,8 +1,6 @@
 import { useLayoutEffect } from 'react';
-import { TouchableOpacity } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
-import { FontAwesome } from '@expo/vector-icons';
 
 // General Screens
 import AttractionView from '../screens/AttractionView';
@@ -13,6 +11,10 @@ import HomeScreen from '../screens/HomeScreen';
 // Explore Screens
 import ExploreScreen from '../screens/Explore/ExploreScreen';
 import CategoryScreen from '../screens/Explore/CategoryScreen';
+
+// Attraction Components
+import BackButton from '../components/Header/General/BackButton';
+import BookmarkButton from '../components/Header/Attraction/BookmarkButton';
 
 // Definición de tipos para las rutas del stack
 export type RootStackParamList = {
@@ -35,6 +37,15 @@ export function StackHome() {
     </Stack.Navigator>
   );
 }
+
+// Renderiza los botones de navegación en AttractionView
+const renderAttractionLeftButtons = (navigation: any) => (
+  <BackButton navigation={navigation} />
+);
+
+const renderAttractionRightButtons = (navigation: any) => (
+  <BookmarkButton navigation={navigation} />
+);
 
 export function StackExplore({ navigation, route }: any) {
   useLayoutEffect(() => {
@@ -75,47 +86,11 @@ export function StackExplore({ navigation, route }: any) {
       <Stack.Screen
         name="Attraction"
         component={AttractionView}
-        options={({ navigation: attractionNavigator }) => ({
+        options={({ navigation: attractionNavigation }) => ({
           headerTransparent: true,
           title: '',
-          // eslint-disable-next-line react/no-unstable-nested-components
-          headerLeft: () => (
-            <TouchableOpacity
-              onPress={() => {
-                attractionNavigator.goBack();
-              }}
-              // Circulo con icono de flecha hacia atrás
-              style={{
-                width: 32,
-                height: 32,
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: 80,
-                backgroundColor: '#FFF',
-              }}
-            >
-              <FontAwesome name="arrow-left" size={20} />
-            </TouchableOpacity>
-          ),
-          // eslint-disable-next-line react/no-unstable-nested-components
-          headerRight: () => (
-            <TouchableOpacity
-              onPress={() => {
-                attractionNavigator.goBack();
-              }}
-              // Circulo con icono de marcador
-              style={{
-                width: 32,
-                height: 32,
-                alignItems: 'center',
-                justifyContent: 'center',
-                borderRadius: 80,
-                backgroundColor: '#FFF',
-              }}
-            >
-              <FontAwesome name="bookmark-o" size={20} />
-            </TouchableOpacity>
-          ),
+          headerLeft: () => renderAttractionLeftButtons(attractionNavigation),
+          headerRight: () => renderAttractionRightButtons(attractionNavigation),
         })}
       />
     </Stack.Navigator>

@@ -38,6 +38,7 @@ export const attractions = [
       latitude: 41.6573302141852,
       longitude: -0.8888,
     },
+    address: 'Calle de la plaza, Madrid',
   },
   {
     id: 2,
@@ -50,6 +51,7 @@ export const attractions = [
       latitude: 41.6573302141852,
       longitude: -0.8782084695231732,
     },
+    address: 'Calle de la plaza, Madrid',
   },
   {
     id: 3,
@@ -62,6 +64,7 @@ export const attractions = [
       latitude: 41.646491844087684,
       longitude: -0.8877356758675421,
     },
+    address: 'Calle de la plaza, Madrid',
   },
   {
     id: 4,
@@ -74,6 +77,7 @@ export const attractions = [
       latitude: 41.652546888229686,
       longitude: -0.8961606686675342,
     },
+    address: 'Calle de la plaza, Madrid',
   },
 ];
 

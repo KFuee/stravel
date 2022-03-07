@@ -26,7 +26,7 @@ export const categories = [
   },
 ];
 
-export const nearbyAttractions = [
+export const attractions = [
   {
     id: 1,
     category: 'Hoteles',
@@ -77,17 +77,20 @@ export const nearbyAttractions = [
   },
 ];
 
+export const getAttraction = (id: number) =>
+  attractions.find(attraction => attraction.id === id);
+
 export const getCategoryAttractions = (category: string) => {
   if (category === 'Todo') {
-    return nearbyAttractions;
+    return attractions;
   }
 
-  const attractions: any = [];
-  nearbyAttractions.forEach(attraction => {
+  const categoryAttractions: any = [];
+  attractions.forEach(attraction => {
     if (attraction.mainCategory === category) {
-      attractions.push(attraction);
+      categoryAttractions.push(attraction);
     }
   });
 
-  return attractions;
+  return categoryAttractions;
 };

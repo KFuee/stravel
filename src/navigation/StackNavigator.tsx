@@ -1,6 +1,11 @@
 import { useLayoutEffect } from 'react';
+import { TouchableOpacity } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import { FontAwesome } from '@expo/vector-icons';
+
+// General Screens
+import AttractionView from '../screens/AttractionView';
 
 // Home Screens
 import HomeScreen from '../screens/HomeScreen';
@@ -14,6 +19,7 @@ export type RootStackParamList = {
   Home: undefined;
   Explore: undefined;
   Category: { title: string };
+  Attraction: { id: string };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -63,6 +69,53 @@ export function StackExplore({ navigation, route }: any) {
         component={CategoryScreen}
         options={props => ({
           title: props.route.params.title,
+        })}
+      />
+
+      <Stack.Screen
+        name="Attraction"
+        component={AttractionView}
+        options={({ navigation: attractionNavigator }) => ({
+          headerTransparent: true,
+          title: '',
+          // eslint-disable-next-line react/no-unstable-nested-components
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => {
+                attractionNavigator.goBack();
+              }}
+              // Circulo con icono de flecha hacia atrás
+              style={{
+                width: 32,
+                height: 32,
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 80,
+                backgroundColor: '#FFF',
+              }}
+            >
+              <FontAwesome name="arrow-left" size={20} />
+            </TouchableOpacity>
+          ),
+          // eslint-disable-next-line react/no-unstable-nested-components
+          headerRight: () => (
+            <TouchableOpacity
+              onPress={() => {
+                attractionNavigator.goBack();
+              }}
+              // Circulo con icono de marcador
+              style={{
+                width: 32,
+                height: 32,
+                alignItems: 'center',
+                justifyContent: 'center',
+                borderRadius: 80,
+                backgroundColor: '#FFF',
+              }}
+            >
+              <FontAwesome name="bookmark-o" size={20} />
+            </TouchableOpacity>
+          ),
         })}
       />
     </Stack.Navigator>

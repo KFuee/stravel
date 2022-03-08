@@ -28,7 +28,7 @@ function AttractionInformation({ attraction }: any) {
         <StarRating rating={attraction?.rating} textColor="#000000" />
       </View>
 
-      <InfoIcon />
+      <InfoIcon attraction={attraction} />
     </View>
   );
 }

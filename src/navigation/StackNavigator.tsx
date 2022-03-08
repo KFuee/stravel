@@ -23,7 +23,7 @@ export type RootStackParamList = {
   Explore: undefined;
   Category: { title: string };
   Attraction: { id: string };
-  AttractionInfo: undefined;
+  AttractionInfo: { attraction: any };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

@@ -26,11 +26,11 @@ const styles = StyleSheet.create({
   },
 });
 
-function InfoIcon() {
+function InfoIcon({ attraction }: any) {
   const { navigate } = useNavigation<AttractionInfoProps>();
 
   return (
-    <Pressable onPress={() => navigate('AttractionInfo')}>
+    <Pressable onPress={() => navigate('AttractionInfo', { attraction })}>
       <View style={styles.infoIconContainer}>
         <FontAwesome
           name="info"

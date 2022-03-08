@@ -1,13 +1,18 @@
-import { Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import LocationMap from './LocationMap';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 function AttractionInfoModal({ route }: any) {
   const { attraction } = route.params;
 
-  console.log(attraction);
-
   return (
-    <View>
-      <Text>Prueba</Text>
+    <View style={styles.container}>
+      <LocationMap coordinates={attraction.coordinates} />
     </View>
   );
 }

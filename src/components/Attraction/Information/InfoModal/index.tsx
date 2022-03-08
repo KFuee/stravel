@@ -1,4 +1,5 @@
 import { StyleSheet, View } from 'react-native';
+import DetailsList from './DetailsList';
 import LocationMap from './LocationMap';
 
 const styles = StyleSheet.create({
@@ -13,6 +14,15 @@ function AttractionInfoModal({ route }: any) {
   return (
     <View style={styles.container}>
       <LocationMap coordinates={attraction.coordinates} />
+
+      <DetailsList
+        details={{
+          address: attraction.address,
+          phoneNumber: attraction.phoneNumber,
+          website: attraction.website,
+          rating: attraction.rating,
+        }}
+      />
     </View>
   );
 }

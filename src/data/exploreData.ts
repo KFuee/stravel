@@ -39,6 +39,8 @@ export const attractions = [
       longitude: -0.8888,
     },
     address: 'Calle de la plaza, Madrid',
+    phoneNumber: '+34 915 567 890',
+    website: 'https://www.google.com',
   },
   {
     id: 2,
@@ -52,6 +54,8 @@ export const attractions = [
       longitude: -0.8782084695231732,
     },
     address: 'Calle de la plaza, Madrid',
+    phoneNumber: '+34 915 567 890',
+    website: 'https://www.google.com',
   },
   {
     id: 3,
@@ -65,6 +69,8 @@ export const attractions = [
       longitude: -0.8877356758675421,
     },
     address: 'Calle de la plaza, Madrid',
+    phoneNumber: '+34 915 567 890',
+    website: 'https://www.google.com',
   },
   {
     id: 4,
@@ -78,6 +84,8 @@ export const attractions = [
       longitude: -0.8961606686675342,
     },
     address: 'Calle de la plaza, Madrid',
+    phoneNumber: '+34 915 567 890',
+    website: 'https://www.google.com',
   },
 ];
 

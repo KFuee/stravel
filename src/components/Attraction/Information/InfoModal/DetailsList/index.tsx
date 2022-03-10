@@ -1,9 +1,6 @@
 import { StyleSheet, View } from 'react-native';
 
-import LocationDetails from './LocationDetails';
-import PhoneNumberDetails from './PhoneNumberDetails';
-import WebsiteDetails from './WebsiteDetails';
-import RatingDetails from './RatingDetails';
+import DetailsItem from './DetailsItem';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,47 +15,27 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     marginVertical: 10,
   },
-
-  itemContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-
-  iconContainer: {
-    width: 20,
-    height: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  icon: {
-    textAlign: 'center',
-    textAlignVertical: 'center',
-  },
-
-  text: {
-    marginLeft: 10,
-    fontSize: 16,
-    fontWeight: 'bold',
-  },
 });
 
 function DetailsList({ details }: any) {
   return (
     <View style={styles.container}>
-      <LocationDetails styles={styles} address={details.address} />
+      <DetailsItem iconName="map-marker" text={details.address} />
 
       <View style={styles.separator} />
 
-      <PhoneNumberDetails styles={styles} phoneNumber={details.phoneNumber} />
+      <DetailsItem iconName="phone" text={details.phoneNumber} />
 
       <View style={styles.separator} />
 
-      <WebsiteDetails styles={styles} website={details.website} />
+      <DetailsItem iconName="globe" text={details.website} />
 
       <View style={styles.separator} />
 
-      <RatingDetails styles={styles} rating={details.rating} />
+      <DetailsItem
+        iconName="star"
+        text={`${details.rating} (200+ valoraciones)`}
+      />
     </View>
   );
 }

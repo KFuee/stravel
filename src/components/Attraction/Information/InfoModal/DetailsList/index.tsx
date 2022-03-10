@@ -3,13 +3,6 @@ import { StyleSheet, View } from 'react-native';
 import DetailsItem from './DetailsItem';
 
 const styles = StyleSheet.create({
-  container: {
-    width: '100%',
-    height: '75%',
-    marginTop: 16,
-    paddingHorizontal: 16,
-  },
-
   separator: {
     borderBottomColor: '#C1C1C1',
     borderBottomWidth: 1,
@@ -19,7 +12,7 @@ const styles = StyleSheet.create({
 
 function DetailsList({ details }: any) {
   return (
-    <View style={styles.container}>
+    <View>
       <DetailsItem iconName="map-marker" text={details.address} />
 
       <View style={styles.separator} />

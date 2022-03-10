@@ -1,7 +1,9 @@
 import { StyleSheet, View } from 'react-native';
-import AttractionDetails from './AttractionDetails';
-import DetailsList from './DetailsList';
+
 import LocationMap from './LocationMap';
+import DetailsList from './DetailsList';
+import AttractionDetails from './AttractionDetails';
+import AttractionDescription from './Description';
 
 const styles = StyleSheet.create({
   container: {
@@ -9,8 +11,7 @@ const styles = StyleSheet.create({
   },
 
   detailsContainer: {
-    marginTop: 16,
-    paddingHorizontal: 16,
+    padding: 16,
   },
 });
 
@@ -35,6 +36,8 @@ function AttractionInfoModal({ route }: any) {
             rating: attraction.rating,
           }}
         />
+
+        <AttractionDescription description={attraction.description} />
       </View>
     </View>
   );

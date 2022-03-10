@@ -32,6 +32,8 @@ export const attractions = [
     category: 'Hoteles',
     mainCategory: 'Hoteles',
     title: 'Hotel de la plaza',
+    description:
+      'Hotel de la plaza, ubicado en el centro de la ciudad, ofrece una amplia variedad de servicios, como habitaciones, restaurantes, cafetería, bares, etc.',
     rating: 4.5,
     image: require('../assets/images/hotels-category.jpg'),
     coordinates: {
@@ -47,6 +49,8 @@ export const attractions = [
     category: 'Museo',
     mainCategory: 'Arte',
     title: 'Museo de arte',
+    description:
+      'Hotel de la plaza, ubicado en el centro de la ciudad, ofrece una amplia variedad de servicios, como habitaciones, restaurantes, cafetería, bares, etc.',
     rating: 3.4,
     image: require('../assets/images/museums-category.jpg'),
     coordinates: {
@@ -62,6 +66,8 @@ export const attractions = [
     category: 'Monumento',
     mainCategory: 'Arte',
     title: 'Monumento de la catedral',
+    description:
+      'Hotel de la plaza, ubicado en el centro de la ciudad, ofrece una amplia variedad de servicios, como habitaciones, restaurantes, cafetería, bares, etc.',
     rating: 4.5,
     image: require('../assets/images/monuments-category.jpg'),
     coordinates: {
@@ -77,6 +83,8 @@ export const attractions = [
     category: 'Restaurante',
     mainCategory: 'Hostelería',
     title: 'Restaurante de la plaza',
+    description:
+      'Hotel de la plaza, ubicado en el centro de la ciudad, ofrece una amplia variedad de servicios, como habitaciones, restaurantes, cafetería, bares, etc.',
     rating: 4.5,
     image: require('../assets/images/restaurants-category.jpg'),
     coordinates: {

@@ -81,7 +81,7 @@ function TabBar({ descriptors, state, navigation }: any) {
                   width: 68,
                   height: 48,
                   borderRadius: 100,
-                  backgroundColor: isFocused ? '#FF4760' : '#FFFFFF',
+                  backgroundColor: isFocused ? '#FF4760' : '#FFF',
                 }}
               >
                 <View

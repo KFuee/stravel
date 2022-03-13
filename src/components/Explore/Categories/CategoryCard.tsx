@@ -45,14 +45,10 @@ const styles = StyleSheet.create({
 });
 
 function CategoryCard({ id, title, image, isLast }: any) {
-  const navigation = useNavigation<CategoryScreenProps>();
+  const { navigate } = useNavigation<CategoryScreenProps>();
 
   return (
-    <Pressable
-      onPress={() => {
-        navigation.navigate('Category', { title });
-      }}
-    >
+    <Pressable onPress={() => navigate('Category', { title })}>
       <View
         style={[
           styles.container,

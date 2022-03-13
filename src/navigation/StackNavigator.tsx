@@ -1,4 +1,5 @@
 import { useLayoutEffect } from 'react';
+import { Platform } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
@@ -13,8 +14,10 @@ import ExploreScreen from '../screens/Explore/ExploreScreen';
 import CategoryScreen from '../screens/Explore/CategoryScreen';
 
 // Attraction Components
+import CloseButton from '../components/Header/Attraction/CloseButton';
 import BackButton from '../components/Header/General/BackButton';
 import BookmarkButton from '../components/Header/Attraction/BookmarkButton';
+import AttractionInfoModal from '../components/Attraction/Information/InfoModal';
 
 // Definición de tipos para las rutas del stack
 export type RootStackParamList = {
@@ -22,6 +25,7 @@ export type RootStackParamList = {
   Explore: undefined;
   Category: { title: string };
   Attraction: { id: string };
+  AttractionInfo: { attraction: any };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -46,6 +50,16 @@ const renderAttractionLeftButtons = (navigation: any) => (
 const renderAttractionRightButtons = (navigation: any) => (
   <BookmarkButton navigation={navigation} />
 );
+
+const renderAttractionInfoLeftButtons = (navigation: any) => {
+  // Si el sistema es IOS, renderiza el botón de cerrar
+  if (Platform.OS === 'ios') {
+    return [<CloseButton key="close" navigation={navigation} />];
+  }
+
+  // Si el sistema es Android, renderiza el botón de volver
+  return [<BackButton key="back" navigation={navigation} />];
+};
 
 export function StackExplore({ navigation, route }: any) {
   useLayoutEffect(() => {
@@ -91,6 +105,18 @@ export function StackExplore({ navigation, route }: any) {
           title: '',
           headerLeft: () => renderAttractionLeftButtons(attractionNavigation),
           headerRight: () => renderAttractionRightButtons(attractionNavigation),
+        })}
+      />
+
+      <Stack.Screen
+        name="AttractionInfo"
+        component={AttractionInfoModal}
+        options={({ navigation: attractionInfoNavigation }) => ({
+          presentation: 'modal',
+          headerTransparent: true,
+          title: '',
+          headerLeft: () =>
+            renderAttractionInfoLeftButtons(attractionInfoNavigation),
         })}
       />
     </Stack.Navigator>

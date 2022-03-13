@@ -19,7 +19,7 @@ function TabBarIcon({
         textAlignVertical: 'center',
         lineHeight: 28,
       }}
-      color={isFocused ? '#FCFCFD' : '#000000'}
+      color={isFocused ? '#FFF' : '#000000'}
     />
   );
 }

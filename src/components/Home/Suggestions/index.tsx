@@ -4,14 +4,12 @@ import Categories from './Categories';
 
 const styles = StyleSheet.create({
   title: {
-    marginTop: 28,
+    paddingVertical: 16,
     paddingHorizontal: 16,
-
     fontSize: 16,
     fontWeight: 'bold',
     lineHeight: 25,
     letterSpacing: 0.03,
-    marginBottom: 16,
     textTransform: 'uppercase',
   },
 });

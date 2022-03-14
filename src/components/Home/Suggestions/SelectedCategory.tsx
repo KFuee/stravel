@@ -5,6 +5,10 @@ import { getCategoryAttractions } from '../../../data/exploreData';
 import SuggestedAttractionCard from './SuggestedAttractionCard';
 
 const styles = StyleSheet.create({
+  container: {
+    marginVertical: 16,
+  },
+
   noItemsText: {
     paddingLeft: 16,
     fontSize: 16,
@@ -18,7 +22,7 @@ function SelectedCategory({ category }: any) {
   const attractions = getCategoryAttractions(category);
 
   return (
-    <View style={{ marginTop: 20 }}>
+    <View style={styles.container}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {
           // Comprueba si hay algún item en la categoría

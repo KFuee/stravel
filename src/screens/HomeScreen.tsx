@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
 
 import WelcomeBanner from '../components/Home/WelcomeBanner';
 import Suggestions from '../components/Home/Suggestions';
@@ -20,11 +21,11 @@ function HomeScreen({ navigation }: any) {
   });
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} bounces={false}>
       <WelcomeBanner />
 
       <Suggestions />
-    </View>
+    </ScrollView>
   );
 }
 

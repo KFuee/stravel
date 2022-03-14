@@ -5,7 +5,7 @@ import SuggestedAttractionCard from './SuggestedAttractionCard';
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 28,
+    marginTop: 22,
     paddingHorizontal: 16,
   },
 

@@ -1,8 +1,13 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { StyleSheet, View, ImageBackground, Text } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  ImageBackground,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import type { ExploreStackParamList } from '../../../navigation/ExploreNavigator';
 

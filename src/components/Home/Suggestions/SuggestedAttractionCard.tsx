@@ -1,7 +1,12 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { View, Text, StyleSheet, ImageBackground } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ImageBackground,
+  TouchableOpacity,
+} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 import type { HomeStackParamList } from '../../../navigation/HomeNavigator';
 
@@ -15,7 +20,6 @@ const styles = StyleSheet.create({
     width: 260,
     height: 140,
     borderRadius: 5,
-    backgroundColor: 'red',
   },
 
   content: {
@@ -39,7 +43,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     lineHeight: 20,
     letterSpacing: 0.03,
-    color: '#fff',
+    color: '#FFF',
   },
 });
 

@@ -8,12 +8,9 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import type { RootStackParamList } from '../../../navigation/StackNavigator';
+import type { ExploreStackParamList } from '../../../navigation/ExploreNavigator';
 
-type CategoryScreenProps = NativeStackNavigationProp<
-  RootStackParamList,
-  'Category'
->;
+type CategoryScreenProps = NativeStackNavigationProp<ExploreStackParamList>;
 
 const styles = StyleSheet.create({
   container: {
@@ -48,7 +45,7 @@ function CategoryCard({ id, title, image, isLast }: any) {
   const { navigate } = useNavigation<CategoryScreenProps>();
 
   return (
-    <Pressable onPress={() => navigate('Category', { title })}>
+    <Pressable onPress={() => navigate('ExploreCategory', { title })}>
       <View
         style={[
           styles.container,

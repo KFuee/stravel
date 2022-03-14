@@ -2,7 +2,9 @@ import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome5 } from '@expo/vector-icons';
 
-import { StackHome, StackExplore } from './StackNavigator';
+// Navigation Stacks
+import HomeNavigator from './HomeNavigator';
+import ExploreNavigator from './ExploreNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -18,17 +20,17 @@ function TabNavigator() {
 
   return (
     <Tab.Navigator
-      initialRouteName="HomeTab"
+      initialRouteName="Home"
       screenOptions={({ route }) => ({
         headerShown: false,
         tabBarActiveTintColor: '#FF4760',
         tabBarIcon: ({ size, focused, color }) => {
           let iconName;
 
-          if (route.name === 'HomeTab') {
+          if (route.name === 'Home') {
             iconName = 'home';
-          } else if (route.name === 'ExploreTab') {
-            iconName = 'search';
+          } else if (route.name === 'Explore') {
+            iconName = 'compass';
           }
 
           return renderTabBarIcon(iconName, size, focused, color);
@@ -36,14 +38,14 @@ function TabNavigator() {
       })}
     >
       <Tab.Screen
-        name="HomeTab"
-        component={StackHome}
-        options={{ title: 'Home' }}
+        name="Home"
+        component={HomeNavigator}
+        options={{ title: 'Inicio' }}
       />
 
       <Tab.Screen
-        name="ExploreTab"
-        component={StackExplore}
+        name="Explore"
+        component={ExploreNavigator}
         options={{ title: 'Explorar' }}
       />
     </Tab.Navigator>

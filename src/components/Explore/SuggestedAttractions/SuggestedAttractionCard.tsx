@@ -9,13 +9,13 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
 
-import { RootStackParamList } from '../../../navigation/StackNavigator';
+import type { ExploreStackParamList } from '../../../navigation/ExploreNavigator';
 
 import StarRating from '../../General/StarRating';
 
 type AttractionScreenProps = NativeStackNavigationProp<
-  RootStackParamList,
-  'Attraction'
+  ExploreStackParamList,
+  'ExploreAttraction'
 >;
 
 const styles = StyleSheet.create({
@@ -101,7 +101,12 @@ function SuggestedAttractionCard({ id, category, title, rating, image }: any) {
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('Attraction', { id })}
+      onPress={() =>
+        navigation.navigate('ExploreAttraction', {
+          screen: 'AttractionLanding',
+          params: { id },
+        })
+      }
       activeOpacity={0.8}
     >
       <View style={[styles.container]}>

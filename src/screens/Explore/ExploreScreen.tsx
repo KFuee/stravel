@@ -20,12 +20,7 @@ function ExploreScreen({ navigation }: any) {
   });
 
   return (
-    <ScrollView
-      // Mirar si hay mejor forma de hacelo en IOS
-      contentInset={{ bottom: 49 }}
-      contentInsetAdjustmentBehavior="automatic"
-      style={styles.container}
-    >
+    <ScrollView style={styles.container}>
       <Categories />
 
       <SuggestedAttractions />

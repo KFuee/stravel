@@ -1,5 +1,6 @@
-import { SafeAreaView, View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Platform } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const styles = StyleSheet.create({
   iconsContainer: {
@@ -30,8 +31,15 @@ const styles = StyleSheet.create({
 });
 
 function TopIcons() {
+  // hook para obtener el padding de la barra de estado
+  const { top: topInset } = useSafeAreaInsets();
+
   return (
-    <SafeAreaView>
+    <View
+      style={{
+        paddingTop: Platform.OS === 'ios' ? topInset : topInset + 8,
+      }}
+    >
       <View style={styles.iconsContainer}>
         <View style={styles.iconContainer}>
           <FontAwesome name="user" size={26} color="#FFF" style={styles.icon} />
@@ -57,7 +65,7 @@ function TopIcons() {
           </View>
         </View>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 

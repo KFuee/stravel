@@ -1,4 +1,4 @@
-import { SafeAreaView, Text, ScrollView, StyleSheet } from 'react-native';
+import { Text, ScrollView, StyleSheet, View } from 'react-native';
 
 import { categories } from '../../../data/exploreData';
 import CategoryCard from './CategoryCard';
@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
 
 function Categories() {
   return (
-    <SafeAreaView>
+    <View>
       <Text style={styles.title}>Categorías</Text>
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -31,7 +31,7 @@ function Categories() {
           />
         ))}
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 

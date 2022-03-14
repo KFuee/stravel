@@ -1,4 +1,14 @@
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { View, Text, StyleSheet, ImageBackground } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
+import type { HomeStackParamList } from '../../../navigation/HomeNavigator';
+
+type AttractionScreenProps = NativeStackNavigationProp<
+  HomeStackParamList,
+  'HomeAttraction'
+>;
 
 const styles = StyleSheet.create({
   container: {
@@ -34,20 +44,32 @@ const styles = StyleSheet.create({
 });
 
 function SuggestedAttractionCard({ id, title, image, isLast }: any) {
+  const navigation = useNavigation<AttractionScreenProps>();
+
   return (
-    <View
-      style={[
-        styles.container,
-        id === 1 ? { marginLeft: 16 } : { marginLeft: 10 },
-        !isLast ? { marginRight: 0 } : { marginRight: 16 },
-      ]}
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate('HomeAttraction', {
+          screen: 'AttractionLanding',
+          params: { id },
+        })
+      }
+      activeOpacity={0.8}
     >
-      <ImageBackground source={image} style={styles.content}>
-        <View style={styles.titleContainer}>
-          <Text style={styles.title}>{title}</Text>
-        </View>
-      </ImageBackground>
-    </View>
+      <View
+        style={[
+          styles.container,
+          id === 1 ? { marginLeft: 16 } : { marginLeft: 10 },
+          !isLast ? { marginRight: 0 } : { marginRight: 16 },
+        ]}
+      >
+        <ImageBackground source={image} style={styles.content}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>{title}</Text>
+          </View>
+        </ImageBackground>
+      </View>
+    </TouchableOpacity>
   );
 }
 

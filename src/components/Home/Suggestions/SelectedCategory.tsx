@@ -29,7 +29,7 @@ function SelectedCategory({ category }: any) {
               return (
                 <SuggestedAttractionCard
                   key={attraction.id}
-                  id={id}
+                  id={attraction.id}
                   title={attraction.title}
                   image={attraction.image}
                   isLast={id === attractions.length}

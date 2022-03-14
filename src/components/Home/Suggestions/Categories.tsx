@@ -67,7 +67,9 @@ function Categories() {
             <Text
               key={category.id}
               style={
-                category.id === 1 ? styles.categorySelected : styles.category
+                category.id === selectedCategory.id
+                  ? styles.categorySelected
+                  : styles.category
               }
               onPress={() => onPress(category)}
             >

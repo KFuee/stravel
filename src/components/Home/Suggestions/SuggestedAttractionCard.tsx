@@ -47,7 +47,13 @@ const styles = StyleSheet.create({
   },
 });
 
-function SuggestedAttractionCard({ id, title, image, isLast }: any) {
+function SuggestedAttractionCard({
+  index,
+  attractionId,
+  title,
+  image,
+  isLast,
+}: any) {
   const navigation = useNavigation<AttractionScreenProps>();
 
   return (
@@ -55,7 +61,7 @@ function SuggestedAttractionCard({ id, title, image, isLast }: any) {
       onPress={() =>
         navigation.navigate('HomeAttraction', {
           screen: 'AttractionLanding',
-          params: { id },
+          params: { id: attractionId },
         })
       }
       activeOpacity={0.8}
@@ -63,7 +69,7 @@ function SuggestedAttractionCard({ id, title, image, isLast }: any) {
       <View
         style={[
           styles.container,
-          id === 1 ? { marginLeft: 16 } : { marginLeft: 10 },
+          index === 1 ? { marginLeft: 16 } : { marginLeft: 10 },
           !isLast ? { marginRight: 0 } : { marginRight: 16 },
         ]}
       >

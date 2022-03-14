@@ -1,7 +1,5 @@
-import { useLayoutEffect } from 'react';
 import { Platform } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 
 // General Screens
 import AttractionView from '../screens/AttractionView';
@@ -61,19 +59,7 @@ const renderAttractionInfoLeftButtons = (navigation: any) => {
   return [<BackButton key="back" navigation={navigation} />];
 };
 
-export function StackExplore({ navigation, route }: any) {
-  useLayoutEffect(() => {
-    const routeName = getFocusedRouteNameFromRoute(route);
-
-    if (routeName === 'Category') {
-      navigation.setOptions({ tabBarStyle: { display: 'none' } });
-
-      return;
-    }
-
-    navigation.setOptions({ tabBarStyle: { display: 'flex' } });
-  }, [route, navigation]);
-
+export function StackExplore() {
   return (
     <Stack.Navigator>
       <Stack.Screen

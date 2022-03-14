@@ -32,7 +32,6 @@ function SuggestedAttraction() {
           title={attraction.title}
           rating={attraction.rating}
           image={attraction.image}
-          isLast={attraction.id === attractions.length}
         />
       ))}
     </View>

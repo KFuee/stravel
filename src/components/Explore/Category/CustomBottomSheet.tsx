@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
   contentContainer: {
     marginHorizontal: 16,
     backgroundColor: '#FFF',
-    paddingBottom: 20,
   },
 });
 
@@ -29,15 +28,7 @@ function CustomBottomSheet({ sheetRef, index, onChange, category }: any) {
 
   const renderItem = useCallback(
     ({ item }) => (
-      <PlaceCard
-        key={item.id}
-        id={item.id}
-        category={item.category}
-        title={item.title}
-        rating={item.rating}
-        image={item.image}
-        isLast={item.id === item.length}
-      />
+      <PlaceCard title={item.title} rating={item.rating} image={item.image} />
     ),
     [],
   );

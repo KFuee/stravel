@@ -3,7 +3,6 @@ import {
   Text,
   StyleSheet,
   ImageBackground,
-  Platform,
   TouchableOpacity,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -23,6 +22,7 @@ const styles = StyleSheet.create({
   container: {
     width: '100%',
     height: 153,
+    marginBottom: 16,
   },
 
   content: {
@@ -96,14 +96,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function SuggestedAttractionCard({
-  id,
-  category,
-  title,
-  rating,
-  image,
-  isLast,
-}: any) {
+function SuggestedAttractionCard({ id, category, title, rating, image }: any) {
   const navigation = useNavigation<AttractionScreenProps>();
 
   return (
@@ -111,14 +104,7 @@ function SuggestedAttractionCard({
       onPress={() => navigation.navigate('Attraction', { id })}
       activeOpacity={0.8}
     >
-      <View
-        style={[
-          styles.container,
-          isLast && (Platform.OS === 'web' || Platform.OS === 'android')
-            ? { marginBottom: 100 }
-            : { marginBottom: 14 },
-        ]}
-      >
+      <View style={[styles.container]}>
         <ImageBackground source={image} style={styles.content}>
           <Text style={styles.category}>{category}</Text>
 

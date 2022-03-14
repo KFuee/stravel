@@ -3,8 +3,8 @@ import { StyleSheet, Dimensions, StatusBar } from 'react-native';
 import MapView, { EdgePadding } from 'react-native-maps';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import BottomSheet from '@gorhom/bottom-sheet';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useHeaderHeight } from '@react-navigation/elements';
+import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
 import PlacesMap from '../../components/Explore/Category/PlacesMap';
 import CustomBottomSheet from '../../components/Explore/Category/CustomBottomSheet';
@@ -32,31 +32,30 @@ function CategoryScreen({ route }: any) {
   const [currentSheetIndex, setCurrentSheetIndex] = useState(1);
 
   // hooks
-  const { bottom: bottomSafeArea } = useSafeAreaInsets();
   const headerHeight = useHeaderHeight();
+  const tabBarHeight = useBottomTabBarHeight();
 
   // constants
   const statusBarHeight =
     (StatusBar.currentHeight === 24 ? 0 : StatusBar.currentHeight) || 0;
-  const viewHeight = SCREEN_HEIGHT - headerHeight + statusBarHeight;
+  const viewHeight =
+    SCREEN_HEIGHT - headerHeight - tabBarHeight + statusBarHeight;
 
   useEffect(() => {
     setMapPadding({
       top: 0,
-      bottom: viewHeight * 0.5 - bottomSafeArea,
+      bottom: viewHeight * 0.5,
       left: 6,
       right: 6,
     });
-  }, [viewHeight, bottomSafeArea]);
+  }, [viewHeight]);
 
   const handleSheetChange = useCallback(
     (index: number) => {
       if (index !== 2) {
         setMapPadding({
           top: 0,
-          bottom:
-            (index === 0 ? viewHeight * 0.25 : viewHeight * 0.5) -
-            bottomSafeArea,
+          bottom: index === 0 ? viewHeight * 0.25 : viewHeight * 0.5,
           left: 6,
           right: 6,
         });
@@ -64,7 +63,7 @@ function CategoryScreen({ route }: any) {
 
       setCurrentSheetIndex(index);
     },
-    [viewHeight, bottomSafeArea],
+    [viewHeight],
   );
 
   return (

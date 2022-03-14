@@ -9,9 +9,9 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
 
-import type { ExploreStackParamList } from '../../../navigation/ExploreNavigator';
-
 import StarRating from '../../General/StarRating';
+
+import type { ExploreStackParamList } from '../../../navigation/ExploreNavigator';
 
 type AttractionScreenProps = NativeStackNavigationProp<
   ExploreStackParamList,

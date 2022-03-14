@@ -28,7 +28,12 @@ function CustomBottomSheet({ sheetRef, index, onChange, category }: any) {
 
   const renderItem = useCallback(
     ({ item }) => (
-      <PlaceCard title={item.title} rating={item.rating} image={item.image} />
+      <PlaceCard
+        id={item.id}
+        title={item.title}
+        rating={item.rating}
+        image={item.image}
+      />
     ),
     [],
   );

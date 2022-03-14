@@ -1,5 +1,15 @@
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StyleSheet, View, ImageBackground, Text } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
+import type { ExploreStackParamList } from '../../../navigation/ExploreNavigator';
+
+type AttractionScreenProps = NativeStackNavigationProp<
+  ExploreStackParamList,
+  'ExploreAttraction'
+>;
 
 const styles = StyleSheet.create({
   container: {
@@ -82,32 +92,44 @@ const styles = StyleSheet.create({
   },
 });
 
-function PlaceCard({ title, rating, image }: any) {
+function PlaceCard({ id, title, rating, image }: any) {
+  const navigation = useNavigation<AttractionScreenProps>();
+
   return (
-    <View style={styles.container}>
-      <View style={styles.imageContainer}>
-        <ImageBackground source={image} style={styles.image}>
-          <View style={styles.overlay}>
-            <View style={styles.bookmarkContainer}>
-              <FontAwesome name="bookmark-o" size={20} color="#FFF" />
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate('ExploreAttraction', {
+          screen: 'AttractionLanding',
+          params: { id },
+        })
+      }
+      activeOpacity={0.8}
+    >
+      <View style={styles.container}>
+        <View style={styles.imageContainer}>
+          <ImageBackground source={image} style={styles.image}>
+            <View style={styles.overlay}>
+              <View style={styles.bookmarkContainer}>
+                <FontAwesome name="bookmark-o" size={20} color="#FFF" />
+              </View>
+            </View>
+          </ImageBackground>
+        </View>
+
+        <View style={styles.bottomContainer}>
+          <View style={styles.bottomLeft}>
+            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.distance}>5-15 min - 0.5 km</Text>
+          </View>
+
+          <View style={styles.bottomRight}>
+            <View style={styles.ratingContainer}>
+              <Text style={styles.rating}>{rating}</Text>
             </View>
           </View>
-        </ImageBackground>
-      </View>
-
-      <View style={styles.bottomContainer}>
-        <View style={styles.bottomLeft}>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.distance}>5-15 min - 0.5 km</Text>
-        </View>
-
-        <View style={styles.bottomRight}>
-          <View style={styles.ratingContainer}>
-            <Text style={styles.rating}>{rating}</Text>
-          </View>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

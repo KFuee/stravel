@@ -5,12 +5,13 @@ import { FontAwesome5 } from '@expo/vector-icons';
 // Navigation Stacks
 import HomeNavigator from './HomeNavigator';
 import ExploreNavigator from './ExploreNavigator';
+import TransportNavigator from './TransportNavigator';
 
 const Tab = createBottomTabNavigator();
 
 function TabNavigator() {
   const renderTabBarIcon = (
-    name: string | undefined,
+    name: React.ComponentProps<typeof FontAwesome5>['name'],
     size: number,
     focused: boolean,
     color: string,
@@ -31,6 +32,8 @@ function TabNavigator() {
             iconName = 'home';
           } else if (route.name === 'Explore') {
             iconName = 'compass';
+          } else {
+            iconName = 'bus';
           }
 
           return renderTabBarIcon(iconName, size, focused, color);
@@ -47,6 +50,12 @@ function TabNavigator() {
         name="Explore"
         component={ExploreNavigator}
         options={{ title: 'Explorar' }}
+      />
+
+      <Tab.Screen
+        name="Transport"
+        component={TransportNavigator}
+        options={{ title: 'Transporte' }}
       />
     </Tab.Navigator>
   );

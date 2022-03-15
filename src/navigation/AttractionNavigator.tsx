@@ -2,7 +2,7 @@ import { Platform } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Screens
-import AttractionView from '../screens/AttractionView';
+import AttractionScreen from '../screens/AttractionScreen';
 
 // Components
 import BackButton from '../components/Header/General/BackButton';
@@ -41,7 +41,7 @@ export default function AttractionNavigator() {
     <AttractionStack.Navigator>
       <AttractionStack.Screen
         name="AttractionLanding"
-        component={AttractionView}
+        component={AttractionScreen}
         options={({ navigation }) => ({
           headerTransparent: true,
           title: '',

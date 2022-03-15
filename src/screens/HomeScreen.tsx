@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
 });
 
 function HomeScreen({ navigation }: any) {
-  // Establece el título de la vista con useEfect
+  // Establece el título de la vista con useEffect
   useEffect(() => {
     navigation.setOptions({
       title: 'Inicio',

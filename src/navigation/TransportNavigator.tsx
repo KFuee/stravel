@@ -11,6 +11,10 @@ export default function TransportNavigator() {
       <TransportStack.Screen
         name="TransportLanding"
         component={TransportScreen}
+        options={{
+          headerLargeTitle: true,
+          headerTransparent: false,
+        }}
       />
     </TransportStack.Navigator>
   );

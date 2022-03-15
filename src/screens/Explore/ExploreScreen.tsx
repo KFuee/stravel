@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 });
 
 function ExploreScreen({ navigation }: any) {
-  // Establece el título de la vista con useEfect
+  // Establece el título de la vista con useEffect
   useEffect(() => {
     navigation.setOptions({
       title: 'Explorar',

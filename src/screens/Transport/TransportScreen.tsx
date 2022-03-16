@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { StyleSheet } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { StyleSheet, View } from 'react-native';
 import TransportCategories from '../../components/Transport/Landing/Categories';
 
 const styles = StyleSheet.create({
@@ -19,8 +18,8 @@ export default function TransportView({ navigation }: any) {
   });
 
   return (
-    <ScrollView style={styles.container}>
+    <View style={styles.container}>
       <TransportCategories />
-    </ScrollView>
+    </View>
   );
 }

@@ -33,13 +33,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function CategoryCard({ style, title }: any) {
+export default function CategoryCard({ style, title, image }: any) {
   return (
     <View style={[style, styles.container]}>
-      <ImageBackground
-        source={require('../../../../assets/images/home-banner.png')}
-        style={styles.image}
-      >
+      <ImageBackground source={image} style={styles.image}>
         <View style={styles.titleContainer}>
           <Text style={styles.titleText}>{title}</Text>
         </View>

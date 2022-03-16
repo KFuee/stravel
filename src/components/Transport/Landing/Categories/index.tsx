@@ -27,6 +27,7 @@ export default function TransportCategories() {
         { marginBottom: ![3, 4].includes(item.id) ? 10 : 0 },
       ]}
       title={item.title}
+      image={item.image}
     />
   );
 

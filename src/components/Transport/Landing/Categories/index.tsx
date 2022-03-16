@@ -29,6 +29,7 @@ export default function TransportCategories() {
       ]}
       title={item.title}
       image={item.image}
+      route={item.route}
     />
   );
 

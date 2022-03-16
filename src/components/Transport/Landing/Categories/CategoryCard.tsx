@@ -1,9 +1,16 @@
-import { StyleSheet, View, Text, ImageBackground } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import {
+  StyleSheet,
+  View,
+  Text,
+  ImageBackground,
+  TouchableOpacity,
+} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: 150,
+    height: 200,
     borderRadius: 5,
     overflow: 'hidden',
   },
@@ -33,14 +40,20 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function CategoryCard({ style, title, image }: any) {
+export default function CategoryCard({ style, title, image, route }: any) {
+  const { navigate } = useNavigation();
+
   return (
-    <View style={[style, styles.container]}>
+    <TouchableOpacity
+      style={[style, styles.container]}
+      onPress={() => navigate(route)}
+      activeOpacity={0.8}
+    >
       <ImageBackground source={image} style={styles.image}>
         <View style={styles.titleContainer}>
           <Text style={styles.titleText}>{title}</Text>
         </View>
       </ImageBackground>
-    </View>
+    </TouchableOpacity>
   );
 }

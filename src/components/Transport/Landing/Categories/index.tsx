@@ -32,13 +32,12 @@ export default function TransportCategories() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Categorías</Text>
-
       <FlatList
         data={categories}
         renderItem={renderItem}
         keyExtractor={item => item.id}
         numColumns={2}
+        ListHeaderComponent={<Text style={styles.title}>Categorías</Text>}
       />
     </View>
   );

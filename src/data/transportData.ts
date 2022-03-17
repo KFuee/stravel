@@ -1,4 +1,4 @@
-const categories: any[] = [
+export const categories: any[] = [
   {
     id: 1,
     title: 'Autobús',
@@ -25,4 +25,25 @@ const categories: any[] = [
   },
 ];
 
-export default categories;
+export const busLines: any[] = [
+  {
+    id: 1,
+    title: 'Línea 1',
+  },
+  {
+    id: 2,
+    title: 'Línea 2',
+  },
+  {
+    id: 3,
+    title: 'Línea 3',
+  },
+  {
+    id: 4,
+    title: 'Línea 4',
+  },
+  {
+    id: 5,
+    title: 'Línea 5',
+  },
+];

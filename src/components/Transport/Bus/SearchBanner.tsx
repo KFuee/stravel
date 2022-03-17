@@ -7,7 +7,7 @@ import {
   Keyboard,
 } from 'react-native';
 
-import SearchBar from '../../../General/SearchBar';
+import SearchBar from '../../General/SearchBar';
 
 const styles = StyleSheet.create({
   container: {
@@ -46,7 +46,7 @@ export default function SearchBusBanner() {
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
         <ImageBackground
-          source={require('../../../../assets/images/transport/categories/bus.jpeg')}
+          source={require('../../../assets/images/transport/categories/bus.jpeg')}
           style={styles.image}
         >
           <View style={styles.bottomContainer}>

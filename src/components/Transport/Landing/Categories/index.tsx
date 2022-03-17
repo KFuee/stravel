@@ -2,7 +2,7 @@ import { FlatList, StyleSheet, Text, View } from 'react-native';
 
 import CategoryCard from './CategoryCard';
 
-import categories from '../../../../data/transportData';
+import { categories } from '../../../../data/transportData';
 
 const styles = StyleSheet.create({
   container: {

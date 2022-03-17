@@ -1,6 +1,7 @@
 import { StyleSheet, View } from 'react-native';
 
 import SearchBusBanner from '../../components/Transport/Bus/SearchBanner';
+import LinesList from '../../components/Transport/Bus/Lines';
 
 const styles = StyleSheet.create({
   container: {
@@ -13,6 +14,8 @@ export default function BusScreen() {
   return (
     <View style={styles.container}>
       <SearchBusBanner />
+
+      <LinesList />
     </View>
   );
 }

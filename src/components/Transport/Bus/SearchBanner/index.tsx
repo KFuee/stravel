@@ -1,4 +1,12 @@
-import { StyleSheet, ImageBackground, View, Text } from 'react-native';
+import {
+  StyleSheet,
+  View,
+  TouchableWithoutFeedback,
+  ImageBackground,
+  Text,
+  Keyboard,
+} from 'react-native';
+
 import SearchBar from '../../../General/SearchBar';
 
 const styles = StyleSheet.create({
@@ -35,19 +43,21 @@ const styles = StyleSheet.create({
 
 export default function SearchBusBanner() {
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('../../../../assets/images/transport/categories/bus.jpeg')}
-        style={styles.image}
-      >
-        <View style={styles.bottomContainer}>
-          <View style={styles.bottomContent}>
-            <Text style={styles.searchBarTitle}>Búsca tu parada</Text>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>
+        <ImageBackground
+          source={require('../../../../assets/images/transport/categories/bus.jpeg')}
+          style={styles.image}
+        >
+          <View style={styles.bottomContainer}>
+            <View style={styles.bottomContent}>
+              <Text style={styles.searchBarTitle}>Búsca tu parada</Text>
 
-            <SearchBar placeholder="Código de poste" />
+              <SearchBar placeholder="Código de poste" />
+            </View>
           </View>
-        </View>
-      </ImageBackground>
-    </View>
+        </ImageBackground>
+      </View>
+    </TouchableWithoutFeedback>
   );
 }

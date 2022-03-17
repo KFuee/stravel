@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View, TextInput } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
-import { TextInput } from 'react-native-gesture-handler';
 
 const styles = StyleSheet.create({
   container: {

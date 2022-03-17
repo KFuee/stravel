@@ -12,6 +12,8 @@ const styles = StyleSheet.create({
   },
 
   closeIcon: {
+    width: 20,
+    height: 20,
     textAlign: 'center',
     textAlignVertical: 'center',
   },

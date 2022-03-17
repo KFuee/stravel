@@ -4,7 +4,20 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TransportScreen from '../screens/Transport/TransportScreen';
 import BusScreen from '../screens/Transport/BusScreen';
 
+// Components
+import BackButton from '../components/Header/BackButton';
+import ScanButton from '../components/Header/ScanButton';
+
 const TransportStack = createNativeStackNavigator();
+
+// Renderiza los botones de navegación en BusScreen
+const renderBusLeftButtons = (navigation: any) => (
+  <BackButton navigation={navigation} />
+);
+
+const renderBusRightButtons = (navigation: any) => (
+  <ScanButton navigation={navigation} />
+);
 
 export default function TransportNavigator() {
   return (
@@ -21,9 +34,12 @@ export default function TransportNavigator() {
       <TransportStack.Screen
         name="TransportBus"
         component={BusScreen}
-        options={{
-          title: 'Autobús',
-        }}
+        options={({ navigation }) => ({
+          headerTransparent: true,
+          title: '',
+          headerLeft: () => renderBusLeftButtons(navigation),
+          headerRight: () => renderBusRightButtons(navigation),
+        })}
       />
     </TransportStack.Navigator>
   );

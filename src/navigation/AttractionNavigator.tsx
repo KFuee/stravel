@@ -5,9 +5,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AttractionScreen from '../screens/AttractionScreen';
 
 // Components
-import BackButton from '../components/Header/General/BackButton';
-import BookmarkButton from '../components/Header/Attraction/BookmarkButton';
-import CloseButton from '../components/Header/Attraction/CloseButton';
+import BackButton from '../components/Header/BackButton';
+import BookmarkButton from '../components/Header/BookmarkButton';
+import CloseButton from '../components/Header/CloseButton';
 import AttractionInfoModal from '../components/Attraction/Information/InfoModal';
 
 export type AttractionStackParamList = {
@@ -17,7 +17,7 @@ export type AttractionStackParamList = {
 
 const AttractionStack = createNativeStackNavigator<AttractionStackParamList>();
 
-// Renderiza los botones de navegación en AttractionView
+// Renderiza los botones de navegación en AttractionScreen
 const renderAttractionLeftButtons = (navigation: any) => (
   <BackButton navigation={navigation} />
 );

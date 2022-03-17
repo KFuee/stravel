@@ -11,22 +11,24 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
   },
 
-  arrowLeftIcon: {
+  bookmarkIcon: {
+    width: 20,
+    height: 20,
     textAlign: 'center',
     textAlignVertical: 'center',
   },
 });
 
-function BackButton({ navigation }: any) {
+function BookmarkButton({ navigation }: any) {
   return (
     <TouchableOpacity
       onPress={() => navigation.goBack()}
-      // Circulo con icono de flecha hacia atrás
+      // Circulo con icono de marcador
       style={styles.container}
     >
-      <FontAwesome name="arrow-left" size={20} style={styles.arrowLeftIcon} />
+      <FontAwesome name="bookmark-o" size={20} style={styles.bookmarkIcon} />
     </TouchableOpacity>
   );
 }
 
-export default BackButton;
+export default BookmarkButton;

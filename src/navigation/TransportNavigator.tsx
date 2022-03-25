@@ -5,19 +5,19 @@ import TransportScreen from '../screens/Transport/TransportScreen';
 import BusScreen from '../screens/Transport/BusScreen';
 
 // Components
-import BackButton from '../components/Header/BackButton';
-import ScanButton from '../components/Header/ScanButton';
+// import BackButton from '../components/Header/BackButton';
+// import ScanButton from '../components/Header/ScanButton';
 
 const TransportStack = createNativeStackNavigator();
 
 // Renderiza los botones de navegación en BusScreen
-const renderBusLeftButtons = (navigation: any) => (
-  <BackButton navigation={navigation} />
-);
+// const renderBusLeftButtons = (navigation: any) => (
+//   <BackButton navigation={navigation} />
+// );
 
-const renderBusRightButtons = (navigation: any) => (
-  <ScanButton navigation={navigation} />
-);
+// const renderBusRightButtons = (navigation: any) => (
+//   <ScanButton navigation={navigation} />
+// );
 
 export default function TransportNavigator() {
   return (
@@ -34,11 +34,17 @@ export default function TransportNavigator() {
       <TransportStack.Screen
         name="TransportBus"
         component={BusScreen}
-        options={({ navigation }) => ({
+        options={() => ({
           headerTransparent: false,
           title: 'Autobuses',
-          headerLeft: () => renderBusLeftButtons(navigation),
-          headerRight: () => renderBusRightButtons(navigation),
+          // headerLeft: () => renderBusLeftButtons(navigation),
+          // headerRight: () => renderBusRightButtons(navigation),
+          headerSearchBarOptions: {
+            placeholder: 'Buscar parada o línea',
+            cancelButtonText: 'Cancelar',
+            showCancelButton: true,
+            showLoading: true,
+          },
         })}
       />
     </TransportStack.Navigator>

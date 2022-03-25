@@ -20,7 +20,10 @@ function ExploreScreen({ navigation }: any) {
   });
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      contentInsetAdjustmentBehavior="automatic"
+    >
       <Categories />
 
       <SuggestedAttractions />

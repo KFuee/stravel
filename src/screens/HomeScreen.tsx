@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
-import { StyleSheet } from 'react-native';
-import { ScrollView } from 'react-native-gesture-handler';
+import { useRef } from 'react';
+import { Animated, View, StyleSheet } from 'react-native';
 
 import WelcomeBanner from '../components/Home/WelcomeBanner';
 import Suggestions from '../components/Home/Suggestions';
@@ -12,20 +11,27 @@ const styles = StyleSheet.create({
   },
 });
 
-function HomeScreen({ navigation }: any) {
-  // Establece el título de la vista con useEffect
-  useEffect(() => {
-    navigation.setOptions({
-      title: 'Inicio',
-    });
-  });
+function HomeScreen() {
+  const scroll = useRef(new Animated.Value(0)).current;
+
+  const onScroll = Animated.event(
+    [{ nativeEvent: { contentOffset: { y: scroll } } }],
+    { useNativeDriver: false },
+  );
 
   return (
-    <ScrollView style={styles.container} bounces={false}>
-      <WelcomeBanner />
+    <View style={styles.container}>
+      <WelcomeBanner scroll={scroll} />
 
-      <Suggestions />
-    </ScrollView>
+      <Animated.ScrollView
+        onScroll={onScroll}
+        bounces={false}
+        scrollEventThrottle={16}
+        showsVerticalScrollIndicator={false}
+      >
+        <Suggestions />
+      </Animated.ScrollView>
+    </View>
   );
 }
 

@@ -35,6 +35,7 @@ export default function TransportNavigator() {
         name="TransportBus"
         component={BusScreen}
         options={({ navigation }) => ({
+          headerTransparent: false,
           title: 'Autobuses',
           headerLeft: () => renderBusLeftButtons(navigation),
           headerRight: () => renderBusRightButtons(navigation),

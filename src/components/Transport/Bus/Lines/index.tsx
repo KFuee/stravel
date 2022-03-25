@@ -1,4 +1,4 @@
-import { Text, View, FlatList, StyleSheet } from 'react-native';
+import { View, FlatList, StyleSheet } from 'react-native';
 
 import LineItem from './LineItem';
 
@@ -7,7 +7,8 @@ import { busLines } from '../../../../data/transportData';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 16,
+    padding: 16,
+    backgroundColor: '#FFF',
   },
 
   title: {
@@ -21,10 +22,6 @@ const styles = StyleSheet.create({
 });
 
 export default function LinesList() {
-  const renderHeader = () => (
-    <Text style={styles.title}>Líneas disponibles</Text>
-  );
-
   const renderItem = ({ item }: any) => <LineItem title={item.title} />;
 
   const renderSeparator = () => (
@@ -40,7 +37,6 @@ export default function LinesList() {
         renderItem={renderItem}
         keyExtractor={item => item.id}
         ItemSeparatorComponent={renderSeparator}
-        ListHeaderComponent={renderHeader}
       />
     </View>
   );

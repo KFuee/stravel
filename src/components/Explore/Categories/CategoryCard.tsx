@@ -1,9 +1,9 @@
 import {
-  Pressable,
   View,
   Text,
   StyleSheet,
   ImageBackground,
+  TouchableOpacity,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -45,7 +45,10 @@ function CategoryCard({ id, title, image, isLast }: any) {
   const { navigate } = useNavigation<CategoryScreenProps>();
 
   return (
-    <Pressable onPress={() => navigate('ExploreCategory', { title })}>
+    <TouchableOpacity
+      onPress={() => navigate('ExploreCategory', { title })}
+      activeOpacity={0.8}
+    >
       <View
         style={[
           styles.container,
@@ -59,7 +62,7 @@ function CategoryCard({ id, title, image, isLast }: any) {
           </View>
         </ImageBackground>
       </View>
-    </Pressable>
+    </TouchableOpacity>
   );
 }
 

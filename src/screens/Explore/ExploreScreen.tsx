@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
 });
 
 function ExploreScreen({ navigation }: any) {
-  // Establece el título de la vista con useEfect
+  // Establece el título de la vista con useEffect
   useEffect(() => {
     navigation.setOptions({
       title: 'Explorar',
@@ -20,7 +20,10 @@ function ExploreScreen({ navigation }: any) {
   });
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      contentInsetAdjustmentBehavior="automatic"
+    >
       <Categories />
 
       <SuggestedAttractions />

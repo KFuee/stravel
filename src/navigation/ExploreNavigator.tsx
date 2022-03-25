@@ -29,10 +29,10 @@ export default function ExploreNavigator() {
         component={ExploreScreen}
         options={{
           headerLargeTitle: true,
-          headerTransparent: false,
           headerSearchBarOptions: {
             placeholder: 'Buscar',
             cancelButtonText: 'Cancelar',
+            hideWhenScrolling: false,
           },
         }}
       />

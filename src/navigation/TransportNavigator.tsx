@@ -39,12 +39,12 @@ export default function TransportNavigator() {
           title: 'Autobuses',
           // headerLeft: () => renderBusLeftButtons(navigation),
           // headerRight: () => renderBusRightButtons(navigation),
-          headerSearchBarOptions: {
-            placeholder: 'Buscar parada o línea',
-            cancelButtonText: 'Cancelar',
-            showCancelButton: true,
-            showLoading: true,
-          },
+          // headerSearchBarOptions: {
+          //   placeholder: 'Buscar parada o línea',
+          //   cancelButtonText: 'Cancelar',
+          //   showCancelButton: true,
+          //   showLoading: true,
+          // },
         })}
       />
     </TransportStack.Navigator>

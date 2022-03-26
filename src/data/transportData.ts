@@ -28,22 +28,40 @@ export const categories: any[] = [
 export const busLines: any[] = [
   {
     id: 1,
-    title: 'Línea 1',
+    name: '31',
   },
   {
     id: 2,
-    title: 'Línea 2',
+    name: '52',
   },
   {
     id: 3,
-    title: 'Línea 3',
+    name: '23',
   },
   {
     id: 4,
-    title: 'Línea 4',
+    name: '36',
   },
   {
     id: 5,
-    title: 'Línea 5',
+    name: '33',
+  },
+];
+
+export const busStops: any[] = [
+  {
+    id: 1,
+    name: 'Parada 1',
+    lines: [busLines[0], busLines[1], busLines[2]],
+  },
+  {
+    id: 2,
+    name: 'Parada 2',
+    lines: [busLines[0], busLines[2], busLines[4]],
+  },
+  {
+    id: 3,
+    name: 'Parada 3',
+    lines: [busLines[0], busLines[3]],
   },
 ];

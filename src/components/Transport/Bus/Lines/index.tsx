@@ -19,9 +19,7 @@ const styles = StyleSheet.create({
 });
 
 export default function BusLines() {
-  const renderItem = ({ item }: any) => (
-    <LineItem id={item.id} title={item.title} />
-  );
+  const renderItem = ({ item }: any) => <LineItem line={item} />;
 
   const renderSeparator = () => <View style={styles.separator} />;
 
@@ -30,7 +28,7 @@ export default function BusLines() {
       bounces={false}
       data={busLines}
       renderItem={renderItem}
-      keyExtractor={item => item.id}
+      keyExtractor={item => `line-${item.id}`}
       ItemSeparatorComponent={renderSeparator}
       contentContainerStyle={styles.container}
     />

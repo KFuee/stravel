@@ -1,52 +1,70 @@
-import { StyleSheet, View, Text, Dimensions } from 'react-native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { StyleSheet, View, Text } from 'react-native';
+import { Tabs, MaterialTabBar } from 'react-native-collapsible-tab-view';
 
-import LinesList from '../../components/Transport/Bus/Lines';
+import SearchBusBanner from '../../components/Transport/Bus/SearchBanner';
+import LineItem from '../../components/Transport/Bus/Lines/LineItem';
+
+import { busLines } from '../../data/transportData';
+
+const HEADER_HEIGHT = 150;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  separator: {
+    height: 1,
+    backgroundColor: 'lightgray',
+    marginVertical: 8,
+  },
+
+  stopsContainer: {
+    padding: 16,
+    backgroundColor: '#FFF',
+  },
+
+  linesContainer: {
     backgroundColor: '#FFF',
   },
 });
 
-function StopsRouteTest() {
-  return (
-    <View style={[styles.container, { padding: 16 }]}>
-      <Text>Route paradas</Text>
-    </View>
-  );
-}
+const renderTabBar = (props: any) => (
+  <MaterialTabBar
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    {...props}
+    indicatorStyle={{ backgroundColor: '#FF4760' }}
+    activeColor="#FF4760"
+  />
+);
 
-const Tab = createMaterialTopTabNavigator();
+const renderSeparator = () => <View style={styles.separator} />;
 
 export default function BusScreen() {
-  const { width: screenWidth } = Dimensions.get('window');
-
   return (
-    <Tab.Navigator
-      initialLayout={{ width: screenWidth }}
-      screenOptions={{
-        tabBarActiveTintColor: '#FF4760',
-        tabBarInactiveTintColor: '#000',
-        tabBarIndicatorStyle: { backgroundColor: '#FF4760' },
-      }}
+    <Tabs.Container
+      TabBarComponent={renderTabBar}
+      renderHeader={SearchBusBanner}
+      headerHeight={HEADER_HEIGHT}
+      allowHeaderOverscroll={false}
+      revealHeaderOnScroll
+      snapThreshold={0.5}
     >
-      <Tab.Screen
-        name="stops"
-        component={StopsRouteTest}
-        options={{
-          tabBarLabel: 'Paradas',
-        }}
-      />
+      <Tabs.Tab name="Paradas">
+        {/* @ts-ignore */}
+        <Tabs.ScrollView style={styles.stopsContainer} bounces={false}>
+          <Text>Paradas</Text>
+        </Tabs.ScrollView>
+      </Tabs.Tab>
 
-      <Tab.Screen
-        name="lines"
-        component={LinesList}
-        options={{
-          tabBarLabel: 'Líneas',
-        }}
-      />
-    </Tab.Navigator>
+      <Tabs.Tab name="Líneas">
+        <Tabs.FlatList
+          bounces={false}
+          data={busLines}
+          renderItem={({ item }) =>
+            LineItem({ id: item.id, title: item.title })
+          }
+          keyExtractor={item => item.id}
+          ItemSeparatorComponent={renderSeparator}
+          contentContainerStyle={styles.linesContainer}
+        />
+      </Tabs.Tab>
+    </Tabs.Container>
   );
 }

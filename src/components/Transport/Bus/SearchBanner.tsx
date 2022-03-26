@@ -9,10 +9,12 @@ import {
 
 import SearchBar from '../../General/SearchBar';
 
+const HEADER_HEIGHT = 150;
+
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: '35%',
+    height: HEADER_HEIGHT,
   },
 
   image: {
@@ -22,14 +24,9 @@ const styles = StyleSheet.create({
 
   bottomContainer: {
     flex: 1,
-    backgroundColor: 'rgba(150, 71, 96, 0.5)',
-  },
-
-  bottomContent: {
-    width: '100%',
-    position: 'absolute',
-    bottom: 0,
+    justifyContent: 'center',
     padding: 16,
+    backgroundColor: 'rgba(150, 71, 96, 0.5)',
   },
 
   searchBarTitle: {
@@ -50,11 +47,9 @@ export default function SearchBusBanner() {
           style={styles.image}
         >
           <View style={styles.bottomContainer}>
-            <View style={styles.bottomContent}>
-              <Text style={styles.searchBarTitle}>Búsca tu parada</Text>
+            <Text style={styles.searchBarTitle}>Búsca tu parada</Text>
 
-              <SearchBar placeholder="Código de poste" />
-            </View>
+            <SearchBar placeholder="Código de poste" />
           </View>
         </ImageBackground>
       </View>

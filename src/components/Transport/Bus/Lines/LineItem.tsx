@@ -3,7 +3,8 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 const styles = StyleSheet.create({
   item: {
-    paddingVertical: 8,
+    paddingBottom: 8,
+    paddingHorizontal: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -17,9 +18,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function LineItem({ title }: any) {
+export default function LineItem({ id, title }: any) {
   return (
-    <View style={styles.item}>
+    <View style={[styles.item, { paddingTop: id === 1 ? 16 : 8 }]}>
       <Text style={styles.text}>{title}</Text>
 
       <View style={styles.icon}>

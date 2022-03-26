@@ -63,7 +63,7 @@ function WelcomeBanner({ scroll }: any) {
       style={[styles.container, { height: containerHeaderHeight }]}
     >
       <ImageBackground
-        source={require('../../../assets/images/home-banner.png')}
+        source={require('../../../assets/images/home-banner.jpg')}
         style={styles.image}
       >
         <Animated.View style={[styles.contentContainer, { backgroundColor }]}>

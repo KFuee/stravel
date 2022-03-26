@@ -8,9 +8,7 @@ const styles = StyleSheet.create({
     height: 45,
     flexDirection: 'row',
     backgroundColor: '#FFF',
-    borderRadius: 20,
-    borderWidth: 2,
-    borderColor: '#FF4760',
+    borderRadius: 5,
   },
 
   searchIconContainer: {

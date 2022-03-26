@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Tabs, MaterialTabBar } from 'react-native-collapsible-tab-view';
 import BusLines from '../../components/Transport/Bus/Lines';
 
@@ -17,14 +18,41 @@ const renderTabBar = (props: any) => (
 );
 
 export default function BusScreen() {
+  const [headerTitle, setHeaderTitle] = useState('Búsca tu parada');
+  const [searchPlaceholder, setSearchPlaceholder] = useState('Código de poste');
+
+  const onTabChange = ({ tabName }: any) => {
+    switch (tabName) {
+      case 'Paradas':
+        setHeaderTitle('Búsca tu parada');
+        setSearchPlaceholder('Código de poste');
+        break;
+      case 'Líneas':
+        setHeaderTitle('Búsca tu línea');
+        setSearchPlaceholder('Número de línea');
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <Tabs.Container
       TabBarComponent={renderTabBar}
-      renderHeader={SearchBusBanner}
+      renderHeader={(props: any) => (
+        <SearchBusBanner
+          // eslint-disable-next-line react/jsx-props-no-spreading
+          {...props}
+          title={headerTitle}
+          searchPlaceholder={searchPlaceholder}
+        />
+      )}
       headerHeight={HEADER_HEIGHT}
       allowHeaderOverscroll={false}
       revealHeaderOnScroll
       snapThreshold={0.5}
+      initialTabName="Paradas"
+      onTabChange={onTabChange}
     >
       <Tabs.Tab name="Paradas">
         <BusStops />

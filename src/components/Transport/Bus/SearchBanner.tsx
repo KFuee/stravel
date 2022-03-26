@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function SearchBusBanner() {
+export default function SearchBusBanner({ title, searchPlaceholder }: any) {
   return (
     <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
       <View style={styles.container}>
@@ -47,9 +47,9 @@ export default function SearchBusBanner() {
           style={styles.image}
         >
           <View style={styles.bottomContainer}>
-            <Text style={styles.searchBarTitle}>Búsca tu parada</Text>
+            <Text style={styles.searchBarTitle}>{title}</Text>
 
-            <SearchBar placeholder="Código de poste" />
+            <SearchBar placeholder={searchPlaceholder} />
           </View>
         </ImageBackground>
       </View>

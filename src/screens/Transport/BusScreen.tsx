@@ -1,29 +1,11 @@
-import { StyleSheet, View, Text } from 'react-native';
 import { Tabs, MaterialTabBar } from 'react-native-collapsible-tab-view';
+import BusLines from '../../components/Transport/Bus/Lines';
 
 import SearchBusBanner from '../../components/Transport/Bus/SearchBanner';
-import LineItem from '../../components/Transport/Bus/Lines/LineItem';
 
-import { busLines } from '../../data/transportData';
+import BusStops from '../../components/Transport/Bus/Stops';
 
 const HEADER_HEIGHT = 150;
-
-const styles = StyleSheet.create({
-  separator: {
-    height: 1,
-    backgroundColor: 'lightgray',
-    marginVertical: 8,
-  },
-
-  stopsContainer: {
-    padding: 16,
-    backgroundColor: '#FFF',
-  },
-
-  linesContainer: {
-    backgroundColor: '#FFF',
-  },
-});
 
 const renderTabBar = (props: any) => (
   <MaterialTabBar
@@ -33,8 +15,6 @@ const renderTabBar = (props: any) => (
     activeColor="#FF4760"
   />
 );
-
-const renderSeparator = () => <View style={styles.separator} />;
 
 export default function BusScreen() {
   return (
@@ -47,23 +27,11 @@ export default function BusScreen() {
       snapThreshold={0.5}
     >
       <Tabs.Tab name="Paradas">
-        {/* @ts-ignore */}
-        <Tabs.ScrollView style={styles.stopsContainer} bounces={false}>
-          <Text>Paradas</Text>
-        </Tabs.ScrollView>
+        <BusStops />
       </Tabs.Tab>
 
       <Tabs.Tab name="Líneas">
-        <Tabs.FlatList
-          bounces={false}
-          data={busLines}
-          renderItem={({ item }) =>
-            LineItem({ id: item.id, title: item.title })
-          }
-          keyExtractor={item => item.id}
-          ItemSeparatorComponent={renderSeparator}
-          contentContainerStyle={styles.linesContainer}
-        />
+        <BusLines />
       </Tabs.Tab>
     </Tabs.Container>
   );

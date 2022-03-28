@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Tabs, MaterialTabBar } from 'react-native-collapsible-tab-view';
-import BusLines from '../../components/Transport/Bus/Lines';
 
-import SearchBusBanner from '../../components/Transport/Bus/SearchBanner';
+import SearchBusBanner from '../../../components/Transport/Bus/SearchBanner';
+import BusStops from '../../../components/Transport/Bus/Stops';
 
-import BusStops from '../../components/Transport/Bus/Stops';
+import BusLines from '../../../components/Transport/Bus/Lines';
 
 const HEADER_HEIGHT = 150;
 

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { StyleSheet, View } from 'react-native';
 import TransportCategories from '../../components/Transport/Landing/Categories';
 
@@ -9,14 +8,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function TransportView({ navigation }: any) {
-  // Establece el título de la vista con useEffect
-  useEffect(() => {
-    navigation.setOptions({
-      title: 'Transporte',
-    });
-  });
-
+export default function TransportView() {
   return (
     <View style={styles.container}>
       <TransportCategories />

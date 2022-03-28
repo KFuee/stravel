@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import { Tabs } from 'react-native-collapsible-tab-view';
 
 import { busStops } from '../../../../data/transportData';
-import BusStopCard from './StopCard';
+import BusStopItem from './StopItem';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
 });
 
 export default function BusStops() {
-  const renderItem = ({ item }: any) => <BusStopCard stop={item} />;
+  const renderItem = ({ item }: any) => <BusStopItem stop={item} />;
 
   const renderSeparator = () => <View style={styles.separator} />;
 

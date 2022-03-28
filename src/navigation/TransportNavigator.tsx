@@ -2,13 +2,21 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Screens
 import TransportScreen from '../screens/Transport/TransportScreen';
-import BusScreen from '../screens/Transport/BusScreen';
+import BusScreen from '../screens/Transport/Bus/BusScreen';
+import BusStopScreen from '../screens/Transport/Bus/StopScreen';
 
 // Components
 // import BackButton from '../components/Header/BackButton';
 // import ScanButton from '../components/Header/ScanButton';
 
-const TransportStack = createNativeStackNavigator();
+// Definición de tipos para las rutas del stack
+export type TransportStackParamList = {
+  TransportLanding: undefined;
+  TransportBus: undefined;
+  TransportBusStop: { stop: any };
+};
+
+const TransportStack = createNativeStackNavigator<TransportStackParamList>();
 
 // Renderiza los botones de navegación en BusScreen
 // const renderBusLeftButtons = (navigation: any) => (
@@ -27,6 +35,7 @@ export default function TransportNavigator() {
         component={TransportScreen}
         options={{
           headerLargeTitle: true,
+          title: 'Transporte',
           headerTransparent: false,
         }}
       />
@@ -46,6 +55,16 @@ export default function TransportNavigator() {
           //   showLoading: true,
           // },
         })}
+      />
+
+      <TransportStack.Screen
+        name="TransportBusStop"
+        component={BusStopScreen}
+        options={{
+          headerTransparent: false,
+          title: 'Parada de autobús',
+          headerBackTitleVisible: false,
+        }}
       />
     </TransportStack.Navigator>
   );

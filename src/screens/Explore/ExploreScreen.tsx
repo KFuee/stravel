@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 
 import Categories from '../../components/Explore/Categories';
@@ -11,14 +10,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function ExploreScreen({ navigation }: any) {
-  // Establece el título de la vista con useEffect
-  useEffect(() => {
-    navigation.setOptions({
-      title: 'Explorar',
-    });
-  });
-
+function ExploreScreen() {
   return (
     <ScrollView
       style={styles.container}

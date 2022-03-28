@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function StopCardLines({ lines }: any) {
+export default function StopItemLines({ lines }: any) {
   return (
     <View style={styles.container}>
       {lines.map((line: any) => (

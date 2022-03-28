@@ -65,3 +65,27 @@ export const busStops: any[] = [
     lines: [busLines[0], busLines[3]],
   },
 ];
+
+export const busArrivals: any[] = [
+  {
+    id: 1,
+    line: busLines[0],
+    destination: 'Parada 1',
+    timeLeft: '5',
+    nextArrival: '10',
+  },
+  {
+    id: 2,
+    line: busLines[1],
+    destination: 'Parada 1',
+    timeLeft: '15',
+    nextArrival: '20',
+  },
+  {
+    id: 3,
+    line: busLines[2],
+    destination: 'Parada 1',
+    timeLeft: '25',
+    nextArrival: '30',
+  },
+];

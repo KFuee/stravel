@@ -1,7 +1,8 @@
 import { useState, useCallback } from 'react';
 import { StyleSheet, ScrollView, RefreshControl } from 'react-native';
 
-import BusStopInfoBanner from '../../../components/Transport/Bus/Stop/InfoBanner';
+import StopInfoBanner from '../../../components/Transport/Stop/InfoBanner';
+import StopUpcomingArrivals from '../../../components/Transport/Stop/UpcomingArrivals';
 
 const styles = StyleSheet.create({
   container: {
@@ -30,7 +31,9 @@ export default function BusStopScreen({ route }: any) {
         <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
       }
     >
-      <BusStopInfoBanner name={stop.name} id={stop.id} />
+      <StopInfoBanner name={stop.name} id={stop.id} />
+
+      <StopUpcomingArrivals />
     </ScrollView>
   );
 }

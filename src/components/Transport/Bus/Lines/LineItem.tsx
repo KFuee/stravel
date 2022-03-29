@@ -1,5 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+
+import type { TransportStackParamList } from '../../../../navigation/TransportNavigator';
+
+type BusLineItemProps = NativeStackNavigationProp<TransportStackParamList>;
 
 const styles = StyleSheet.create({
   item: {
@@ -19,13 +25,20 @@ const styles = StyleSheet.create({
 });
 
 export default function LineItem({ line }: any) {
-  return (
-    <View style={[styles.item, { paddingTop: line.id === 1 ? 16 : 8 }]}>
-      <Text style={styles.text}>Línea {line.name}</Text>
+  const { navigate } = useNavigation<BusLineItemProps>();
 
-      <View style={styles.icon}>
-        <FontAwesome5 name="chevron-right" size={18} color="#FF4760" />
+  return (
+    <TouchableOpacity
+      onPress={() => navigate('TransportBusLine', { line })}
+      activeOpacity={0.8}
+    >
+      <View style={[styles.item, { paddingTop: line.id === 1 ? 16 : 8 }]}>
+        <Text style={styles.text}>Línea {line.name}</Text>
+
+        <View style={styles.icon}>
+          <FontAwesome5 name="chevron-right" size={18} color="#FF4760" />
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }

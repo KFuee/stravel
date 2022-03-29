@@ -25,26 +25,52 @@ export const categories: any[] = [
   },
 ];
 
+const routeExample = [
+  {
+    id: 1,
+    name: 'Plaza de España',
+    latitude: 40.416775,
+    longitude: -3.70379,
+  },
+  {
+    id: 2,
+    name: 'Plaza de Aragón',
+    latitude: 40.416775,
+    longitude: -3.70379,
+  },
+  {
+    id: 3,
+    name: 'Puerta del Carmen',
+    latitude: 40.416775,
+    longitude: -3.70379,
+  },
+];
+
 export const busLines: any[] = [
   {
     id: 1,
     name: '31',
+    stops: routeExample,
   },
   {
     id: 2,
     name: '52',
+    stops: routeExample,
   },
   {
     id: 3,
     name: '23',
+    stops: routeExample,
   },
   {
     id: 4,
     name: '36',
+    stops: routeExample,
   },
   {
     id: 5,
     name: '33',
+    stops: routeExample,
   },
 ];
 

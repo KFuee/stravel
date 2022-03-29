@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import TransportScreen from '../screens/Transport/TransportScreen';
 import BusScreen from '../screens/Transport/Bus/BusScreen';
 import BusStopScreen from '../screens/Transport/Bus/StopScreen';
+import BusLineScreen from '../screens/Transport/Bus/LineScreen';
 
 // Components
 // import BackButton from '../components/Header/BackButton';
@@ -14,6 +15,7 @@ export type TransportStackParamList = {
   TransportLanding: undefined;
   TransportBus: undefined;
   TransportBusStop: { stop: any };
+  TransportBusLine: { line: any };
 };
 
 const TransportStack = createNativeStackNavigator<TransportStackParamList>();
@@ -63,6 +65,16 @@ export default function TransportNavigator() {
         options={{
           headerTransparent: false,
           title: 'Parada de autobús',
+          headerBackTitleVisible: false,
+        }}
+      />
+
+      <TransportStack.Screen
+        name="TransportBusLine"
+        component={BusLineScreen}
+        options={{
+          headerTransparent: false,
+          title: 'Línea de autobús',
           headerBackTitleVisible: false,
         }}
       />

@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function CustomBottomSheet({ sheetRef, index, onChange, category }: any) {
+function PlacesBottomSheet({ sheetRef, index, onChange, category }: any) {
   // memoized values
   const data = useMemo(() => attractions, []);
   const snapPoints = useMemo(() => ['25%', '50%', '100%'], []);
@@ -59,4 +59,4 @@ function CustomBottomSheet({ sheetRef, index, onChange, category }: any) {
   );
 }
 
-export default CustomBottomSheet;
+export default PlacesBottomSheet;

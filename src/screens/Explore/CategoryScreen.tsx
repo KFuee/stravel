@@ -7,7 +7,7 @@ import { useHeaderHeight } from '@react-navigation/elements';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
 import PlacesMap from '../../components/Explore/Category/PlacesMap';
-import CustomBottomSheet from '../../components/Explore/Category/CustomBottomSheet';
+import PlacesBottomSheet from '../../components/Explore/Category/PlacesBottomSheet';
 
 const styles = StyleSheet.create({
   container: {
@@ -75,7 +75,7 @@ function CategoryScreen({ route }: any) {
         longitudeDelta={LONGITUDE_DELTA}
       />
 
-      <CustomBottomSheet
+      <PlacesBottomSheet
         sheetRef={sheetRef}
         index={currentSheetIndex}
         onChange={handleSheetChange}

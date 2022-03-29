@@ -2,6 +2,8 @@ import { useMemo, useCallback } from 'react';
 import { StyleSheet, Text } from 'react-native';
 import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 
+import LineStopItem from './LineStopItem';
+
 const styles = StyleSheet.create({
   listTitle: {
     fontSize: 16,
@@ -12,7 +14,8 @@ const styles = StyleSheet.create({
   },
 
   contentContainer: {
-    marginHorizontal: 16,
+    paddingBottom: 16,
+    paddingHorizontal: 16,
     backgroundColor: '#FFF',
   },
 });
@@ -28,7 +31,12 @@ export default function RouteBottomSheet({
   const data = useMemo(() => stops, [stops]);
   const snapPoints = useMemo(() => ['25%', '50%', '100%'], []);
 
-  const renderItem = useCallback(({ item }) => <Text>{item.title}</Text>, []);
+  const renderItem = useCallback(
+    ({ item: stop, index: itemIndex }) => (
+      <LineStopItem stop={stop} isLast={itemIndex === data.length - 1} />
+    ),
+    [data.length],
+  );
 
   return (
     <BottomSheet

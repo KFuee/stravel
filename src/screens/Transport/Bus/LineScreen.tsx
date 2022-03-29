@@ -31,7 +31,7 @@ export default function BusLineScreen({ route }: any) {
 
   // state
   const [mapPadding, setMapPadding] = useState<EdgePadding>();
-  const [currentSheetIndex, setCurrentSheetIndex] = useState(1);
+  const [currentSheetIndex, setCurrentSheetIndex] = useState(0);
 
   // hooks
   const headerHeight = useHeaderHeight();
@@ -46,7 +46,7 @@ export default function BusLineScreen({ route }: any) {
   useEffect(() => {
     setMapPadding({
       top: 0,
-      bottom: viewHeight * 0.5,
+      bottom: viewHeight * 0.25,
       left: 6,
       right: 6,
     });
@@ -75,14 +75,15 @@ export default function BusLineScreen({ route }: any) {
         mapPadding={mapPadding}
         latitudeDelta={LATITUDE_DELTA}
         longitudeDelta={LONGITUDE_DELTA}
-        line={line}
+        coordinates={line.route.coordinates}
       />
 
       <RouteBottomSheet
         sheetRef={sheetRef}
         index={currentSheetIndex}
         onChange={handleSheetChange}
-        stops={line.stops}
+        lineName={line.name}
+        stops={line.route.stops}
       />
     </GestureHandlerRootView>
   );

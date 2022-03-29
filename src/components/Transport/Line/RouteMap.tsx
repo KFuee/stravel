@@ -1,5 +1,6 @@
+import { useState, useCallback } from 'react';
 import { StyleSheet } from 'react-native';
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { Polyline, Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 
 const styles = StyleSheet.create({
   map: {
@@ -12,9 +13,21 @@ export default function RouteMap({
   mapPadding,
   latitudeDelta,
   longitudeDelta,
-  line,
+  coordinates,
 }: any) {
-  console.log('line', line);
+  const [routeCoordinates] = useState(
+    coordinates.map(([lng, lat]: any) => ({
+      latitude: lat,
+      longitude: lng,
+    })),
+  );
+
+  const onMapReady = useCallback(() => {
+    mapRef.current.fitToElements({
+      edgePadding: { top: 50, bottom: 50, left: 50, right: 50 },
+      animated: false,
+    });
+  }, [mapRef]);
 
   return (
     <MapView
@@ -29,6 +42,27 @@ export default function RouteMap({
         longitudeDelta,
       }}
       toolbarEnabled={false}
-    />
+      onMapReady={onMapReady}
+    >
+      <Marker
+        coordinate={{
+          latitude: routeCoordinates[0].latitude,
+          longitude: routeCoordinates[0].longitude,
+        }}
+      />
+
+      <Marker
+        coordinate={{
+          latitude: routeCoordinates[routeCoordinates.length - 1].latitude,
+          longitude: routeCoordinates[routeCoordinates.length - 1].longitude,
+        }}
+      />
+
+      <Polyline
+        coordinates={routeCoordinates}
+        strokeWidth={2}
+        strokeColor="#FF4760"
+      />
+    </MapView>
   );
 }

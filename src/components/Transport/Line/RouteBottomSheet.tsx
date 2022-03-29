@@ -21,13 +21,14 @@ export default function RouteBottomSheet({
   sheetRef,
   index,
   onChange,
+  lineName,
   stops,
 }: any) {
   // memoized values
   const data = useMemo(() => stops, [stops]);
   const snapPoints = useMemo(() => ['25%', '50%', '100%'], []);
 
-  const renderItem = useCallback(({ item }) => <Text>{item.name}</Text>, []);
+  const renderItem = useCallback(({ item }) => <Text>{item.title}</Text>, []);
 
   return (
     <BottomSheet
@@ -37,7 +38,9 @@ export default function RouteBottomSheet({
       onChange={onChange}
       backgroundStyle={{ borderRadius: index !== 2 ? 16 : 0 }}
     >
-      <Text style={styles.listTitle}>{data.length} paradas</Text>
+      <Text style={styles.listTitle}>
+        {data.length} paradas de la línea {lineName}
+      </Text>
 
       <BottomSheetFlatList
         data={data}

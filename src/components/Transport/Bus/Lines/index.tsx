@@ -1,7 +1,8 @@
-import { View, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Tabs } from 'react-native-collapsible-tab-view';
 
 import LineItem from './LineItem';
+import Separator from '../../../General/Separator';
 
 import { busLines } from '../../../../data/transportData';
 
@@ -21,15 +22,13 @@ const styles = StyleSheet.create({
 export default function BusLines() {
   const renderItem = ({ item }: any) => <LineItem line={item} />;
 
-  const renderSeparator = () => <View style={styles.separator} />;
-
   return (
     <Tabs.FlatList
       bounces={false}
       data={busLines}
       renderItem={renderItem}
       keyExtractor={item => `line-${item.id}`}
-      ItemSeparatorComponent={renderSeparator}
+      ItemSeparatorComponent={Separator}
       contentContainerStyle={styles.container}
     />
   );

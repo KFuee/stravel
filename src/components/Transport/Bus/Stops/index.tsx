@@ -1,8 +1,10 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Tabs } from 'react-native-collapsible-tab-view';
 
-import { busStops } from '../../../../data/transportData';
 import BusStopItem from './StopItem';
+import Separator from '../../../General/Separator';
+
+import { busStops } from '../../../../data/transportData';
 
 const styles = StyleSheet.create({
   container: {
@@ -20,15 +22,13 @@ const styles = StyleSheet.create({
 export default function BusStops() {
   const renderItem = ({ item }: any) => <BusStopItem stop={item} />;
 
-  const renderSeparator = () => <View style={styles.separator} />;
-
   return (
     <Tabs.FlatList
       bounces={false}
       data={busStops}
       renderItem={renderItem}
       keyExtractor={item => `stop-${item.id}`}
-      ItemSeparatorComponent={renderSeparator}
+      ItemSeparatorComponent={Separator}
       contentContainerStyle={styles.container}
     />
   );

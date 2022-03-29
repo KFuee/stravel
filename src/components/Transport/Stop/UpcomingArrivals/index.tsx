@@ -1,7 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
 
+import UpcomingArrival from './UpcomingArrival';
+import Separator from '../../../General/Separator';
+
 import { busArrivals } from '../../../../data/transportData';
-import TransportBadge from './TransportBadge';
 
 const styles = StyleSheet.create({
   container: {
@@ -29,13 +31,11 @@ export default function StopUpcomingArrivals() {
       </View>
 
       {busArrivals.map(arrival => (
-        <View key={arrival.id}>
-          <TransportBadge name={arrival.line.name} />
-
-          <Text>{arrival.destination}</Text>
-          <Text>{arrival.timeLeft}</Text>
-          <Text>{arrival.nextArrival}</Text>
-        </View>
+        <UpcomingArrival
+          key={arrival.id}
+          arrival={arrival}
+          renderSeparator={arrival.id !== busArrivals.length && <Separator />}
+        />
       ))}
     </View>
   );

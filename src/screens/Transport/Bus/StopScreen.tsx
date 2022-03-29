@@ -1,6 +1,6 @@
 import { StyleSheet, ScrollView } from 'react-native';
-import CustomRefreshControl from '../../../components/General/CustomRefreshControl';
 
+import CustomRefreshControl from '../../../components/General/CustomRefreshControl';
 import StopInfoBanner from '../../../components/Transport/Stop/InfoBanner';
 import StopUpcomingArrivals from '../../../components/Transport/Stop/UpcomingArrivals';
 

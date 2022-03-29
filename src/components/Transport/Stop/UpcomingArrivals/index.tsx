@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 
 import { busArrivals } from '../../../../data/transportData';
+import TransportBadge from './TransportBadge';
 
 const styles = StyleSheet.create({
   container: {
@@ -29,7 +30,8 @@ export default function StopUpcomingArrivals() {
 
       {busArrivals.map(arrival => (
         <View key={arrival.id}>
-          <Text>{arrival.line.name}</Text>
+          <TransportBadge name={arrival.line.name} />
+
           <Text>{arrival.destination}</Text>
           <Text>{arrival.timeLeft}</Text>
           <Text>{arrival.nextArrival}</Text>

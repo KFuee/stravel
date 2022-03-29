@@ -17,6 +17,15 @@ export default function CustomRefreshControl({ screenOnRefresh }: any) {
     setLastUpdateMinutes(diffMinutes);
   };
 
+  // Comprobar hace cuánto se actualizó la última vez cada minuto
+  useEffect(() => {
+    const interval = setInterval(() => {
+      getLastUpdateTime();
+    }, 60000);
+
+    return () => clearInterval(interval);
+  });
+
   // Actualiza la fecha de actualización
   const onRefresh = useCallback(() => {
     screenOnRefresh();
@@ -28,15 +37,6 @@ export default function CustomRefreshControl({ screenOnRefresh }: any) {
       setLastUpdateMinutes(0);
     }, 1000);
   }, [screenOnRefresh]);
-
-  // Comprobar hace cuánto se actualizó la última vez cada minuto
-  useEffect(() => {
-    const interval = setInterval(() => {
-      getLastUpdateTime();
-    }, 60000);
-
-    return () => clearInterval(interval);
-  });
 
   return (
     <RefreshControl

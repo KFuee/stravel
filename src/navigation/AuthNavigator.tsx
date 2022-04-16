@@ -1,11 +1,11 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Screens
-import LoginScreen from '../screens/Auth/LoginScreen';
+import AuthLanding from '../screens/Auth/AuthLanding';
 
 // Definición de tipos para las rutas del stack
 export type AuthStackParamList = {
-  AuthLogin: undefined;
+  AuthLanding: undefined;
 };
 
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
@@ -14,10 +14,10 @@ export default function AuthNavigator() {
   return (
     <AuthStack.Navigator>
       <AuthStack.Screen
-        name="AuthLogin"
-        component={LoginScreen}
+        name="AuthLanding"
+        component={AuthLanding}
         options={{
-          title: 'Autenticación',
+          title: 'UrbanMobility',
         }}
       />
     </AuthStack.Navigator>

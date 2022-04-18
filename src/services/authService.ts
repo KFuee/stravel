@@ -8,11 +8,14 @@ export const register = async (
   email: string,
   password: string,
 ): Promise<AuthData> => {
-  const response = await axios.post('http://localhost:3001/v1/auth/register', {
-    name,
-    email,
-    password,
-  });
+  const response = await axios.post(
+    'http://192.168.1.15:3001/v1/auth/register',
+    {
+      name,
+      email,
+      password,
+    },
+  );
 
   return response.data;
 };
@@ -21,7 +24,7 @@ export const signIn = async (
   email: string,
   password: string,
 ): Promise<AuthData> => {
-  const response = await axios.post('http://localhost:3001/v1/auth/login', {
+  const response = await axios.post('http://192.168.1.15:3001/v1/auth/login', {
     email,
     password,
   });

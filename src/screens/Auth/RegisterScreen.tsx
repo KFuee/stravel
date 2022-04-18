@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 // contexts
 import { useAuth } from '../../contexts/AuthContext';
@@ -30,31 +30,32 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     paddingBottom: 24,
   },
-
-  forgotPasswordButton: {
-    textAlign: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
 });
 
-function AuthLoginScreen() {
+function AuthRegisterScreen() {
   // states
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   // useContexts
-  const { signIn } = useAuth();
+  const { register } = useAuth();
 
-  // handlers
-  const handleLogin = () => {
-    signIn(email, password);
+  const handleRegister = () => {
+    register(name, email, password);
   };
 
   return (
     <DimissKeyboard>
       <View style={styles.container}>
         <View style={styles.topContainer}>
+          <CustomTextInput
+            value={name}
+            placeholder="Nombre completo"
+            onChangeText={setName}
+            autoCapitalize="none"
+          />
+
           <CustomTextInput
             value={email}
             placeholder="Correo electrónico"
@@ -72,20 +73,14 @@ function AuthLoginScreen() {
 
         <View style={styles.bottomContainer}>
           <ActionButton
-            style={{ width: '100%', marginVertical: 16 }}
-            title="Iniciar sesión"
-            onPress={handleLogin}
+            style={{ width: '100%' }}
+            title="Registrarse"
+            onPress={handleRegister}
           />
-
-          <TouchableOpacity style={{ width: '100%' }} onPress={() => {}}>
-            <View style={styles.forgotPasswordButton}>
-              <Text>¿Has olvidado la contraseña?</Text>
-            </View>
-          </TouchableOpacity>
         </View>
       </View>
     </DimissKeyboard>
   );
 }
 
-export default AuthLoginScreen;
+export default AuthRegisterScreen;

@@ -82,9 +82,9 @@ function AuthLandingScreen() {
 
       <View style={styles.bottomContainer}>
         <ActionButton
-          style={{ width: '100%' }}
+          style={{ width: '100%', marginVertical: 16 }}
           title="Crear una cuenta"
-          onPress={() => {}}
+          onPress={() => navigate('AuthRegister')}
         />
 
         <TouchableOpacity

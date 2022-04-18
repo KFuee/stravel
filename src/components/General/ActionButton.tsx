@@ -8,7 +8,6 @@ import {
 
 const styles = StyleSheet.create({
   button: {
-    marginVertical: 16,
     padding: 16,
     backgroundColor: '#FF4760',
     borderRadius: 5,

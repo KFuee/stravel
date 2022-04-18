@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 type User = {
   name: string;
   email: string;
@@ -24,7 +25,7 @@ export type AuthData = {
 export type AuthContextData = {
   authData?: AuthData;
   loading: boolean;
-  // eslint-disable-next-line no-unused-vars
+  register: (name: string, email: string, password: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   signOut(): void;
 };

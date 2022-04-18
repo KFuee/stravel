@@ -5,7 +5,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContextData, AuthData } from '../types/auth';
 
 // services
-import authService from '../services/authService';
+import {
+  register as authServiceRegister,
+  signIn as authServiceSignIn,
+} from '../services/authService';
 
 export const AuthContext = createContext<AuthContextData>(
   {} as AuthContextData,
@@ -32,13 +35,29 @@ export function AuthProvider({ children }: any) {
     loadStorageData();
   });
 
+  const register = async (name: string, email: string, password: string) => {
+    try {
+      const userAuthData = await authServiceRegister(name, email, password);
+
+      setAuthData(userAuthData);
+
+      await AsyncStorage.setItem('authData', JSON.stringify(userAuthData));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const signIn = async (email: string, password: string) => {
-    const userAuthData = await authService(email, password);
+    try {
+      const userAuthData = await authServiceSignIn(email, password);
 
-    setAuthData(userAuthData);
+      setAuthData(userAuthData);
 
-    // Guarda los datos de autenticación en el almacenamiento local
-    await AsyncStorage.setItem('authData', JSON.stringify(userAuthData));
+      // Guarda los datos de autenticación en el almacenamiento local
+      await AsyncStorage.setItem('authData', JSON.stringify(userAuthData));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   // Elimina los datos del usuario del contexto
@@ -55,6 +74,7 @@ export function AuthProvider({ children }: any) {
       value={{
         authData,
         loading,
+        register,
         signIn,
         signOut,
       }}

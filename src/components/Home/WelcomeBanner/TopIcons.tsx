@@ -1,6 +1,14 @@
-import { View, StyleSheet, Platform } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Platform,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
+// contexts
+import { useAuth } from '../../../contexts/AuthContext';
 
 const styles = StyleSheet.create({
   iconsContainer: {
@@ -31,6 +39,9 @@ const styles = StyleSheet.create({
 });
 
 function TopIcons() {
+  // hooks
+  const { signOut } = useAuth();
+
   // hook para obtener el padding de la barra de estado
   const { top: topInset } = useSafeAreaInsets();
 
@@ -41,9 +52,16 @@ function TopIcons() {
       }}
     >
       <View style={styles.iconsContainer}>
-        <View style={styles.iconContainer}>
-          <FontAwesome name="user" size={26} color="#FFF" style={styles.icon} />
-        </View>
+        <TouchableWithoutFeedback onPress={() => signOut()}>
+          <View style={styles.iconContainer}>
+            <FontAwesome
+              name="user"
+              size={26}
+              color="#FFF"
+              style={styles.icon}
+            />
+          </View>
+        </TouchableWithoutFeedback>
 
         <View style={styles.rightIconsContainer}>
           <View style={[styles.iconContainer, { marginRight: 8 }]}>

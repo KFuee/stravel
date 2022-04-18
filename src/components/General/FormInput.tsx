@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
     marginHorizontal: 16,
     color: 'red',
+    fontWeight: 'bold',
   },
 });
 

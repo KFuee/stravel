@@ -36,6 +36,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  errorMessage: {
+    marginHorizontal: 16,
+    color: 'red',
+    fontWeight: 'bold',
+  },
 });
 
 function AuthSignInScreen() {

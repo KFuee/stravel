@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // types
@@ -42,8 +43,8 @@ export function AuthProvider({ children }: any) {
       setAuthData(userAuthData);
 
       await AsyncStorage.setItem('authData', JSON.stringify(userAuthData));
-    } catch (err) {
-      console.log(err);
+    } catch (err: any) {
+      Alert.alert('Error', err.message);
     }
   };
 
@@ -55,8 +56,13 @@ export function AuthProvider({ children }: any) {
 
       // Guarda los datos de autenticación en el almacenamiento local
       await AsyncStorage.setItem('authData', JSON.stringify(userAuthData));
-    } catch (err) {
-      console.log(err);
+    } catch (err: any) {
+      if (err.response) {
+        Alert.alert('Error', err.response.data.message);
+        return;
+      }
+
+      Alert.alert('Error', err.message);
     }
   };
 

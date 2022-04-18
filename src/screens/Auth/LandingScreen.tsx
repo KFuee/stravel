@@ -1,4 +1,10 @@
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
+
+import type { AuthStackParamList } from '../../navigation/AuthNavigator';
+
+type AuthLandingScreenProps = NativeStackNavigationProp<AuthStackParamList>;
 
 const styles = StyleSheet.create({
   container: {
@@ -19,7 +25,7 @@ const styles = StyleSheet.create({
     height: '25%',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    paddingBottom: 16,
+    paddingBottom: 8,
   },
 
   illustration: {
@@ -68,7 +74,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function AuthLanding() {
+function AuthLandingScreen() {
+  const { navigate } = useNavigation<AuthLandingScreenProps>();
+
   return (
     <View style={styles.container}>
       <View style={styles.topContainer}>
@@ -90,7 +98,10 @@ export default function AuthLanding() {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{ width: '100%' }}>
+        <TouchableOpacity
+          style={{ width: '100%' }}
+          onPress={() => navigate('AuthLogin')}
+        >
           <View style={styles.loginButton}>
             <Text>¿Ya tienes una cuenta? </Text>
             <Text style={styles.loginButtonText}>Inicia sesión</Text>
@@ -100,3 +111,5 @@ export default function AuthLanding() {
     </View>
   );
 }
+
+export default AuthLandingScreen;

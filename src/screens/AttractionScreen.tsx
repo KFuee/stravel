@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function AttractionView({ route }: any) {
+function AttractionScreen({ route }: any) {
   const { id } = route.params;
   const attraction = getAttraction(id);
 
@@ -47,4 +47,4 @@ function AttractionView({ route }: any) {
   );
 }
 
-export default AttractionView;
+export default AttractionScreen;

@@ -1,15 +1,10 @@
 import { useState } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  TextInput,
-} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 import { useAuth } from '../../contexts/AuthContext';
 
 import DimissKeyboard from '../../components/General/DimissKeyboard';
+import CustomTextInput from '../../components/General/CustomTextInput';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,16 +18,6 @@ const styles = StyleSheet.create({
     height: '75%',
     alignItems: 'center',
     justifyContent: 'flex-start',
-  },
-
-  input: {
-    width: '100%',
-    height: 55,
-    borderRadius: 5,
-    backgroundColor: '#F5F5F5',
-    marginBottom: 16,
-    paddingHorizontal: 16,
-    fontSize: 16,
   },
 
   bottomContainer: {
@@ -79,21 +64,17 @@ function AuthLoginScreen() {
     <DimissKeyboard>
       <View style={styles.container}>
         <View style={styles.topContainer}>
-          <TextInput
+          <CustomTextInput
             value={email}
             placeholder="Correo electrónico"
-            onChangeText={text => setEmail(text)}
-            style={styles.input}
-            placeholderTextColor="#000"
+            onChangeText={setEmail}
             autoCapitalize="none"
           />
 
-          <TextInput
+          <CustomTextInput
             value={password}
             placeholder="Contraseña"
-            onChangeText={text => setPassword(text)}
-            style={styles.input}
-            placeholderTextColor="#000"
+            onChangeText={setPassword}
             autoCapitalize="none"
           />
         </View>

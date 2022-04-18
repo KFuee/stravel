@@ -19,15 +19,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function FormInput({
-  name,
-  control,
-  rules,
-  placeholder,
-  autoCapitalize,
-  secureTextEntry,
-  errors,
-}: any) {
+function FormInput({ name, control, rules, errors, ...inputProps }: any) {
   return (
     <View>
       <Controller
@@ -37,13 +29,12 @@ function FormInput({
         render={({ field: { onChange, onBlur, value } }) => (
           <TextInput
             value={value}
-            placeholder={placeholder}
             onChangeText={onChange}
             style={styles.container}
             placeholderTextColor="#000"
-            autoCapitalize={autoCapitalize}
             onBlur={onBlur}
-            secureTextEntry={secureTextEntry}
+            // eslint-disable-next-line react/jsx-props-no-spreading
+            {...inputProps}
           />
         )}
       />

@@ -65,14 +65,23 @@ function AuthRegisterScreen() {
             name="name"
             control={control}
             rules={{ required: 'El nombre es requerido' }}
+            errors={errors}
             placeholder="Nombre completo"
             autoCapitalize="words"
+          />
+
+          <EmailFormInput
+            name="email-register"
+            control={control}
             errors={errors}
           />
 
-          <EmailFormInput control={control} errors={errors} />
-
-          <PasswordFormInput control={control} errors={errors} requiresPatter />
+          <PasswordFormInput
+            name="password-register"
+            control={control}
+            errors={errors}
+            requiresPattern
+          />
         </View>
 
         <View style={styles.bottomContainer}>

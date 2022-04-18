@@ -1,14 +1,14 @@
 // components
 import FormInput from '../General/FormInput';
 
-function PasswordFormInput({ control, errors, requiresPatter }: any) {
+function PasswordFormInput({ control, errors, requiresPattern }: any) {
   return (
     <FormInput
       name="password"
       control={control}
       rules={{
         required: 'La contraseña es requerida',
-        ...(requiresPatter && {
+        ...(requiresPattern && {
           pattern: {
             value: /^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/,
             message:
@@ -16,10 +16,10 @@ function PasswordFormInput({ control, errors, requiresPatter }: any) {
           },
         }),
       }}
+      errors={errors}
       placeholder="Contraseña"
       autoCapitalize="none"
       secureTextEntry
-      errors={errors}
     />
   );
 }

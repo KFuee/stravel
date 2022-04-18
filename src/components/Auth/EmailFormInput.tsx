@@ -13,9 +13,9 @@ function EmailFormInput({ control, errors }: any) {
           message: 'El email no es válido',
         },
       }}
+      errors={errors}
       placeholder="Correo electrónico"
       autoCapitalize="none"
-      errors={errors}
     />
   );
 }

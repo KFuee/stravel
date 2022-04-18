@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
+// contexts
 import { useAuth } from '../../contexts/AuthContext';
 
+// components
 import DimissKeyboard from '../../components/General/DimissKeyboard';
 import CustomTextInput from '../../components/General/CustomTextInput';
+import ActionButton from '../../components/General/ActionButton';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,20 +31,6 @@ const styles = StyleSheet.create({
     paddingBottom: 24,
   },
 
-  signInButton: {
-    marginVertical: 16,
-    padding: 16,
-    backgroundColor: '#FF4760',
-    borderRadius: 5,
-  },
-
-  signInButtonText: {
-    color: '#FFF',
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-
   forgotPasswordButton: {
     textAlign: 'center',
     alignItems: 'center',
@@ -54,8 +43,10 @@ function AuthLoginScreen() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  // useContexts
   const { signIn } = useAuth();
 
+  // handlers
   const handleSignIn = () => {
     signIn(email, password);
   };
@@ -80,11 +71,11 @@ function AuthLoginScreen() {
         </View>
 
         <View style={styles.bottomContainer}>
-          <TouchableOpacity style={{ width: '100%' }}>
-            <View style={styles.signInButton}>
-              <Text style={styles.signInButtonText}>Iniciar sesión</Text>
-            </View>
-          </TouchableOpacity>
+          <ActionButton
+            style={{ width: '100%' }}
+            title="Iniciar sesión"
+            onPress={handleSignIn}
+          />
 
           <TouchableOpacity
             style={{ width: '100%' }}

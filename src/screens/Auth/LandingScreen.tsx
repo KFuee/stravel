@@ -2,6 +2,9 @@ import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native';
 
+// components
+import ActionButton from '../../components/General/ActionButton';
+
 import type { AuthStackParamList } from '../../navigation/AuthNavigator';
 
 type AuthLandingScreenProps = NativeStackNavigationProp<AuthStackParamList>;
@@ -47,20 +50,6 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
 
-  createAccountButton: {
-    marginVertical: 16,
-    padding: 16,
-    backgroundColor: '#FF4760',
-    borderRadius: 5,
-  },
-
-  createAccountButtonText: {
-    color: '#FFF',
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-
   loginButton: {
     textAlign: 'center',
     flexDirection: 'row',
@@ -92,11 +81,11 @@ function AuthLandingScreen() {
       </View>
 
       <View style={styles.bottomContainer}>
-        <TouchableOpacity style={{ width: '100%' }}>
-          <View style={styles.createAccountButton}>
-            <Text style={styles.createAccountButtonText}>Crea una cuenta</Text>
-          </View>
-        </TouchableOpacity>
+        <ActionButton
+          style={{ width: '100%' }}
+          title="Crear una cuenta"
+          onPress={() => {}}
+        />
 
         <TouchableOpacity
           style={{ width: '100%' }}

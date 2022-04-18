@@ -89,7 +89,7 @@ function AuthLandingScreen() {
 
         <TouchableOpacity
           style={{ width: '100%' }}
-          onPress={() => navigate('AuthLogin')}
+          onPress={() => navigate('AuthSignIn')}
         >
           <View style={styles.loginButton}>
             <Text>¿Ya tienes una cuenta? </Text>

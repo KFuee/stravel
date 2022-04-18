@@ -2,13 +2,13 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Screens
 import AuthLandingScreen from '../screens/Auth/LandingScreen';
-import AuthLoginScreen from '../screens/Auth/LoginScreen';
+import AuthSignInScreen from '../screens/Auth/SignInScreen';
 import AuthRegisterScreen from '../screens/Auth/RegisterScreen';
 
 // Definición de tipos para las rutas del stack
 export type AuthStackParamList = {
   AuthLanding: undefined;
-  AuthLogin: undefined;
+  AuthSignIn: undefined;
   AuthRegister: undefined;
 };
 
@@ -26,8 +26,8 @@ export default function AuthNavigator() {
       />
 
       <AuthStack.Screen
-        name="AuthLogin"
-        component={AuthLoginScreen}
+        name="AuthSignIn"
+        component={AuthSignInScreen}
         options={{
           headerLargeTitle: true,
           title: 'Iniciar sesión',

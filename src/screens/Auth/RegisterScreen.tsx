@@ -1,12 +1,12 @@
-import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
+import { useForm } from 'react-hook-form';
 
 // contexts
 import { useAuth } from '../../contexts/AuthContext';
 
 // components
 import DimissKeyboard from '../../components/General/DimissKeyboard';
-import CustomTextInput from '../../components/General/CustomTextInput';
+import FormInput from '../../components/General/FormInput';
 import ActionButton from '../../components/General/ActionButton';
 
 const styles = StyleSheet.create({
@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
   topContainer: {
     width: '100%',
     height: '75%',
-    alignItems: 'center',
     justifyContent: 'flex-start',
   },
 
@@ -33,41 +32,72 @@ const styles = StyleSheet.create({
 });
 
 function AuthRegisterScreen() {
-  // states
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  // useContexts
+  // hooks
   const { register } = useAuth();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      name: '',
+      email: '',
+      password: '',
+    },
+  });
 
-  const handleRegister = () => {
-    register(name, email, password);
+  // handlers
+  const handleRegister = (data: {
+    name: string;
+    email: string;
+    password: string;
+  }) => {
+    register(data.name, data.email, data.password);
   };
 
   return (
     <DimissKeyboard>
       <View style={styles.container}>
         <View style={styles.topContainer}>
-          <CustomTextInput
-            value={name}
+          <FormInput
+            name="name"
+            control={control}
+            rules={{ required: 'El nombre es requerido' }}
             placeholder="Nombre completo"
-            onChangeText={setName}
-            autoCapitalize="none"
+            autoCapitalize="words"
+            errors={errors}
           />
 
-          <CustomTextInput
-            value={email}
+          <FormInput
+            name="email"
+            control={control}
+            rules={{
+              required: 'El email es requerido',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: 'El email no es válido',
+              },
+            }}
             placeholder="Correo electrónico"
-            onChangeText={setEmail}
             autoCapitalize="none"
+            errors={errors}
           />
 
-          <CustomTextInput
-            value={password}
+          <FormInput
+            name="password"
+            control={control}
+            rules={{
+              required: 'La contraseña es requerida',
+              pattern: {
+                value: /^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/,
+                message:
+                  'La contraseña debe tener al menos 8 caracteres, una letra y un número',
+              },
+            }}
             placeholder="Contraseña"
-            onChangeText={setPassword}
             autoCapitalize="none"
+            secureTextEntry
+            errors={errors}
           />
         </View>
 
@@ -75,7 +105,7 @@ function AuthRegisterScreen() {
           <ActionButton
             style={{ width: '100%' }}
             title="Registrarse"
-            onPress={handleRegister}
+            onPress={handleSubmit(handleRegister)}
           />
         </View>
       </View>

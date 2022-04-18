@@ -1,12 +1,12 @@
-import { useState } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { useForm } from 'react-hook-form';
 
 // contexts
 import { useAuth } from '../../contexts/AuthContext';
 
 // components
 import DimissKeyboard from '../../components/General/DimissKeyboard';
-import CustomTextInput from '../../components/General/CustomTextInput';
+import FormInput from '../../components/General/FormInput';
 import ActionButton from '../../components/General/ActionButton';
 
 const styles = StyleSheet.create({
@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
   topContainer: {
     width: '100%',
     height: '75%',
-    alignItems: 'center',
     justifyContent: 'flex-start',
   },
 
@@ -38,35 +37,52 @@ const styles = StyleSheet.create({
   },
 });
 
-function AuthLoginScreen() {
-  // states
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  // useContexts
+function AuthSignInScreen() {
+  // hooks
   const { signIn } = useAuth();
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
 
   // handlers
-  const handleLogin = () => {
-    signIn(email, password);
+  const handleSignIn = (data: { email: string; password: string }) => {
+    signIn(data.email, data.password);
   };
 
   return (
     <DimissKeyboard>
       <View style={styles.container}>
         <View style={styles.topContainer}>
-          <CustomTextInput
-            value={email}
+          <FormInput
+            name="email"
+            control={control}
+            rules={{
+              required: 'El email es requerido',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                message: 'El email no es válido',
+              },
+            }}
             placeholder="Correo electrónico"
-            onChangeText={setEmail}
             autoCapitalize="none"
+            errors={errors}
           />
 
-          <CustomTextInput
-            value={password}
+          <FormInput
+            name="password"
+            control={control}
+            rules={{ required: 'La contraseña es requerida' }}
             placeholder="Contraseña"
-            onChangeText={setPassword}
             autoCapitalize="none"
+            secureTextEntry
+            errors={errors}
           />
         </View>
 
@@ -74,7 +90,7 @@ function AuthLoginScreen() {
           <ActionButton
             style={{ width: '100%', marginVertical: 16 }}
             title="Iniciar sesión"
-            onPress={handleLogin}
+            onPress={handleSubmit(handleSignIn)}
           />
 
           <TouchableOpacity style={{ width: '100%' }} onPress={() => {}}>
@@ -88,4 +104,4 @@ function AuthLoginScreen() {
   );
 }
 
-export default AuthLoginScreen;
+export default AuthSignInScreen;

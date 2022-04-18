@@ -6,7 +6,8 @@ import { useAuth } from '../../contexts/AuthContext';
 
 // components
 import DimissKeyboard from '../../components/General/DimissKeyboard';
-import FormInput from '../../components/General/FormInput';
+import EmailFormInput from '../../components/Auth/EmailFormInput';
+import PasswordFormInput from '../../components/Auth/PasswordFormInput';
 import ActionButton from '../../components/General/ActionButton';
 
 const styles = StyleSheet.create({
@@ -60,30 +61,9 @@ function AuthSignInScreen() {
     <DimissKeyboard>
       <View style={styles.container}>
         <View style={styles.topContainer}>
-          <FormInput
-            name="email"
-            control={control}
-            rules={{
-              required: 'El email es requerido',
-              pattern: {
-                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                message: 'El email no es válido',
-              },
-            }}
-            placeholder="Correo electrónico"
-            autoCapitalize="none"
-            errors={errors}
-          />
+          <EmailFormInput control={control} errors={errors} />
 
-          <FormInput
-            name="password"
-            control={control}
-            rules={{ required: 'La contraseña es requerida' }}
-            placeholder="Contraseña"
-            autoCapitalize="none"
-            secureTextEntry
-            errors={errors}
-          />
+          <PasswordFormInput control={control} errors={errors} />
         </View>
 
         <View style={styles.bottomContainer}>

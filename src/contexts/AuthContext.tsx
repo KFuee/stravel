@@ -9,6 +9,7 @@ import { AuthContextData, AuthData } from '../types/auth';
 import {
   register as authServiceRegister,
   signIn as authServiceSignIn,
+  signOut as authServiceSignOut,
 } from '../services/authService';
 
 export const AuthContext = createContext<AuthContextData>(
@@ -68,10 +69,20 @@ export function AuthProvider({ children }: any) {
 
   // Elimina los datos del usuario del contexto
   const signOut = async () => {
-    setAuthData(undefined);
+    try {
+      await authServiceSignOut(authData?.tokens.refresh.token);
+    } catch (err: any) {
+      if (err.response) {
+        Alert.alert('Error', err.response.data.message);
+        return;
+      }
+
+      Alert.alert('Error', err.message);
+    }
 
     // Elimina los datos de autenticación del almacenamiento local
     await AsyncStorage.removeItem('authData');
+    setAuthData(undefined);
   };
 
   return (

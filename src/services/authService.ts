@@ -28,3 +28,19 @@ export const signIn = async (
 
   return response.data;
 };
+
+export const signOut = async (
+  refreshToken: string | undefined,
+): Promise<void> => {
+  if (!refreshToken) {
+    return Promise.reject(
+      new Error('No se ha encontrado el token de refresco'),
+    );
+  }
+
+  const response = await axios.post('http://localhost:3001/v1/auth/logout', {
+    refreshToken,
+  });
+
+  return response.data;
+};

@@ -70,7 +70,7 @@ function AuthLandingScreen() {
     <View style={styles.container}>
       <View style={styles.topContainer}>
         <Image
-          source={require('../../assets/images/auth/landing-logo.png')}
+          source={require('../../assets/images/logos/no-slogan-top.png')}
           style={styles.illustration}
           height={121}
         />

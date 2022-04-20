@@ -21,7 +21,7 @@ export default function AuthNavigator() {
         name="AuthLanding"
         component={AuthLandingScreen}
         options={{
-          title: 'UrbanMobility',
+          headerShown: false,
         }}
       />
 

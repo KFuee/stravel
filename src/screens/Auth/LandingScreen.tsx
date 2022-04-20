@@ -32,9 +32,9 @@ const styles = StyleSheet.create({
   },
 
   illustration: {
-    width: 300,
-    height: 300,
-    marginBottom: 16,
+    width: 200,
+    height: 121,
+    marginBottom: 32,
   },
 
   title: {
@@ -70,8 +70,9 @@ function AuthLandingScreen() {
     <View style={styles.container}>
       <View style={styles.topContainer}>
         <Image
+          source={require('../../assets/images/auth/landing-logo.png')}
           style={styles.illustration}
-          source={require('../../assets/images/auth/landing-illustration.png')}
+          height={121}
         />
 
         <Text style={styles.title} numberOfLines={2} adjustsFontSizeToFit>

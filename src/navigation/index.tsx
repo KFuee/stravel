@@ -1,5 +1,6 @@
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as Linking from 'expo-linking';
 
 // context
 import { useAuth } from '../contexts/AuthContext';
@@ -22,15 +23,37 @@ const AppNavigationTheme = {
   },
 };
 
+const prefix = Linking.createURL('/');
+
 function RootNavigator() {
+  // hooks
   const { authData, loading } = useAuth();
 
   if (loading) {
     return <Loading />;
   }
 
+  const linking = {
+    prefixes: [prefix],
+    config: {
+      screens: {
+        Auth: {
+          screens: {
+            AuthResetPassword: 'auth/reset-password/:token',
+          },
+        },
+      },
+    },
+  };
+
   return (
-    <NavigationContainer theme={AppNavigationTheme}>
+    <NavigationContainer
+      // @ts-ignore
+      // TODO: Fix this
+      linking={linking}
+      fallback={<Loading />}
+      theme={AppNavigationTheme}
+    >
       <RootStack.Navigator
         screenOptions={{
           headerShown: false,

@@ -5,6 +5,7 @@ import AuthLandingScreen from '../screens/Auth/LandingScreen';
 import AuthSignInScreen from '../screens/Auth/SignInScreen';
 import AuthRegisterScreen from '../screens/Auth/RegisterScreen';
 import ForgotPasswordScreen from '../screens/Auth/ForgotPasswordScreen';
+import ResetPasswordScreen from '../screens/Auth/ResetPasswordScreen';
 
 // Definición de tipos para las rutas del stack
 export type AuthStackParamList = {
@@ -12,6 +13,7 @@ export type AuthStackParamList = {
   AuthSignIn: undefined;
   AuthRegister: undefined;
   AuthForgotPassword: undefined;
+  AuthResetPassword: { token: string };
 };
 
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
@@ -52,6 +54,17 @@ export default function AuthNavigator() {
       <AuthStack.Screen
         name="AuthForgotPassword"
         component={ForgotPasswordScreen}
+        options={{
+          headerLargeTitle: true,
+          title: 'Restablecer',
+          headerTransparent: false,
+          headerBackTitle: 'Inicio',
+        }}
+      />
+
+      <AuthStack.Screen
+        name="AuthResetPassword"
+        component={ResetPasswordScreen}
         options={{
           headerLargeTitle: true,
           title: 'Restablecer',

@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "stravel",
     "name": "Stravel",
     "slug": "Stravel",
     "version": "1.0.0",

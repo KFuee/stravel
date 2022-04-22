@@ -13,7 +13,7 @@ export type AuthStackParamList = {
   AuthSignIn: undefined;
   AuthRegister: undefined;
   AuthForgotPassword: undefined;
-  AuthResetPassword: { token: string };
+  AuthResetPasswordModal: { token: string };
 };
 
 const AuthStack = createNativeStackNavigator<AuthStackParamList>();
@@ -63,13 +63,11 @@ export default function AuthNavigator() {
       />
 
       <AuthStack.Screen
-        name="AuthResetPassword"
+        name="AuthResetPasswordModal"
         component={ResetPasswordScreen}
         options={{
-          headerLargeTitle: true,
-          title: 'Restablecer',
-          headerTransparent: false,
-          headerBackTitle: 'Inicio',
+          presentation: 'modal',
+          title: 'Restablecer contraseña',
         }}
       />
     </AuthStack.Navigator>

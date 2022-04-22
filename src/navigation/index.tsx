@@ -1,6 +1,11 @@
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import {
+  NavigationContainer,
+  DefaultTheme,
+  NavigatorScreenParams,
+} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import * as Linking from 'expo-linking';
+
+import linking from './linkingConfig';
 
 // context
 import { useAuth } from '../contexts/AuthContext';
@@ -11,6 +16,15 @@ import AuthNavigator from './AuthNavigator';
 
 // components
 import Loading from '../components/General/Loading';
+
+// types
+import type { AuthStackParamList } from './AuthNavigator';
+
+// Definición de tipos para las rutas del stack
+export type RootStackParamList = {
+  Tab: undefined;
+  Auth: NavigatorScreenParams<AuthStackParamList>;
+};
 
 const RootStack = createNativeStackNavigator();
 
@@ -23,8 +37,6 @@ const AppNavigationTheme = {
   },
 };
 
-const prefix = Linking.createURL('/');
-
 function RootNavigator() {
   // hooks
   const { authData, loading } = useAuth();
@@ -33,23 +45,8 @@ function RootNavigator() {
     return <Loading />;
   }
 
-  const linking = {
-    prefixes: [prefix],
-    config: {
-      screens: {
-        Auth: {
-          screens: {
-            AuthResetPassword: 'auth/reset-password/:token',
-          },
-        },
-      },
-    },
-  };
-
   return (
     <NavigationContainer
-      // @ts-ignore
-      // TODO: Fix this
       linking={linking}
       fallback={<Loading />}
       theme={AppNavigationTheme}

@@ -1,5 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useForm } from 'react-hook-form';
+import { useNavigation } from '@react-navigation/native';
 
 // contexts
 import { useAuth } from '../../contexts/AuthContext';
@@ -9,6 +11,10 @@ import DimissKeyboard from '../../components/General/DimissKeyboard';
 import EmailFormInput from '../../components/Auth/EmailFormInput';
 import PasswordFormInput from '../../components/Auth/PasswordFormInput';
 import ActionButton from '../../components/General/ActionButton';
+
+import type { AuthStackParamList } from '../../navigation/AuthNavigator';
+
+type AuthSignInScreenProps = NativeStackNavigationProp<AuthStackParamList>;
 
 const styles = StyleSheet.create({
   container: {
@@ -57,6 +63,7 @@ function AuthSignInScreen() {
       password: '',
     },
   });
+  const { navigate } = useNavigation<AuthSignInScreenProps>();
 
   // handlers
   const handleSignIn = (data: { email: string; password: string }) => {
@@ -79,7 +86,10 @@ function AuthSignInScreen() {
             onPress={handleSubmit(handleSignIn)}
           />
 
-          <TouchableOpacity style={{ width: '100%' }} onPress={() => {}}>
+          <TouchableOpacity
+            style={{ width: '100%' }}
+            onPress={() => navigate('AuthForgotPassword')}
+          >
             <View style={styles.forgotPasswordButton}>
               <Text>¿Has olvidado la contraseña?</Text>
             </View>

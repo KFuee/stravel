@@ -44,3 +44,7 @@ export const signOut = async (
 
   return response.data;
 };
+
+export const forgotPassword = (email: string) => {
+  axios.post('http://localhost:3001/v1/auth/forgot-password', { email });
+};

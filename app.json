@@ -23,7 +23,8 @@
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "softwareKeyboardLayoutMode": "pan"
+      "softwareKeyboardLayoutMode": "pan",
+      "permissions": ["ACCESS_NETWORK_STATE"]
     },
     "web": {
       "favicon": "./src/assets/favicon.png"

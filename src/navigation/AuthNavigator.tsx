@@ -59,7 +59,6 @@ export default function AuthNavigator() {
             headerLargeTitle: true,
             title: 'Restablecer',
             headerTransparent: false,
-            headerBackTitle: 'Inicio',
           }}
         />
 

@@ -70,14 +70,9 @@ function AuthRegisterScreen() {
             autoCapitalize="words"
           />
 
-          <EmailFormInput
-            name="email-register"
-            control={control}
-            errors={errors}
-          />
+          <EmailFormInput control={control} errors={errors} />
 
           <PasswordFormInput
-            name="password-register"
             control={control}
             errors={errors}
             requiresPattern

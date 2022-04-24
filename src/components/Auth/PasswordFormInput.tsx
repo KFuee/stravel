@@ -1,7 +1,12 @@
 // components
 import FormInput from '../General/FormInput';
 
-function PasswordFormInput({ control, errors, requiresPattern }: any) {
+function PasswordFormInput({
+  control,
+  errors,
+  requiresPattern,
+  placeholder,
+}: any) {
   return (
     <FormInput
       name="password"
@@ -17,7 +22,7 @@ function PasswordFormInput({ control, errors, requiresPattern }: any) {
         }),
       }}
       errors={errors}
-      placeholder="Contraseña"
+      placeholder={placeholder || 'Contraseña'}
       autoCapitalize="none"
       secureTextEntry
     />

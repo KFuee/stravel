@@ -1,13 +1,11 @@
 import { Alert, StyleSheet, View } from 'react-native';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 // components
 import DimissKeyboard from '../../components/General/DimissKeyboard';
 import EmailFormInput from '../../components/Auth/EmailFormInput';
 import ActionButton from '../../components/General/ActionButton';
-
-// services
-import { forgotPassword } from '../../services/authService';
 
 const styles = StyleSheet.create({
   container: {
@@ -45,7 +43,9 @@ export default function ForgotPasswordScreen({ navigation }: any) {
 
   const handleForgotPassword = async (data: { email: string }) => {
     try {
-      await forgotPassword(data.email);
+      await axios.post('http://localhost:3001/v1/auth/forgot-password', {
+        email: data.email,
+      });
 
       // Vuelve a la vista de inicio de sesión
       navigation.goBack();

@@ -1,5 +1,6 @@
-import { StyleSheet, View } from 'react-native';
+import { Alert, StyleSheet, View } from 'react-native';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 // components
 import DimissKeyboard from '../../components/General/DimissKeyboard';
@@ -28,7 +29,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ResetPasswordScreen({ route }: any) {
+export default function ResetPasswordScreen({ route, navigation }: any) {
   const { token } = route.params;
 
   // hooks
@@ -43,8 +44,27 @@ export default function ResetPasswordScreen({ route }: any) {
   });
 
   // handlers
-  const handleReset = (data: { password: string }) => {
-    console.log(token, data.password);
+  const handleReset = async (data: { password: string }) => {
+    try {
+      await axios.post(
+        'http://localhost:3001/v1/auth/reset-password',
+        { password: data.password },
+        {
+          params: { token },
+        },
+      );
+
+      // Vuelve al landing de auth y cierra el modal
+      navigation.goBack();
+      Alert.alert('Éxito', 'La contraseña ha sido modificada correctamente');
+    } catch (err: any) {
+      if (err.response) {
+        Alert.alert('Error', err.response.data.message);
+        return;
+      }
+
+      Alert.alert('Error', err.message);
+    }
   };
 
   return (

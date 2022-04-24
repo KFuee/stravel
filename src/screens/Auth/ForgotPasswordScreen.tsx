@@ -43,16 +43,16 @@ export default function ForgotPasswordScreen({ navigation }: any) {
     },
   });
 
-  const handleForgotPassword = (data: { email: string }) => {
+  const handleForgotPassword = async (data: { email: string }) => {
     try {
-      forgotPassword(data.email);
+      await forgotPassword(data.email);
 
+      // Vuelve a la vista de inicio de sesión
+      navigation.goBack();
       Alert.alert(
         'Éxito',
         'Comprueba tu correo electrónico para restablecer tu contraseña',
       );
-      // Vuelve a la vista de inicio de sesión
-      navigation.goBack();
     } catch (err: any) {
       if (err.response) {
         Alert.alert('Error', err.response.data.message);

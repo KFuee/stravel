@@ -11,6 +11,7 @@ import { FontAwesome } from '@expo/vector-icons';
 
 import StarRating from '../../General/StarRating';
 
+// types
 import type { ExploreStackParamList } from '../../../navigation/ExploreNavigator';
 
 type AttractionScreenProps = NativeStackNavigationProp<

@@ -3,6 +3,7 @@ import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
+// types
 import type { TransportStackParamList } from '../../../../navigation/TransportNavigator';
 
 type BusLineItemProps = NativeStackNavigationProp<TransportStackParamList>;

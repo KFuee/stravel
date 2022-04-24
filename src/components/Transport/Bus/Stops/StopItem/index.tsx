@@ -5,6 +5,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 
 import StopItemLines from './StopItemLines';
 
+// types
 import type { TransportStackParamList } from '../../../../../navigation/TransportNavigator';
 
 type BusStopItemProps = NativeStackNavigationProp<TransportStackParamList>;

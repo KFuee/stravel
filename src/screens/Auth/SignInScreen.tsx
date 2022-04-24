@@ -12,6 +12,7 @@ import EmailFormInput from '../../components/Auth/EmailFormInput';
 import PasswordFormInput from '../../components/Auth/PasswordFormInput';
 import ActionButton from '../../components/General/ActionButton';
 
+// types
 import type { AuthStackParamList } from '../../navigation/AuthNavigator';
 
 type AuthSignInScreenProps = NativeStackNavigationProp<AuthStackParamList>;

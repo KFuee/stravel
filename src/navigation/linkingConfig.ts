@@ -11,6 +11,7 @@ const linking: LinkingOptions<RootStackParamList> = {
   config: {
     screens: {
       Auth: {
+        initialRouteName: 'AuthLanding',
         screens: {
           AuthResetPasswordModal: 'auth/reset-password/:token',
         },

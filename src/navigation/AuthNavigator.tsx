@@ -20,56 +20,58 @@ const AuthStack = createNativeStackNavigator<AuthStackParamList>();
 
 export default function AuthNavigator() {
   return (
-    <AuthStack.Navigator>
-      <AuthStack.Screen
-        name="AuthLanding"
-        component={AuthLandingScreen}
-        options={{
-          headerShown: false,
-        }}
-      />
+    <AuthStack.Navigator initialRouteName="AuthLanding">
+      <AuthStack.Group>
+        <AuthStack.Screen
+          name="AuthLanding"
+          component={AuthLandingScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
 
-      <AuthStack.Screen
-        name="AuthSignIn"
-        component={AuthSignInScreen}
-        options={{
-          headerLargeTitle: true,
-          title: 'Iniciar sesión',
-          headerTransparent: false,
-          headerBackTitle: 'Inicio',
-        }}
-      />
+        <AuthStack.Screen
+          name="AuthSignIn"
+          component={AuthSignInScreen}
+          options={{
+            headerLargeTitle: true,
+            title: 'Iniciar sesión',
+            headerTransparent: false,
+            headerBackTitle: 'Inicio',
+          }}
+        />
 
-      <AuthStack.Screen
-        name="AuthRegister"
-        component={AuthRegisterScreen}
-        options={{
-          headerLargeTitle: true,
-          title: 'Registrarse',
-          headerTransparent: false,
-          headerBackTitle: 'Inicio',
-        }}
-      />
+        <AuthStack.Screen
+          name="AuthRegister"
+          component={AuthRegisterScreen}
+          options={{
+            headerLargeTitle: true,
+            title: 'Registrarse',
+            headerTransparent: false,
+            headerBackTitle: 'Inicio',
+          }}
+        />
 
-      <AuthStack.Screen
-        name="AuthForgotPassword"
-        component={ForgotPasswordScreen}
-        options={{
-          headerLargeTitle: true,
-          title: 'Restablecer',
-          headerTransparent: false,
-          headerBackTitle: 'Inicio',
-        }}
-      />
+        <AuthStack.Screen
+          name="AuthForgotPassword"
+          component={ForgotPasswordScreen}
+          options={{
+            headerLargeTitle: true,
+            title: 'Restablecer',
+            headerTransparent: false,
+            headerBackTitle: 'Inicio',
+          }}
+        />
 
-      <AuthStack.Screen
-        name="AuthResetPasswordModal"
-        component={ResetPasswordScreen}
-        options={{
-          presentation: 'modal',
-          title: 'Restablecer contraseña',
-        }}
-      />
+        <AuthStack.Screen
+          name="AuthResetPasswordModal"
+          component={ResetPasswordScreen}
+          options={{
+            presentation: 'modal',
+            title: 'Restablecer contraseña',
+          }}
+        />
+      </AuthStack.Group>
     </AuthStack.Navigator>
   );
 }

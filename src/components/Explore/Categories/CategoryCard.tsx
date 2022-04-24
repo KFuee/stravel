@@ -8,6 +8,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
+// types
 import type { ExploreStackParamList } from '../../../navigation/ExploreNavigator';
 
 type CategoryScreenProps = NativeStackNavigationProp<ExploreStackParamList>;

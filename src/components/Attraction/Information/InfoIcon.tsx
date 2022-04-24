@@ -3,6 +3,7 @@ import { FontAwesome } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
+// types
 import type { AttractionStackParamList } from '../../../navigation/AttractionNavigator';
 
 type AttractionInfoProps = NativeStackNavigationProp<

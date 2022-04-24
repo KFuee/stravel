@@ -13,7 +13,7 @@ export default function ResetPasswordScreen({ route }: any) {
 
   return (
     <View style={styles.container}>
-      <Text>{token}</Text>
+      <Text>{token || ''}</Text>
     </View>
   );
 }

@@ -7,6 +7,7 @@ import CategoryScreen from '../screens/Explore/CategoryScreen';
 // Navigators
 import AttractionNavigator from './AttractionNavigator';
 
+// types
 import type { AttractionStackParamList } from './AttractionNavigator';
 
 // Definición de tipos para las rutas del stack

@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 // components
 import ActionButton from '../../components/General/ActionButton';
 
+// types
 import type { AuthStackParamList } from '../../navigation/AuthNavigator';
 
 type AuthLandingScreenProps = NativeStackNavigationProp<AuthStackParamList>;

@@ -6,6 +6,7 @@ import HomeScreen from '../screens/HomeScreen';
 // Navigators
 import AttractionNavigator from './AttractionNavigator';
 
+// types
 import type { AttractionStackParamList } from './AttractionNavigator';
 
 // Definición de tipos para las rutas del stack

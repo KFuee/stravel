@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+// types
 import type { HomeStackParamList } from '../../../navigation/HomeNavigator';
 
 type AttractionScreenProps = NativeStackNavigationProp<

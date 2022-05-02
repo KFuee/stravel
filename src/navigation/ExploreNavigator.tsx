@@ -29,6 +29,9 @@ export type ExploreStackParamList = {
 const ExploreStack = createNativeStackNavigator<ExploreStackParamList>();
 
 export default function ExploreNavigator() {
+  // hooks
+  // const { authData } = useAuth();
+
   // states
   const [searchBarFocused, setSearchBarFocused] = useState(false);
   const [searchText, setSearchText] = useState('');

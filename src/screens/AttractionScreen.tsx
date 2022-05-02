@@ -1,8 +1,13 @@
+import { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
+import axios from 'axios';
 
+// components
+import Loading from '../components/General/Loading';
 import AttractionInformation from '../components/Attraction/Information';
 
-import { getAttraction } from '../data/exploreData';
+// types
+import { Attraction } from '../types/attractions';
 
 const styles = StyleSheet.create({
   container: {
@@ -34,11 +39,40 @@ const styles = StyleSheet.create({
 
 function AttractionScreen({ route }: any) {
   const { id } = route.params;
-  const attraction = getAttraction(id);
+
+  const [loading, setLoading] = useState(true);
+  const [attraction, setAttraction] = useState<Attraction>({} as Attraction);
+
+  const fetchData = useCallback(async () => {
+    try {
+      const response = await axios.get(
+        'http://192.168.1.15:3001/v1/places/business',
+        { params: { id } },
+      );
+
+      setAttraction(response.data);
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [id]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <View style={styles.container}>
-      <Image source={attraction?.image} style={styles.cover} />
+      <Image
+        source={{
+          uri: attraction.image_url,
+        }}
+        style={styles.cover}
+      />
 
       <View style={styles.contentContainer}>
         <AttractionInformation attraction={attraction} />

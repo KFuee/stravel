@@ -11,7 +11,8 @@ function SearchResultsList({ items, type }: any) {
       keyExtractor={(_item, index) => `search-result-${type}-${index}`}
       renderItem={({ item }: any) => (
         <SearchResultItem
-          title={type === 'categories' ? item.title : item.name || item.text}
+          item={item}
+          type={type === 'categories' ? 'category' : 'business'}
         />
       )}
       ItemSeparatorComponent={Separator}

@@ -1,5 +1,15 @@
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StyleSheet, TouchableOpacity, View, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { FontAwesome5 } from '@expo/vector-icons';
+
+// types
+import type { ExploreStackParamList } from '../../../../navigation/ExploreNavigator';
+
+type AttractionScreenProps = NativeStackNavigationProp<
+  ExploreStackParamList,
+  'ExploreAttraction'
+>;
 
 const styles = StyleSheet.create({
   item: {
@@ -18,13 +28,24 @@ const styles = StyleSheet.create({
   },
 });
 
-function SearchResultItem({ title }: any) {
+function SearchResultItem({ item, type }: any) {
+  // hooks
+  const navigation = useNavigation<AttractionScreenProps>();
+
   return (
-    <TouchableOpacity onPress={() => {}} activeOpacity={0.8}>
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('ExploreAttraction', {
+          screen: 'AttractionLanding',
+          params: { id: type === 'category' ? item.alias : item.id },
+        });
+      }}
+      activeOpacity={0.8}
+    >
       <View style={styles.item}>
         <View style={{ width: '75%', paddingVertical: 8 }}>
           <Text style={styles.itemText} numberOfLines={1}>
-            {title}
+            {type === 'category' ? item.title : item.name || item.text}
           </Text>
         </View>
 

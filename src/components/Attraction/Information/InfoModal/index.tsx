@@ -25,14 +25,14 @@ function AttractionInfoModal({ route }: any) {
 
       <View style={styles.detailsContainer}>
         <AttractionDetails
-          title={attraction.title}
-          category={attraction.category}
+          title={attraction.name}
+          category={attraction.categories[0].title}
         />
 
         <DetailsList
           details={{
-            address: attraction.address,
-            phoneNumber: attraction.phoneNumber,
+            address: attraction.location.address1,
+            phoneNumber: attraction.phone,
             website: attraction.website,
             rating: attraction.rating,
           }}

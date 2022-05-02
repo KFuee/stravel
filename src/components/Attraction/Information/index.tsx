@@ -21,9 +21,9 @@ function AttractionInformation({ attraction }: any) {
   return (
     <View style={styles.info}>
       <View>
-        <Text style={styles.title}>{attraction?.title}</Text>
+        <Text style={styles.title}>{attraction?.name}</Text>
 
-        <LocationDetails streetAdress={attraction?.address} />
+        <LocationDetails streetAdress={attraction?.location.address1} />
 
         <StarRating rating={attraction?.rating} textColor="#000000" />
       </View>

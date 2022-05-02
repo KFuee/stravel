@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, ScrollView } from 'react-native';
 import axios from 'axios';
 
 // components
 import Loading from '../components/General/Loading';
 import AttractionInformation from '../components/Attraction/Information';
+import AttractionActionButtons from '../components/Attraction/ActionButtons';
 
 // types
 import { Attraction } from '../types/attractions';
@@ -74,9 +75,11 @@ function AttractionScreen({ route }: any) {
         style={styles.cover}
       />
 
-      <View style={styles.contentContainer}>
+      <ScrollView style={styles.contentContainer}>
         <AttractionInformation attraction={attraction} />
-      </View>
+
+        <AttractionActionButtons />
+      </ScrollView>
     </View>
   );
 }

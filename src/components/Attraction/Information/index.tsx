@@ -1,34 +1,43 @@
 import { StyleSheet, View, Text } from 'react-native';
 
-import LocationDetails from './LocationDetails';
-import StarRating from '../../General/StarRating';
-import InfoIcon from './InfoIcon';
+// components
+import AttractionDetail from './AttractionDetail';
+import AttractionRating from './AttractionRating';
 
 const styles = StyleSheet.create({
-  info: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-
   title: {
     fontSize: 22,
     fontWeight: 'bold',
-    marginBottom: 16,
+    marginBottom: 8,
+  },
+
+  detailsContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 
 function AttractionInformation({ attraction }: any) {
   return (
-    <View style={styles.info}>
-      <View>
-        <Text style={styles.title}>{attraction?.name}</Text>
+    <View>
+      <Text style={styles.title}>{attraction.name}</Text>
+      <Text style={{ fontSize: 16, marginBottom: 8 }}>
+        {attraction.price ? `${attraction.price} - ` : 'Gratuito - '}
+        {attraction.categories[0].title}
+      </Text>
 
-        <LocationDetails streetAdress={attraction?.location.address1} />
+      <AttractionRating attraction={attraction} />
 
-        <StarRating rating={attraction?.rating} textColor="#000000" />
+      <View style={styles.detailsContainer}>
+        <AttractionDetail
+          icon="phone-square"
+          text={attraction?.phone || '638384832'}
+        />
+
+        <AttractionDetail icon="globe" text="yelp.es" />
       </View>
 
-      <InfoIcon attraction={attraction} />
+      <AttractionDetail icon="map-marker" text={attraction.location.address1} />
     </View>
   );
 }

@@ -1,3 +1,34 @@
+export const searchData = {
+  categories: [
+    {
+      alias: 'restaurants',
+      title: 'Restaurantes y bares',
+    },
+    {
+      alias: 'artrestoration',
+      title: 'Restauración de arte',
+    },
+    {
+      alias: 'food_court',
+      title: 'Zona de restaurantes',
+    },
+  ],
+  businesses: [
+    {
+      id: 'kjt7ii8iw-ajtrVQlSOCDA',
+      name: 'Plaza del Pilar',
+    },
+    {
+      id: '4EQ5Oc5fpbhF0WPGdaj4Qg',
+      name: 'Plaza de los Sitios',
+    },
+    {
+      id: 'Qw3r6-PYiqmSOKrSwXVgQQ',
+      name: 'Plaza de España',
+    },
+  ],
+};
+
 export const categories = [
   {
     id: 1,

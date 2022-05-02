@@ -19,8 +19,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 
-  leftContainer: {},
-
   title: {
     fontSize: 16,
     marginBottom: 8,
@@ -40,7 +38,7 @@ export default function BusStopItem({ stop }: any) {
       activeOpacity={0.8}
     >
       <View style={[styles.item, { paddingTop: stop.id === 1 ? 16 : 8 }]}>
-        <View style={styles.leftContainer}>
+        <View>
           <Text style={styles.title}>{stop.name}</Text>
 
           <StopItemLines lines={stop.lines} />

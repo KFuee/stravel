@@ -11,12 +11,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFF',
   },
-
-  separator: {
-    height: 1,
-    backgroundColor: 'lightgray',
-    marginVertical: 8,
-  },
 });
 
 export default function BusStops() {

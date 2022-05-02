@@ -4,7 +4,7 @@ import axios from 'axios';
 import { AuthData } from '../types/auth';
 
 // url base de la api
-axios.defaults.baseURL = 'http://localhost:3001/v1/';
+axios.defaults.baseURL = 'http://192.168.1.15:3001/v1/';
 
 export const register = async (
   name: string,

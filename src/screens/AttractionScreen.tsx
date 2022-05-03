@@ -6,9 +6,11 @@ import axios from 'axios';
 import Loading from '../components/General/Loading';
 import AttractionInformation from '../components/Attraction/Information';
 import AttractionActionButtons from '../components/Attraction/ActionButtons';
+import AttractionReviews from '../components/Attraction/Reviews';
 
 // types
-import { Attraction } from '../types/attractions';
+import { Attraction } from '../types/attractions/attraction';
+import { Review } from '../types/attractions/review';
 
 const styles = StyleSheet.create({
   container: {
@@ -41,27 +43,39 @@ const styles = StyleSheet.create({
 function AttractionScreen({ route }: any) {
   const { id } = route.params;
 
+  // states
   const [loading, setLoading] = useState(true);
   const [attraction, setAttraction] = useState<Attraction>({} as Attraction);
+  const [reviews, setReviews] = useState<Review[]>({} as Review[]);
 
+  // callbacks
   const fetchData = useCallback(async () => {
     try {
-      const response = await axios.get(
+      const attractionResponse = await axios.get(
         'http://192.168.1.15:3001/v1/places/business',
         { params: { id } },
       );
 
-      setAttraction(response.data);
+      const reviewsResponse = await axios.get(
+        'http://192.168.1.15:3001/v1/places/reviews',
+        { params: { id } },
+      );
+
+      setAttraction(attractionResponse.data);
+      setReviews(reviewsResponse.data);
+
       setLoading(false);
     } catch (err) {
       console.log(err);
     }
   }, [id]);
 
+  // effects
   useEffect(() => {
     fetchData();
   }, [fetchData]);
 
+  // Espera a que se cargue la información
   if (loading) {
     return <Loading />;
   }
@@ -79,6 +93,8 @@ function AttractionScreen({ route }: any) {
         <AttractionInformation attraction={attraction} />
 
         <AttractionActionButtons />
+
+        <AttractionReviews reviews={reviews} />
       </ScrollView>
     </View>
   );

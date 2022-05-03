@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import StarRating from '../../General/StarRating';
 
 // types
-import { Attraction } from '../../../types/attractions';
+import { Attraction } from '../../../types/attractions/attraction';
 
 const styles = StyleSheet.create({
   container: { flexDirection: 'row', alignItems: 'center', marginBottom: 16 },

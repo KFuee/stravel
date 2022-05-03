@@ -4,7 +4,6 @@ const styles = StyleSheet.create({
   separator: {
     height: 1,
     backgroundColor: 'lightgray',
-    marginVertical: 8,
   },
 });
 

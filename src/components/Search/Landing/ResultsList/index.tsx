@@ -9,10 +9,11 @@ function SearchResultsList({ items, type }: any) {
     <FlatList
       data={items}
       keyExtractor={(_item, index) => `search-result-${type}-${index}`}
-      renderItem={({ item }: any) => (
+      renderItem={({ item, index }: any) => (
         <SearchResultItem
           item={item}
           type={type === 'categories' ? 'category' : 'business'}
+          isFirst={index === 0}
         />
       )}
       ItemSeparatorComponent={Separator}

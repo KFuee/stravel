@@ -11,10 +11,11 @@ const styles = StyleSheet.create({
     flex: 1,
     flexGrow: 1,
     backgroundColor: '#FFF',
+    padding: 16,
   },
 
   title: {
-    marginBottom: 16,
+    marginBottom: 8,
     fontSize: 16,
     fontWeight: 'bold',
     lineHeight: 25,
@@ -29,7 +30,7 @@ function SearchLandingScreen({
   searchResults,
 }: any) {
   return (
-    <View style={[styles.container, { padding: 16 }]}>
+    <View style={styles.container}>
       {searchText.length > 0 && (
         <View>
           <View>

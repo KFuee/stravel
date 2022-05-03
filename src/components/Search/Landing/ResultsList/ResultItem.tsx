@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function SearchResultItem({ item, type }: any) {
+function SearchResultItem({ item, type, isFirst }: any) {
   // hooks
   const navigation = useNavigation<AttractionScreenProps>();
 
@@ -41,6 +41,7 @@ function SearchResultItem({ item, type }: any) {
         });
       }}
       activeOpacity={0.8}
+      style={isFirst ? { paddingBottom: 8 } : { paddingVertical: 8 }}
     >
       <View style={styles.item}>
         <View style={{ width: '75%', paddingVertical: 8 }}>

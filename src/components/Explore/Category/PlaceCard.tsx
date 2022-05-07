@@ -2,6 +2,9 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
+// utils
+import { metersToDistance } from '../../../utils';
+
 // components
 import CategoryCardImage from './CardImage';
 
@@ -62,7 +65,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function PlaceCard({ id, title, rating, image }: any) {
+function PlaceCard({ id, title, rating, image, distance }: any) {
   const navigation = useNavigation<AttractionScreenProps>();
 
   return (
@@ -81,7 +84,9 @@ function PlaceCard({ id, title, rating, image }: any) {
         <View style={styles.bottomContainer}>
           <View style={styles.bottomLeft}>
             <Text style={styles.title}>{title}</Text>
-            <Text style={styles.distance}>5-15 min - 0.5 km</Text>
+            <Text style={styles.distance}>
+              5-15 min - {metersToDistance(distance)}
+            </Text>
           </View>
 
           <View style={styles.bottomRight}>

@@ -36,6 +36,7 @@ function PlacesBottomSheet({
         title={item.name}
         rating={item.rating}
         image={item.image_url}
+        distance={item.distance}
       />
     ),
     [],

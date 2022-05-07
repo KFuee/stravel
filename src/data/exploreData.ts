@@ -32,26 +32,31 @@ export const searchData = {
 export const categories = [
   {
     id: 1,
+    alias: 'hotels',
     title: 'Hoteles',
     image: require('../assets/images/hotels-category.jpg'),
   },
   {
     id: 2,
+    alias: 'restaurants',
     title: 'Restaurantes',
     image: require('../assets/images/restaurants-category.jpg'),
   },
   {
     id: 3,
+    alias: 'museums',
     title: 'Museos',
     image: require('../assets/images/museums-category.jpg'),
   },
   {
     id: 4,
+    alias: 'landmarks',
     title: 'Monumetos',
     image: require('../assets/images/monuments-category.jpg'),
   },
   {
     id: 5,
+    alias: 'parks',
     title: 'Parques',
     image: require('../assets/images/parks-category.jpg'),
   },

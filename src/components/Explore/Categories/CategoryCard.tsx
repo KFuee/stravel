@@ -42,12 +42,12 @@ const styles = StyleSheet.create({
   },
 });
 
-function CategoryCard({ id, title, image, isLast }: any) {
+function CategoryCard({ id, alias, title, image, isLast }: any) {
   const { navigate } = useNavigation<CategoryScreenProps>();
 
   return (
     <TouchableOpacity
-      onPress={() => navigate('ExploreCategory', { title })}
+      onPress={() => navigate('ExploreCategory', { alias, title })}
       activeOpacity={0.8}
     >
       <View

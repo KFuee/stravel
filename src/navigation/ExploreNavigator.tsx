@@ -19,7 +19,7 @@ import type { AttractionStackParamList } from './AttractionNavigator';
 // Definición de tipos para las rutas del stack
 export type ExploreStackParamList = {
   ExploreLanding: { searchBarFocused: boolean };
-  ExploreCategory: { title: string };
+  ExploreCategory: { alias: string; title: string };
   ExploreAttraction: {
     screen: string;
     params: AttractionStackParamList['AttractionLanding'];

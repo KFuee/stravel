@@ -1,13 +1,9 @@
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import {
-  StyleSheet,
-  View,
-  ImageBackground,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+
+// components
+import CategoryCardImage from './CardImage';
 
 // types
 import type { ExploreStackParamList } from '../../../navigation/ExploreNavigator';
@@ -20,38 +16,6 @@ type AttractionScreenProps = NativeStackNavigationProp<
 const styles = StyleSheet.create({
   container: {
     marginBottom: 16,
-  },
-
-  imageContainer: {
-    width: '100%',
-    height: 153,
-    marginBottom: 8,
-  },
-
-  image: {
-    flex: 1,
-    overflow: 'hidden',
-    resizeMode: 'cover',
-    borderRadius: 5,
-    position: 'relative',
-  },
-
-  overlay: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
-  },
-
-  bookmarkContainer: {
-    top: 12,
-    right: 12,
-    width: 32,
-    height: 32,
-    position: 'absolute',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(252, 252, 253, 0.2)',
-    borderRadius: 80,
   },
 
   bottomContainer: {
@@ -112,15 +76,7 @@ function PlaceCard({ id, title, rating, image }: any) {
       activeOpacity={0.8}
     >
       <View style={styles.container}>
-        <View style={styles.imageContainer}>
-          <ImageBackground source={image} style={styles.image}>
-            <View style={styles.overlay}>
-              <View style={styles.bookmarkContainer}>
-                <FontAwesome name="bookmark-o" size={20} color="#FFF" />
-              </View>
-            </View>
-          </ImageBackground>
-        </View>
+        <CategoryCardImage image={image} />
 
         <View style={styles.bottomContainer}>
           <View style={styles.bottomLeft}>

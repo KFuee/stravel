@@ -4,8 +4,6 @@ import BottomSheet, { BottomSheetFlatList } from '@gorhom/bottom-sheet';
 
 import PlaceCard from './PlaceCard';
 
-import { attractions } from '../../../data/exploreData';
-
 const styles = StyleSheet.create({
   listTitle: {
     fontSize: 16,
@@ -21,18 +19,23 @@ const styles = StyleSheet.create({
   },
 });
 
-function PlacesBottomSheet({ sheetRef, index, onChange, category }: any) {
+function PlacesBottomSheet({
+  sheetRef,
+  index,
+  onChange,
+  category,
+  attractions,
+}: any) {
   // memoized values
-  const data = useMemo(() => attractions, []);
   const snapPoints = useMemo(() => ['25%', '50%', '100%'], []);
 
   const renderItem = useCallback(
     ({ item }) => (
       <PlaceCard
         id={item.id}
-        title={item.title}
+        title={item.name}
         rating={item.rating}
-        image={item.image}
+        image={item.image_url}
       />
     ),
     [],
@@ -47,11 +50,11 @@ function PlacesBottomSheet({ sheetRef, index, onChange, category }: any) {
       backgroundStyle={{ borderRadius: index !== 2 ? 16 : 0 }}
     >
       <Text style={styles.listTitle}>
-        56 resultados para &quot;{category}&quot;
+        {attractions.length} resultados para &quot;{category}&quot;
       </Text>
 
       <BottomSheetFlatList
-        data={data}
+        data={attractions}
         renderItem={renderItem}
         contentContainerStyle={styles.contentContainer}
       />

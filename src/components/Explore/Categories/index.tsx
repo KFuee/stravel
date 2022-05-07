@@ -18,13 +18,14 @@ const styles = StyleSheet.create({
 function Categories() {
   return (
     <View>
-      <Text style={styles.title}>Categorías</Text>
+      <Text style={styles.title}>Categorías destacadas</Text>
 
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {categories.map(category => (
           <CategoryCard
             key={category.id}
             id={category.id}
+            alias={category.alias}
             title={category.title}
             image={category.image}
             isLast={category.id === categories.length}

@@ -35,10 +35,17 @@ function SearchResultItem({ item, type, isFirst }: any) {
   return (
     <TouchableOpacity
       onPress={() => {
-        navigation.navigate('ExploreAttraction', {
-          screen: 'AttractionLanding',
-          params: { id: type === 'category' ? item.alias : item.id },
-        });
+        if (type === 'category') {
+          navigation.navigate('ExploreCategory', {
+            alias: item.alias,
+            title: item.title,
+          });
+        } else {
+          navigation.navigate('ExploreAttraction', {
+            screen: 'AttractionLanding',
+            params: { id: type === 'category' ? item.alias : item.id },
+          });
+        }
       }}
       activeOpacity={0.8}
       style={isFirst ? { paddingBottom: 8 } : { paddingVertical: 8 }}

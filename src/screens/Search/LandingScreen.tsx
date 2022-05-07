@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 // components
 import SearchResultsLoader from '../../components/Search/Landing/ResultsLoader';
 import SearchResultsList from '../../components/Search/Landing/ResultsList';
-import SearchNoResults from '../../components/Search/Landing/NoResults';
+import NoResultsBanner from '../../components/General/NoResultsBanner';
 import YelpLogo from '../../components/Search/Landing/YelpLogo';
 
 const styles = StyleSheet.create({
@@ -66,7 +66,7 @@ function SearchLandingScreen({
 
       {searchResults.categories.length === 0 &&
         searchResults.businesses.length === 0 &&
-        searchText.length === 0 && <SearchNoResults />}
+        searchText.length === 0 && <NoResultsBanner />}
 
       {searchText.length > 0 && <YelpLogo />}
     </View>

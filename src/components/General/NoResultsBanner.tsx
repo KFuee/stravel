@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#FFF',
   },
 
   text: { fontSize: 16, fontWeight: 'bold' },
@@ -15,13 +16,13 @@ const styles = StyleSheet.create({
   },
 });
 
-function SearchNoResults() {
+function NoResultsBanner() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>No se encontraron resultados</Text>
+      <Text style={styles.text}>Ops, no se encontraron resultados</Text>
 
       <Image
-        source={require('../../../assets/images/illustrations/explore-empty.png')}
+        source={require('../../assets/images/illustrations/no-results.png')}
         style={styles.illustration}
         resizeMode="contain"
       />
@@ -29,4 +30,4 @@ function SearchNoResults() {
   );
 }
 
-export default SearchNoResults;
+export default NoResultsBanner;

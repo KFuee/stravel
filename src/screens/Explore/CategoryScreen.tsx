@@ -9,6 +9,7 @@ import axios from 'axios';
 
 // components
 import Loading from '../../components/General/Loading';
+import NoResultsBanner from '../../components/General/NoResultsBanner';
 import PlacesMap from '../../components/Explore/Category/PlacesMap';
 import PlacesBottomSheet from '../../components/Explore/Category/PlacesBottomSheet';
 
@@ -103,6 +104,10 @@ function CategoryScreen({ route }: any) {
   // Espera a que se cargue la información
   if (loading) {
     return <Loading />;
+  }
+
+  if (attractions.length === 0) {
+    return <NoResultsBanner />;
   }
 
   return (

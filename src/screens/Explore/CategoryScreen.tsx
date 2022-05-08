@@ -78,6 +78,7 @@ function CategoryScreen({ route }: any) {
             term: alias,
             latitude: '41.651365271764284',
             longitude: '-0.8889731889860247',
+            limit: 50,
           },
         },
       );

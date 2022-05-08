@@ -52,7 +52,7 @@ function SearchResultItem({ item, type, isFirst }: any) {
     >
       <View style={styles.item}>
         <View style={{ width: '75%', paddingVertical: 8 }}>
-          <Text style={styles.itemText} numberOfLines={1}>
+          <Text style={styles.itemText} adjustsFontSizeToFit numberOfLines={1}>
             {type === 'category' ? item.title : item.name || item.text}
           </Text>
         </View>

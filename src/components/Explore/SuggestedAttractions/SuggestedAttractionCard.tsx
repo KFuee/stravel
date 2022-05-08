@@ -111,7 +111,7 @@ function SuggestedAttractionCard({ id, category, title, rating, image }: any) {
       activeOpacity={0.8}
     >
       <View style={[styles.container]}>
-        <ImageBackground source={image} style={styles.content}>
+        <ImageBackground source={{ uri: image }} style={styles.content}>
           <Text style={styles.category}>{category}</Text>
 
           <View style={styles.titleContainer}>

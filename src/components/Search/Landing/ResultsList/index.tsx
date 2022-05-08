@@ -18,6 +18,7 @@ function SearchResultsList({ items, type }: any) {
       )}
       ItemSeparatorComponent={Separator}
       scrollEnabled={false}
+      showsVerticalScrollIndicator={false}
     />
   );
 }

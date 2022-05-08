@@ -1,4 +1,4 @@
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleSheet } from 'react-native';
 
 // components
 import Categories from '../../components/Explore/Categories';
@@ -30,12 +30,13 @@ function ExploreScreen({
   }
 
   return (
-    <View style={styles.container}>
-      <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <Categories />
-        <SuggestedAttractions />
-      </ScrollView>
-    </View>
+    <ScrollView
+      style={styles.container}
+      contentInsetAdjustmentBehavior="automatic"
+    >
+      <Categories />
+      <SuggestedAttractions />
+    </ScrollView>
   );
 }
 

@@ -99,6 +99,7 @@ export default function ExploreNavigator() {
             autoCapitalize: 'none',
             onFocus: () => setSearchBarFocused(true),
             onCancelButtonPress: () => setSearchBarFocused(false),
+            onClose: () => setSearchBarFocused(false),
             onChangeText,
           },
         }}

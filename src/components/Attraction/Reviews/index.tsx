@@ -49,7 +49,9 @@ function AttractionReviews({ reviews }: { reviews: Review[] }) {
             />
           ))
         ) : (
-          <Text>No se han encontrado opiniones</Text>
+          <View style={{ padding: 16 }}>
+            <Text>No se han encontrado opiniones</Text>
+          </View>
         )}
       </View>
     </View>

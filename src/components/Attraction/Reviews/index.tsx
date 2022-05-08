@@ -43,6 +43,7 @@ function AttractionReviews({ reviews }: { reviews: Review[] }) {
         {reviews.length > 0 ? (
           reviews.map((review: Review, index: number) => (
             <AttractionReview
+              key={review.id}
               review={review}
               isLast={index === reviews.length - 1}
             />

@@ -32,7 +32,7 @@ export default function AttractionReview({
   isLast: boolean;
 }) {
   return (
-    <View key={review.id}>
+    <View>
       <View style={styles.container}>
         <View style={styles.infoContainer}>
           <StarRating rating={review.rating} />

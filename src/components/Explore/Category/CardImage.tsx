@@ -22,6 +22,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
 
+  centerContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
   bookmarkContainer: {
     top: 12,
     right: 12,
@@ -49,13 +55,7 @@ function CategoryCardImage({ image }: any) {
       ) : (
         <View style={styles.image}>
           <View style={styles.overlay}>
-            <View
-              style={{
-                flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
-            >
+            <View style={styles.centerContainer}>
               <FontAwesome5 name="eye-slash" size={32} color="#FFF" />
             </View>
 

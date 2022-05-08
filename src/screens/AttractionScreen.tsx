@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { StyleSheet, View, Image, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import axios from 'axios';
 
 // components
@@ -11,11 +11,11 @@ import AttractionReviews from '../components/Attraction/Reviews';
 // types
 import { Attraction } from '../types/attractions/attraction';
 import { Review } from '../types/attractions/review';
+import AttractionTopImage from '../components/Attraction/TopImage';
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    height: '100%',
+    flex: 1,
     overflow: 'hidden',
     backgroundColor: '#FFF',
   },
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '30%',
     zIndex: 1,
+    backgroundColor: '#747474',
   },
 
   contentContainer: {
@@ -82,12 +83,7 @@ function AttractionScreen({ route }: any) {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={{
-          uri: attraction.image_url,
-        }}
-        style={styles.cover}
-      />
+      <AttractionTopImage image={attraction.image_url} />
 
       <ScrollView style={styles.contentContainer}>
         <AttractionInformation attraction={attraction} />

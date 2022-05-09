@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, ImageBackground, Text } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { ImageGallery } from '@georstat/react-native-image-gallery';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -18,6 +18,27 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+
+  content: {
+    flex: 1,
+    overflow: 'hidden',
+    resizeMode: 'cover',
+    borderRadius: 5,
+    position: 'relative',
+  },
+
+  imagesIndicatorContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  imagesText: {
+    marginLeft: 16,
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#FFF',
   },
 });
 
@@ -41,12 +62,23 @@ function AttractionTopImage({ photos }: { photos: string[] }) {
   return (
     <View style={{ flex: 1 }}>
       <TouchableWithoutFeedback onPress={openGallery}>
-        <Image
-          source={{
-            uri: photos[0],
-          }}
-          style={styles.cover}
-        />
+        <View style={styles.cover}>
+          <ImageBackground
+            source={{
+              uri: photos[0],
+            }}
+            style={styles.content}
+          >
+            <View style={styles.centerContainer}>
+              <View style={styles.imagesIndicatorContainer}>
+                <FontAwesome5 name="image" size={32} color="#FFF" />
+                <Text style={styles.imagesText}>
+                  {photos.length} {photos.length > 1 ? 'imágenes' : 'imagen'}
+                </Text>
+              </View>
+            </View>
+          </ImageBackground>
+        </View>
       </TouchableWithoutFeedback>
 
       <ImageGallery

@@ -1,5 +1,10 @@
+import { useState } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { ImageGallery } from '@georstat/react-native-image-gallery';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableWithoutFeedback } from '@gorhom/bottom-sheet';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const styles = StyleSheet.create({
   cover: {
@@ -16,8 +21,14 @@ const styles = StyleSheet.create({
   },
 });
 
-function AttractionTopImage({ image }: any) {
-  if (image.length === 0) {
+function AttractionTopImage({ photos }: { photos: string[] }) {
+  // states
+  const [galleryOpened, setGalleryOpened] = useState(false);
+
+  const openGallery = () => setGalleryOpened(true);
+  const closeGallery = () => setGalleryOpened(false);
+
+  if (photos.length === 0) {
     return (
       <View style={styles.cover}>
         <View style={styles.centerContainer}>
@@ -28,12 +39,32 @@ function AttractionTopImage({ image }: any) {
   }
 
   return (
-    <Image
-      source={{
-        uri: image,
-      }}
-      style={styles.cover}
-    />
+    <View style={{ flex: 1 }}>
+      <TouchableWithoutFeedback onPress={openGallery}>
+        <Image
+          source={{
+            uri: photos[0],
+          }}
+          style={styles.cover}
+        />
+      </TouchableWithoutFeedback>
+
+      <ImageGallery
+        close={closeGallery}
+        isOpen={galleryOpened}
+        images={photos.map((photo: any, index: number) => ({
+          id: index,
+          url: photo,
+        }))}
+        renderHeaderComponent={() => (
+          <SafeAreaView style={{ padding: 16 }}>
+            <TouchableOpacity onPress={closeGallery}>
+              <FontAwesome5 name="times" size={24} color="#FFF" />
+            </TouchableOpacity>
+          </SafeAreaView>
+        )}
+      />
+    </View>
   );
 }
 

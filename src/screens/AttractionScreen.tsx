@@ -83,7 +83,7 @@ function AttractionScreen({ route }: any) {
 
   return (
     <View style={styles.container}>
-      <AttractionTopImage image={attraction.image_url} />
+      <AttractionTopImage photos={attraction.photos} />
 
       <ScrollView style={styles.contentContainer}>
         <AttractionInformation attraction={attraction} />

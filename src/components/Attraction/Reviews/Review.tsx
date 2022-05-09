@@ -41,7 +41,7 @@ export default function AttractionReview({
         </View>
 
         <View>
-          <Text numberOfLines={4}>{review.text}</Text>
+          <Text>{review.text}</Text>
         </View>
       </View>
 

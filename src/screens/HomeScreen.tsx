@@ -1,10 +1,11 @@
-import { StyleSheet, SafeAreaView } from 'react-native';
+import { StyleSheet, SafeAreaView, View } from 'react-native';
 
 // contexts
 import { useAuth } from '../contexts/AuthContext';
 
 // components
 import Welcome from '../components/Home/Welcome';
+import UserHistory from '../components/Home/History';
 
 const styles = StyleSheet.create({
   container: {
@@ -18,7 +19,14 @@ function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Welcome username={authData!.user.name} />
+      <View
+        style={{
+          backgroundColor: 'transparent',
+        }}
+      >
+        <Welcome username={authData!.user.name} />
+        <UserHistory />
+      </View>
     </SafeAreaView>
   );
 }

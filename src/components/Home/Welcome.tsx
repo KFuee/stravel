@@ -60,7 +60,7 @@ function Welcome({ username }: { username: string }) {
 
         <View>
           <View style={styles.rowContainer}>
-            <Text style={{ marginBottom: 4 }}>Bienvenido 👋</Text>
+            <Text style={{ marginBottom: 4 }}>Bienvenid@ 👋</Text>
           </View>
 
           <Text style={styles.usernameText}>{username}</Text>

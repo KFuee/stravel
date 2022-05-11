@@ -95,6 +95,7 @@ function AttractionTopImage({ photos }: { photos: string[] }) {
             </TouchableOpacity>
           </SafeAreaView>
         )}
+        thumbColor="#FF4760"
       />
     </View>
   );

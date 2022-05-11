@@ -31,7 +31,8 @@ function PlacesMap({
       }}
       toolbarEnabled={false}
     >
-      {attractions.map((attraction: Attraction) => (
+      {/** Slice temporal, eliminar en el futuro */}
+      {attractions.slice(0, 5).map((attraction: Attraction) => (
         <Marker
           key={attraction.id}
           coordinate={{

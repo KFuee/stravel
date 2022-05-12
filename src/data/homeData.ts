@@ -3,6 +3,13 @@ export type Category = {
   title: string;
 };
 
+export const transportTypes = [
+  { id: 1, iconName: 'bus', title: 'Аutobús' },
+  { id: 2, iconName: 'tram', title: 'Tranvía' },
+  { id: 3, iconName: 'taxi', title: 'Taxi' },
+  { id: 4, iconName: 'bicycle', title: 'Bicicletas' },
+];
+
 export const categories: Category[] = [
   {
     id: 1,

@@ -5,7 +5,7 @@ import HistoryRecordCard from './HistoryRecordCard';
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 32,
+    paddingTop: 16,
     paddingHorizontal: 16,
   },
 
@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    paddingBottom: 16,
   },
 
   titleText: {
@@ -42,7 +43,7 @@ function UserHistory() {
         </View>
       </View>
 
-      <View style={{ paddingTop: 16 }}>
+      <View>
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}

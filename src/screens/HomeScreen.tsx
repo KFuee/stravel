@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView, View } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native';
 
 // contexts
 import { useAuth } from '../contexts/AuthContext';
@@ -6,6 +6,7 @@ import { useAuth } from '../contexts/AuthContext';
 // components
 import Welcome from '../components/Home/Welcome';
 import UserHistory from '../components/Home/History';
+import TransportTypes from '../components/Home/TransportTypes';
 
 const styles = StyleSheet.create({
   container: {
@@ -19,14 +20,11 @@ function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View
-        style={{
-          backgroundColor: 'transparent',
-        }}
-      >
-        <Welcome username={authData!.user.name} />
-        <UserHistory />
-      </View>
+      <Welcome username={authData!.user.name} />
+
+      <TransportTypes />
+
+      <UserHistory />
     </SafeAreaView>
   );
 }

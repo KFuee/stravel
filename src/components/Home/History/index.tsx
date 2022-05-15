@@ -54,12 +54,13 @@ function UserHistory() {
             overflow: 'visible',
           }}
         >
-          {dataExample.businesses.slice(0, 4).map(businness => (
+          {dataExample.businesses.map((businness, index) => (
             <HistoryRecordCard
               key={businness.id}
               image={businness.image_url}
               location={businness.location.address1}
               title={businness.name}
+              isLast={index === dataExample.businesses.length - 1}
             />
           ))}
         </ScrollView>

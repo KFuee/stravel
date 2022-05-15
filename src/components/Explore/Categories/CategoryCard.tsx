@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function CategoryCard({ id, alias, title, image, isLast }: any) {
+function CategoryCard({ alias, title, image, isLast }: any) {
   const { navigate } = useNavigation<CategoryScreenProps>();
 
   return (
@@ -53,7 +53,7 @@ function CategoryCard({ id, alias, title, image, isLast }: any) {
       <View
         style={[
           styles.container,
-          id === 1 ? { marginLeft: 16 } : { marginLeft: 10 },
+          { marginLeft: 16 },
           !isLast ? { marginRight: 0 } : { marginRight: 16 },
         ]}
       >

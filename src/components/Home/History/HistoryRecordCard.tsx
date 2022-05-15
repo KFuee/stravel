@@ -11,8 +11,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     elevation: 3,
-
-    marginRight: 16,
   },
 
   image: {
@@ -48,13 +46,15 @@ function HistoryRecordCard({
   image,
   title,
   location,
+  isLast,
 }: {
   image: any;
   title: string;
   location: string;
+  isLast: boolean;
 }) {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { marginRight: isLast ? 0 : 16 }]}>
       <Image
         source={{
           uri: image,

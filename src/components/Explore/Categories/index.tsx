@@ -24,7 +24,6 @@ function Categories() {
         {categories.map(category => (
           <CategoryCard
             key={category.id}
-            id={category.id}
             alias={category.alias}
             title={category.title}
             image={category.image}

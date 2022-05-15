@@ -55,7 +55,12 @@ function HistoryRecordCard({
 }) {
   return (
     <View style={styles.container}>
-      <Image source={image} style={styles.image} />
+      <Image
+        source={{
+          uri: image,
+        }}
+        style={styles.image}
+      />
 
       <View style={{ padding: 16 }}>
         <Text style={styles.titleText}>{title}</Text>

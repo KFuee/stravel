@@ -132,21 +132,3 @@ export const attractions = [
     website: 'https://www.google.com',
   },
 ];
-
-export const getAttraction = (id: number) =>
-  attractions.find(attraction => attraction.id === id);
-
-export const getCategoryAttractions = (category: string) => {
-  if (category === 'Todo') {
-    return attractions;
-  }
-
-  const categoryAttractions: any = [];
-  attractions.forEach(attraction => {
-    if (attraction.mainCategory === category) {
-      categoryAttractions.push(attraction);
-    }
-  });
-
-  return categoryAttractions;
-};

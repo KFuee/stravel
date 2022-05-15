@@ -1,11 +1,14 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
+// data
+import { dataExample } from '../../../data/homeData';
+
 // components
 import HistoryRecordCard from './HistoryRecordCard';
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 16,
+    paddingTop: 32,
     paddingHorizontal: 16,
   },
 
@@ -51,17 +54,14 @@ function UserHistory() {
             overflow: 'visible',
           }}
         >
-          <HistoryRecordCard
-            image={require('../../../assets/images/home-banner.jpg')}
-            title="Café con amigos"
-            location="Calle de la paz, 1"
-          />
-
-          <HistoryRecordCard
-            image={require('../../../assets/images/restaurants-category.jpg')}
-            title="Café con amigos"
-            location="Calle de la paz, 1"
-          />
+          {dataExample.businesses.slice(0, 4).map(businness => (
+            <HistoryRecordCard
+              key={businness.id}
+              image={businness.image_url}
+              location={businness.location.address1}
+              title={businness.name}
+            />
+          ))}
         </ScrollView>
       </View>
     </View>

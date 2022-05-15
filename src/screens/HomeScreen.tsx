@@ -1,4 +1,4 @@
-import { StyleSheet, SafeAreaView } from 'react-native';
+import { StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 
 // contexts
 import { useAuth } from '../contexts/AuthContext';
@@ -20,11 +20,13 @@ function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Welcome username={authData!.user.name} />
+      <ScrollView>
+        <Welcome username={authData!.user.name} />
 
-      <TransportTypes />
+        <TransportTypes />
 
-      <UserHistory />
+        <UserHistory />
+      </ScrollView>
     </SafeAreaView>
   );
 }

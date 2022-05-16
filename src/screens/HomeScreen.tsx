@@ -7,6 +7,7 @@ import { useAuth } from '../contexts/AuthContext';
 import Welcome from '../components/Home/Welcome';
 import UserHistory from '../components/Home/History';
 import TransportTypes from '../components/Home/TransportTypes';
+import UserFavourites from '../components/Home/Favourites';
 
 const styles = StyleSheet.create({
   container: {
@@ -26,6 +27,8 @@ function HomeScreen() {
         <TransportTypes />
 
         <UserHistory />
+
+        <UserFavourites />
       </ScrollView>
     </SafeAreaView>
   );

@@ -53,12 +53,12 @@ function AttractionScreen({ route }: any) {
   const fetchData = useCallback(async () => {
     try {
       const attractionResponse = await axios.get(
-        'http://192.168.1.15:3001/v1/places/business',
+        'http://localhost:3001/v1/places/business',
         { params: { id } },
       );
 
       const reviewsResponse = await axios.get(
-        'http://192.168.1.15:3001/v1/places/reviews',
+        'http://localhost:3001/v1/places/reviews',
         { params: { id } },
       );
 

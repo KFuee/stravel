@@ -4,14 +4,14 @@ import axios from 'axios';
 import { AuthData } from '../types/auth';
 
 // url base de la api
-axios.defaults.baseURL = 'http://192.168.1.15:3001/v1/';
+axios.defaults.baseURL = 'http://localhost:3001/v1/auth';
 
 export const register = async (
   name: string,
   email: string,
   password: string,
 ): Promise<AuthData> => {
-  const response = await axios.post('auth/register', {
+  const response = await axios.post('register', {
     name,
     email,
     password,
@@ -24,7 +24,7 @@ export const signIn = async (
   email: string,
   password: string,
 ): Promise<AuthData> => {
-  const response = await axios.post('auth/login', { email, password });
+  const response = await axios.post('login', { email, password });
 
   return response.data;
 };
@@ -38,7 +38,7 @@ export const signOut = async (
     );
   }
 
-  const response = await axios.post('auth/logout', { refreshToken });
+  const response = await axios.post('logout', { refreshToken });
 
   return response.data;
 };

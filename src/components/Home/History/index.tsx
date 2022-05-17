@@ -1,10 +1,18 @@
+import { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
-// data
-import { dataExample } from '../../../data/homeData';
+// hooks
+import { useAuth } from '../../../contexts/AuthContext';
+
+// services
+import { getAllRecords } from '../../../services/historyService';
 
 // components
+import Loading from '../../General/Loading';
 import HistoryRecordCard from './HistoryRecordCard';
+
+// types
+import HistoryRecord from '../../../types/historyRecord';
 
 const styles = StyleSheet.create({
   container: {
@@ -36,6 +44,37 @@ const styles = StyleSheet.create({
 });
 
 function UserHistory() {
+  // hooks
+  const { authData } = useAuth();
+
+  // states
+  const [loading, setLoading] = useState(true);
+  const [records, setRecords] = useState<HistoryRecord[]>(
+    {} as HistoryRecord[],
+  );
+
+  // callbacks
+  const fetchData = useCallback(async () => {
+    try {
+      const userHistoryRecords = await getAllRecords(authData!.user.id, 5);
+
+      setRecords(userHistoryRecords);
+
+      setLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [authData]);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  // Espera a que se cargue la información
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -54,13 +93,13 @@ function UserHistory() {
             overflow: 'visible',
           }}
         >
-          {dataExample.businesses.map((businness, index) => (
+          {records.map((record, index) => (
             <HistoryRecordCard
-              key={businness.id}
-              image={businness.image_url}
-              location={businness.location.address1}
-              title={businness.name}
-              isLast={index === dataExample.businesses.length - 1}
+              key={record.item.id}
+              image={record.item.image_url}
+              location={record.item.location.address1}
+              title={record.item.name}
+              isLast={index === records.length - 1}
             />
           ))}
         </ScrollView>

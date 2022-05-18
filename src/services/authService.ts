@@ -3,15 +3,17 @@ import axios from 'axios';
 // types
 import { AuthData } from '../types/auth';
 
-// url base de la api
-axios.defaults.baseURL = 'http://localhost:3001/v1/auth';
+// instancia de la api
+const instance = axios.create({
+  baseURL: 'http://localhost:3001/v1/auth',
+});
 
 export const register = async (
   name: string,
   email: string,
   password: string,
 ): Promise<AuthData> => {
-  const response = await axios.post('register', {
+  const response = await instance.post('register', {
     name,
     email,
     password,
@@ -24,7 +26,7 @@ export const signIn = async (
   email: string,
   password: string,
 ): Promise<AuthData> => {
-  const response = await axios.post('login', { email, password });
+  const response = await instance.post('login', { email, password });
 
   return response.data;
 };
@@ -38,7 +40,7 @@ export const signOut = async (
     );
   }
 
-  const response = await axios.post('logout', { refreshToken });
+  const response = await instance.post('logout', { refreshToken });
 
   return response.data;
 };

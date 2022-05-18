@@ -3,14 +3,16 @@ import axios from 'axios';
 // types
 import HistoryRecord from '../types/HistoryRecord';
 
-// url base de la api
-axios.defaults.baseURL = 'http://localhost:3001/v1/history';
+// instancia de la api
+const instance = axios.create({
+  baseURL: 'http://localhost:3001/v1/history',
+});
 
-export const getAllRecords = async (
+export const getUserRecords = async (
   userId: string,
   limit?: number,
 ): Promise<HistoryRecord[]> => {
-  const response = await axios.get(`records/${userId}`, {
+  const response = await instance.get(`records/${userId}`, {
     params: {
       limit,
     },
@@ -24,7 +26,7 @@ export const createRecord = async (
   type: string,
   item: Object,
 ): Promise<HistoryRecord> => {
-  const response = await axios.post(`records`, {
+  const response = await instance.post(`records`, {
     userId,
     type,
     item,

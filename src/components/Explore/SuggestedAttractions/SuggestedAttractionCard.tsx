@@ -5,19 +5,10 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { useNavigation } from '@react-navigation/native';
 import { FontAwesome } from '@expo/vector-icons';
 
+// components
 import StarRating from '../../General/StarRating';
-
-// types
-import type { ExploreStackParamList } from '../../../navigation/ExploreNavigator';
-
-type AttractionScreenProps = NativeStackNavigationProp<
-  ExploreStackParamList,
-  'ExploreAttraction'
->;
 
 const styles = StyleSheet.create({
   container: {
@@ -97,19 +88,15 @@ const styles = StyleSheet.create({
   },
 });
 
-function SuggestedAttractionCard({ id, category, title, rating, image }: any) {
-  const navigation = useNavigation<AttractionScreenProps>();
-
+function SuggestedAttractionCard({
+  onPress,
+  category,
+  title,
+  rating,
+  image,
+}: any) {
   return (
-    <TouchableOpacity
-      onPress={() =>
-        navigation.navigate('ExploreAttraction', {
-          screen: 'AttractionLanding',
-          params: { id },
-        })
-      }
-      activeOpacity={0.8}
-    >
+    <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
       <View style={styles.container}>
         <ImageBackground source={{ uri: image }} style={styles.content}>
           <Text style={styles.category}>{category}</Text>

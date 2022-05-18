@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, View, Text, FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 // contexts
 import { useAuth } from '../../contexts/AuthContext';
@@ -12,6 +13,7 @@ import SuggestedAttractionCard from '../../components/Explore/SuggestedAttractio
 
 // types
 import type HistoryRecord from '../../types/HistoryRecord';
+import type { HomeStackProps } from '../../navigation/HomeNavigator';
 
 const styles = StyleSheet.create({
   container: {
@@ -30,6 +32,7 @@ const styles = StyleSheet.create({
 function ShowAllScreen() {
   // hooks
   const { authData } = useAuth();
+  const { navigate } = useNavigation<HomeStackProps>();
   const userId = authData!.user.id;
 
   // states
@@ -64,6 +67,12 @@ function ShowAllScreen() {
           return (
             <SuggestedAttractionCard
               id={record.id}
+              onPress={() =>
+                navigate('HomeAttraction', {
+                  screen: 'AttractionLanding',
+                  params: { id: record.id },
+                })
+              }
               category={record.categories[0].title}
               title={record.name}
               rating={record.rating}

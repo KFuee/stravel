@@ -1,10 +1,12 @@
 import { View, Text, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 // components
 import SuggestedAttractionCard from './SuggestedAttractionCard';
 
 // types
 import { Attraction } from '../../../types/attractions/attraction';
+import type { ExploreStackProps } from '../../../navigation/ExploreNavigator';
 
 const styles = StyleSheet.create({
   container: {
@@ -23,6 +25,8 @@ const styles = StyleSheet.create({
 });
 
 function SuggestedAttractions({ attractions }: { attractions: Attraction[] }) {
+  const { navigate } = useNavigation<ExploreStackProps>();
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Lugares sugeridos</Text>
@@ -30,7 +34,12 @@ function SuggestedAttractions({ attractions }: { attractions: Attraction[] }) {
       {attractions.map(attraction => (
         <SuggestedAttractionCard
           key={attraction.id}
-          id={attraction.id}
+          onPress={() =>
+            navigate('ExploreAttraction', {
+              screen: 'AttractionLanding',
+              params: { id: attraction.id },
+            })
+          }
           category={attraction.categories[0].title}
           title={attraction.name}
           rating={attraction.rating}

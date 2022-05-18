@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationProp,
+} from '@react-navigation/native-stack';
 
 import { searchData } from '../data/exploreData';
 
@@ -25,6 +28,10 @@ export type ExploreStackParamList = {
     params: AttractionStackParamList['AttractionLanding'];
   };
 };
+export type ExploreStackProps = NativeStackNavigationProp<
+  ExploreStackParamList,
+  'ExploreAttraction'
+>;
 
 const ExploreStack = createNativeStackNavigator<ExploreStackParamList>();
 

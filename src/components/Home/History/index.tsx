@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 // components
 import HistoryRecordCard from './HistoryRecordCard';
@@ -14,9 +13,7 @@ import NoRecordsFound from './NoRecordsFound';
 
 // types
 import type HistoryRecord from '../../../types/historyRecord';
-import type { HomeStackParamList } from '../../../navigation/HomeNavigator';
-
-type UserHistoryProps = NativeStackNavigationProp<HomeStackParamList>;
+import type { HomeStackProps } from '../../../navigation/HomeNavigator';
 
 const styles = StyleSheet.create({
   container: {
@@ -48,7 +45,7 @@ const styles = StyleSheet.create({
 });
 
 function UserHistory({ records }: { records: HistoryRecord[] }) {
-  const { navigate } = useNavigation<UserHistoryProps>();
+  const { navigate } = useNavigation<HomeStackProps>();
 
   return (
     <View style={styles.container}>

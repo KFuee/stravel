@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function ShowAllScreen() {
+function ShowAllScreen() {
   // hooks
   const { authData } = useAuth();
   const userId = authData!.user.id;
@@ -75,3 +75,5 @@ export default function ShowAllScreen() {
     </View>
   );
 }
+
+export default ShowAllScreen;

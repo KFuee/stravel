@@ -1,5 +1,9 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+
+// types
+import type { HomeStackProps } from '../../navigation/HomeNavigator';
 
 const styles = StyleSheet.create({
   container: {
@@ -48,9 +52,16 @@ const styles = StyleSheet.create({
 });
 
 function Welcome({ username }: { username: string }) {
+  // hooks
+  const { navigate } = useNavigation<HomeStackProps>();
+
   return (
     <View style={styles.container}>
-      <View style={styles.rowContainer}>
+      <TouchableOpacity
+        style={styles.rowContainer}
+        onPress={() => navigate('HomeUserProfile')}
+        activeOpacity={0.8}
+      >
         <View style={styles.avatarContainer}>
           <Image
             source={require('../../assets/images/home/user.png')}
@@ -65,7 +76,7 @@ function Welcome({ username }: { username: string }) {
 
           <Text style={styles.usernameText}>{username}</Text>
         </View>
-      </View>
+      </TouchableOpacity>
 
       <TouchableOpacity
         style={styles.qrIconContainer}

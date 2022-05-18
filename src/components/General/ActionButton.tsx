@@ -26,7 +26,7 @@ function ActionButton({
   title,
   onPress,
 }: {
-  style: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
   title: string;
   onPress: () => void;
 }) {
@@ -36,5 +36,9 @@ function ActionButton({
     </TouchableOpacity>
   );
 }
+
+ActionButton.defaultProps = {
+  style: {},
+};
 
 export default ActionButton;

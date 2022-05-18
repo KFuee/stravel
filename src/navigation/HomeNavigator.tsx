@@ -1,10 +1,14 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationProp,
+} from '@react-navigation/native-stack';
 
-// Screens
+// screens
 import HomeScreen from '../screens/Home/HomeScreen';
 import ShowAllScreen from '../screens/Home/ShowAllScreen';
+import UserProfile from '../screens/Home/UserProfile';
 
-// Navigators
+// navigators
 import AttractionNavigator from './AttractionNavigator';
 
 // types
@@ -18,7 +22,9 @@ export type HomeStackParamList = {
     params: AttractionStackParamList['AttractionLanding'];
   };
   HomeShowAllHistoryRecords: undefined;
+  HomeUserProfile: undefined;
 };
+export type HomeStackProps = NativeStackNavigationProp<HomeStackParamList>;
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
@@ -44,6 +50,16 @@ export default function HomeNavigator() {
           headerShown: true,
           headerTitle: 'Historial de visitas',
           headerBackTitle: 'Inicio',
+        }}
+      />
+
+      <HomeStack.Screen
+        name="HomeUserProfile"
+        component={UserProfile}
+        options={{
+          presentation: 'modal',
+          headerShown: true,
+          headerTitle: 'Tu perfil de usuario',
         }}
       />
     </HomeStack.Navigator>

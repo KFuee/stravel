@@ -9,6 +9,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { getUserRecords } from '../../services/historyService';
 
 // components
+import Loading from '../../components/General/Loading';
 import SuggestedAttractionCard from '../../components/Explore/SuggestedAttractions/SuggestedAttractionCard';
 
 // types
@@ -36,6 +37,7 @@ function ShowAllScreen() {
   const userId = authData!.user.id;
 
   // states
+  const [loading, setLoading] = useState(true);
   const [attractions, setAttractions] = useState<HistoryRecord[]>([]);
 
   const fetchData = useCallback(async () => {
@@ -43,14 +45,21 @@ function ShowAllScreen() {
       const userHistoryRecords = await getUserRecords(userId);
 
       setAttractions(userHistoryRecords);
+      setLoading(false);
     } catch (err) {
       console.log(err);
     }
   }, [userId]);
 
+  // effects
   useEffect(() => {
     fetchData();
   }, [fetchData]);
+
+  // Espera a que se cargue la información
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <View style={styles.container}>

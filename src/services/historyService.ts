@@ -34,3 +34,7 @@ export const createRecord = async (
 
   return response.data;
 };
+
+export const deleteAllRecords = async (userId: string): Promise<void> => {
+  await instance.delete(`records/${userId}`);
+};

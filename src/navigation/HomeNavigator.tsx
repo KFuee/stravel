@@ -3,6 +3,9 @@ import {
   NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
 
+// components
+import DeleteRecordsButton from '../components/Header/DeleteRecordsButton';
+
 // screens
 import HomeScreen from '../screens/Home/HomeScreen';
 import ShowAllScreen from '../screens/Home/ShowAllScreen';
@@ -28,6 +31,8 @@ export type HomeStackProps = NativeStackNavigationProp<HomeStackParamList>;
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
+const renderShowAllRightButtons = () => <DeleteRecordsButton />;
+
 export default function HomeNavigator() {
   return (
     <HomeStack.Navigator
@@ -50,6 +55,7 @@ export default function HomeNavigator() {
           headerShown: true,
           headerTitle: 'Historial de visitas',
           headerBackTitle: 'Inicio',
+          headerRight: () => renderShowAllRightButtons(),
         }}
       />
 

@@ -5,7 +5,7 @@ import { StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 import { useAuth } from '../contexts/AuthContext';
 
 // services
-import { getAllRecords } from '../services/historyService';
+import { getUserRecords } from '../services/historyService';
 
 // components
 import Loading from '../components/General/Loading';
@@ -27,8 +27,6 @@ const styles = StyleSheet.create({
 function HomeScreen() {
   // hooks
   const { authData } = useAuth();
-
-  // data
   const userId = authData!.user.id;
 
   // states
@@ -40,7 +38,7 @@ function HomeScreen() {
   // callbacks
   const fetchData = useCallback(async () => {
     try {
-      const userHistoryRecords = await getAllRecords(userId, 5);
+      const userHistoryRecords = await getUserRecords(userId, 5);
 
       setHistoryRecords(userHistoryRecords);
 

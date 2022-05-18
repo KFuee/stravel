@@ -2,16 +2,22 @@ import { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import axios from 'axios';
 
+// contexts
+import { useAuth } from '../contexts/AuthContext';
+
+// services
+import { createRecord } from '../services/historyService';
+
 // components
 import Loading from '../components/General/Loading';
 import AttractionInformation from '../components/Attraction/Information';
 import AttractionActionButtons from '../components/Attraction/ActionButtons';
 import AttractionReviews from '../components/Attraction/Reviews';
+import AttractionTopImage from '../components/Attraction/TopImage';
 
 // types
 import { Attraction } from '../types/attractions/attraction';
 import { Review } from '../types/attractions/review';
-import AttractionTopImage from '../components/Attraction/TopImage';
 
 const styles = StyleSheet.create({
   container: {
@@ -44,13 +50,15 @@ const styles = StyleSheet.create({
 function AttractionScreen({ route }: any) {
   const { id } = route.params;
 
+  const { authData } = useAuth();
+  const userId = authData!.user.id;
+
   // states
   const [loading, setLoading] = useState(true);
   const [attraction, setAttraction] = useState<Attraction>({} as Attraction);
   const [reviews, setReviews] = useState<Review[]>({} as Review[]);
 
-  // callbacks
-  const fetchData = useCallback(async () => {
+  const apiCalls = useCallback(async () => {
     try {
       const attractionResponse = await axios.get(
         'http://localhost:3001/v1/places/business',
@@ -66,15 +74,17 @@ function AttractionScreen({ route }: any) {
       setReviews(reviewsResponse.data);
 
       setLoading(false);
+
+      await createRecord(userId, 'attraction', attractionResponse.data);
     } catch (err) {
       console.log(err);
     }
-  }, [id]);
+  }, [id, userId]);
 
   // effects
   useEffect(() => {
-    fetchData();
-  }, [fetchData]);
+    apiCalls();
+  }, [apiCalls]);
 
   // Espera a que se cargue la información
   if (loading) {

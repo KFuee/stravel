@@ -1,11 +1,22 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 // components
 import HistoryRecordCard from './HistoryRecordCard';
 import NoRecordsFound from './NoRecordsFound';
 
 // types
-import HistoryRecord from '../../../types/historyRecord';
+import type HistoryRecord from '../../../types/historyRecord';
+import type { HomeStackParamList } from '../../../navigation/HomeNavigator';
+
+type UserHistoryProps = NativeStackNavigationProp<HomeStackParamList>;
 
 const styles = StyleSheet.create({
   container: {
@@ -37,14 +48,20 @@ const styles = StyleSheet.create({
 });
 
 function UserHistory({ records }: { records: HistoryRecord[] }) {
+  const { navigate } = useNavigation<UserHistoryProps>();
+
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.titleText}>Tu historial</Text>
 
-        <View style={styles.showAllContainer}>
+        <TouchableOpacity
+          style={styles.showAllContainer}
+          onPress={() => navigate('HomeShowAllHistoryRecords')}
+          activeOpacity={0.8}
+        >
           <Text style={{ color: '#FF4760', fontWeight: 'bold' }}>Ver todo</Text>
-        </View>
+        </TouchableOpacity>
       </View>
 
       {records.length > 0 ? (

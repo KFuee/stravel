@@ -2,20 +2,20 @@ import { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, SafeAreaView, ScrollView } from 'react-native';
 
 // contexts
-import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 
 // services
-import { getUserRecords } from '../services/historyService';
+import { getUserRecords } from '../../services/historyService';
 
 // components
-import Loading from '../components/General/Loading';
-import Welcome from '../components/Home/Welcome';
-import UserHistory from '../components/Home/History';
-import TransportTypes from '../components/Home/TransportTypes';
-import UserFavourites from '../components/Home/Favourites';
+import Loading from '../../components/General/Loading';
+import Welcome from '../../components/Home/Welcome';
+import UserHistory from '../../components/Home/History';
+import TransportTypes from '../../components/Home/TransportTypes';
+import UserFavourites from '../../components/Home/Favourites';
 
 // types
-import HistoryRecord from '../types/HistoryRecord';
+import HistoryRecord from '../../types/HistoryRecord';
 
 const styles = StyleSheet.create({
   container: {

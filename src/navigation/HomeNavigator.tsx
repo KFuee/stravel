@@ -1,7 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 // Screens
-import HomeScreen from '../screens/HomeScreen';
+import HomeScreen from '../screens/Home/HomeScreen';
+import ShowAllScreen from '../screens/Home/ShowAllScreen';
 
 // Navigators
 import AttractionNavigator from './AttractionNavigator';
@@ -16,6 +17,7 @@ export type HomeStackParamList = {
     screen: string;
     params: AttractionStackParamList['AttractionLanding'];
   };
+  HomeShowAllHistoryRecords: undefined;
 };
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
@@ -33,6 +35,16 @@ export default function HomeNavigator() {
         name="HomeAttraction"
         component={AttractionNavigator}
         options={{ headerShown: false }}
+      />
+
+      <HomeStack.Screen
+        name="HomeShowAllHistoryRecords"
+        component={ShowAllScreen}
+        options={{
+          headerShown: true,
+          headerTitle: 'Historial de visitas',
+          headerBackTitle: 'Inicio',
+        }}
       />
     </HomeStack.Navigator>
   );

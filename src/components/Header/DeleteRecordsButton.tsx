@@ -1,9 +1,15 @@
 import { Alert, StyleSheet, TouchableOpacity } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+
+// contexts
 import { useAuth } from '../../contexts/AuthContext';
 
 // services
 import { deleteAllRecords } from '../../services/historyService';
+
+// types
+import type { HomeStackProps } from '../../navigation/HomeNavigator';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,11 +28,14 @@ const styles = StyleSheet.create({
 function DeleteRecordsButton() {
   // hooks
   const { authData } = useAuth();
+  const { navigate } = useNavigation<HomeStackProps>();
 
   // functions
   const deleteRecordsApiCall = async () => {
     try {
       await deleteAllRecords(authData!.user.id);
+
+      navigate('HomeLanding');
     } catch (err) {
       Alert.alert('Error', 'No se pudieron eliminar los registros');
     }

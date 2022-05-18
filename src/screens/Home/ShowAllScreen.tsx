@@ -10,6 +10,7 @@ import { getUserRecords } from '../../services/historyService';
 
 // components
 import Loading from '../../components/General/Loading';
+import NoResultsBanner from '../../components/General/NoResultsBanner';
 import SuggestedAttractionCard from '../../components/Explore/SuggestedAttractions/SuggestedAttractionCard';
 
 // types
@@ -59,6 +60,10 @@ function ShowAllScreen() {
   // Espera a que se cargue la información
   if (loading) {
     return <Loading />;
+  }
+
+  if (attractions.length === 0) {
+    return <NoResultsBanner />;
   }
 
   return (

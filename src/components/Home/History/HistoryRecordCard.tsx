@@ -1,5 +1,10 @@
 import { StyleSheet, Text, View, Image } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+
+// types
+import type { HomeStackProps } from '../../../navigation/HomeNavigator';
 
 const styles = StyleSheet.create({
   container: {
@@ -43,18 +48,31 @@ const styles = StyleSheet.create({
 });
 
 function HistoryRecordCard({
+  id,
   image,
   title,
   location,
   isLast,
 }: {
+  id: string;
   image: any;
   title: string;
   location: string;
   isLast: boolean;
 }) {
+  const { navigate } = useNavigation<HomeStackProps>();
+
   return (
-    <View style={[styles.container, { marginRight: isLast ? 0 : 16 }]}>
+    <TouchableOpacity
+      style={[styles.container, { marginRight: isLast ? 0 : 16 }]}
+      activeOpacity={0.8}
+      onPress={() =>
+        navigate('HomeAttraction', {
+          screen: 'AttractionLanding',
+          params: { id },
+        })
+      }
+    >
       <Image
         source={{
           uri: image,
@@ -83,7 +101,7 @@ function HistoryRecordCard({
           </Text>
         </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

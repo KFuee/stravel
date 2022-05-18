@@ -73,6 +73,7 @@ function UserHistory({ records }: { records: HistoryRecord[] }) {
             {records.map((record, index) => (
               <HistoryRecordCard
                 key={record.item.id}
+                id={record.item.id}
                 image={record.item.image_url}
                 location={record.item.location.address1}
                 title={record.item.name}

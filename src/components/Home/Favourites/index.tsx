@@ -66,7 +66,10 @@ function UserFavourites({ favourites }: { favourites: Favourite[] }) {
         </View>
       ) : (
         <View style={{ paddingBottom: 16 }}>
-          <NoRecordsFound icon="bookmark" title="No tienes favoritos" />
+          <NoRecordsFound
+            icon="bookmark"
+            title="Aún no has añadido lugares a favoritos"
+          />
         </View>
       )}
     </View>

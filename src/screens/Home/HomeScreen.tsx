@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { StyleSheet, SafeAreaView, ScrollView } from 'react-native';
+import { StyleSheet, SafeAreaView, ScrollView, View } from 'react-native';
 
 // contexts
 import { useAuth } from '../../contexts/AuthContext';
@@ -14,6 +14,7 @@ import Welcome from '../../components/Home/Welcome';
 import UserHistory from '../../components/Home/History';
 import TransportTypes from '../../components/Home/TransportTypes';
 import UserFavourites from '../../components/Home/Favourites';
+import NoItemsFound from '../../components/Home/NoItemsFound';
 
 // types
 import type HistoryRecord from '../../types/HistoryRecord';
@@ -65,14 +66,20 @@ function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView style={{ flex: 1 }}>
         <Welcome username={authData!.user.name} />
 
         <TransportTypes />
 
-        <UserHistory records={historyRecords} />
+        {historyRecords.length > 0 || favourites.length > 0 ? (
+          <View>
+            <UserHistory records={historyRecords} />
 
-        <UserFavourites favourites={favourites} />
+            <UserFavourites favourites={favourites} />
+          </View>
+        ) : (
+          <NoItemsFound />
+        )}
       </ScrollView>
     </SafeAreaView>
   );

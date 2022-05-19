@@ -13,6 +13,7 @@ export type TabNavigatorParamList = {
   Explore: undefined;
   Transport: {
     screen: string;
+    initial: boolean;
   };
 };
 export type TabNavigatorProps =

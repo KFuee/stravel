@@ -48,6 +48,7 @@ export default function TransportNavigator() {
         options={() => ({
           headerTransparent: false,
           title: 'Autobuses',
+          headerBackTitle: 'Transporte',
           // headerLeft: () => renderBusLeftButtons(navigation),
           // headerRight: () => renderBusRightButtons(navigation),
           // headerSearchBarOptions: {

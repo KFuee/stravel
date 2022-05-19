@@ -43,7 +43,7 @@ function TransportTypeItem({
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={() => navigate('Transport', { screen })}
+      onPress={() => navigate('Transport', { screen, initial: false })}
     >
       <View style={styles.iconContainer}>
         <View>

@@ -95,7 +95,9 @@ function ShowAllScreen() {
         }}
         ListHeaderComponent={
           <Text style={styles.listTitle}>
-            {attractions.length} resultados encontrados
+            {attractions.length}{' '}
+            {attractions.length === 1 ? 'resultado' : 'resultados'}
+            {attractions.length === 1 ? ' encontrado' : ' encontrados'}
           </Text>
         }
       />

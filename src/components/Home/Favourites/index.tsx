@@ -1,10 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 // components
 import SuggestedAttractionCard from '../../Explore/SuggestedAttractions/SuggestedAttractionCard';
 import NoRecordsFound from '../History/NoRecordsFound';
 
 // types
+import { HomeStackProps } from '../../../navigation/HomeNavigator';
 import type Favourite from '../../../types/favourite';
 
 const styles = StyleSheet.create({
@@ -37,14 +39,25 @@ const styles = StyleSheet.create({
 });
 
 function UserFavourites({ favourites }: { favourites: Favourite[] }) {
+  const { navigate } = useNavigation<HomeStackProps>();
+
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
         <Text style={styles.titleText}>Tus favoritos</Text>
 
-        <View style={styles.showAllContainer}>
+        <TouchableOpacity
+          style={styles.showAllContainer}
+          onPress={() =>
+            navigate('HomeShowAllHistoryRecords', {
+              title: 'Todos los favoritos',
+              type: 'favourites',
+            })
+          }
+          activeOpacity={0.8}
+        >
           <Text style={{ color: '#FF4760', fontWeight: 'bold' }}>Ver todo</Text>
-        </View>
+        </TouchableOpacity>
       </View>
 
       {favourites.length > 0 ? (

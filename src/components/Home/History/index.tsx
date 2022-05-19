@@ -54,7 +54,12 @@ function UserHistory({ records }: { records: HistoryRecord[] }) {
 
         <TouchableOpacity
           style={styles.showAllContainer}
-          onPress={() => navigate('HomeShowAllHistoryRecords')}
+          onPress={() =>
+            navigate('HomeShowAllHistoryRecords', {
+              title: 'Todo el historial',
+              type: 'history',
+            })
+          }
           activeOpacity={0.8}
         >
           <Text style={{ color: '#FF4760', fontWeight: 'bold' }}>Ver todo</Text>

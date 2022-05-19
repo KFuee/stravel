@@ -24,7 +24,10 @@ export type HomeStackParamList = {
     screen: string;
     params: AttractionStackParamList['AttractionLanding'];
   };
-  HomeShowAllHistoryRecords: undefined;
+  HomeShowAllHistoryRecords: {
+    title: string;
+    type: string;
+  };
   HomeUserProfile: undefined;
 };
 export type HomeStackProps = NativeStackNavigationProp<HomeStackParamList>;
@@ -52,12 +55,12 @@ export default function HomeNavigator() {
       <HomeStack.Screen
         name="HomeShowAllHistoryRecords"
         component={ShowAllScreen}
-        options={{
+        options={({ route }) => ({
           headerShown: true,
-          headerTitle: 'Historial de visitas',
           headerBackTitle: 'Inicio',
           headerRight: () => renderShowAllRightButtons(),
-        }}
+          title: route.params.title,
+        })}
       />
 
       <HomeStack.Screen

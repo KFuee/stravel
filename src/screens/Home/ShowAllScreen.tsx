@@ -16,6 +16,7 @@ import SuggestedAttractionCard from '../../components/Explore/SuggestedAttractio
 // types
 import type HistoryRecord from '../../types/HistoryRecord';
 import type { HomeStackProps } from '../../navigation/HomeNavigator';
+import { getUserFavourites } from '../../services/favouritesService';
 
 const styles = StyleSheet.create({
   container: {
@@ -32,7 +33,9 @@ const styles = StyleSheet.create({
   },
 });
 
-function ShowAllScreen() {
+function ShowAllScreen({ route }: any) {
+  const { type } = route.params;
+
   // hooks
   const { authData } = useAuth();
   const { navigate } = useNavigation<HomeStackProps>();
@@ -44,14 +47,19 @@ function ShowAllScreen() {
 
   const fetchData = useCallback(async () => {
     try {
-      const userHistoryRecords = await getUserRecords(userId);
+      let result;
+      if (type === 'history') {
+        result = await getUserRecords(userId);
+      } else {
+        result = await getUserFavourites(userId);
+      }
 
-      setAttractions(userHistoryRecords);
+      setAttractions(result);
       setLoading(false);
     } catch (err) {
       console.log(err);
     }
-  }, [userId]);
+  }, [type, userId]);
 
   // effects
   useEffect(() => {

@@ -3,11 +3,12 @@ import {
   createNativeStackNavigator,
   NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
+import axios from 'axios';
 
-import { searchData } from '../data/exploreData';
+// import { searchData } from '../data/exploreData';
 
 // hooks
-// import { useAuth } from '../contexts/AuthContext';
+import { useAuth } from '../contexts/AuthContext';
 
 // screens
 import ExploreScreen from '../screens/Explore/ExploreScreen';
@@ -37,7 +38,7 @@ const ExploreStack = createNativeStackNavigator<ExploreStackParamList>();
 
 export default function ExploreNavigator() {
   // hooks
-  // const { authData } = useAuth();
+  const { authData } = useAuth();
 
   // states
   const [searchBarFocused, setSearchBarFocused] = useState(false);
@@ -67,21 +68,21 @@ export default function ExploreNavigator() {
     try {
       setSearchText(text);
 
-      // const response = await axios.get(
-      //   `http://localhost:3001/v1/places/autocomplete`,
-      //   {
-      //     headers: {
-      //       Authorization: `Bearer ${authData?.tokens.access}`,
-      //     },
-      //     params: {
-      //       text,
-      //       latitude: 41.651365271764284,
-      //       longitude: -0.8889731889860247,
-      //     },
-      //   },
-      // );
+      const response = await axios.get(
+        `http://localhost:3001/v1/places/autocomplete`,
+        {
+          headers: {
+            Authorization: `Bearer ${authData?.tokens.access}`,
+          },
+          params: {
+            text,
+            latitude: 41.651365271764284,
+            longitude: -0.8889731889860247,
+          },
+        },
+      );
 
-      setSearchResults(searchData);
+      setSearchResults(response.data);
     } catch (err) {
       console.log(err);
     }

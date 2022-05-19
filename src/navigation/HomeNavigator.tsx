@@ -34,7 +34,9 @@ export type HomeStackProps = NativeStackNavigationProp<HomeStackParamList>;
 
 const HomeStack = createNativeStackNavigator<HomeStackParamList>();
 
-const renderShowAllRightButtons = () => <DeleteRecordsButton />;
+const renderShowAllRightButtons = (type: string) => (
+  <DeleteRecordsButton type={type} />
+);
 
 export default function HomeNavigator() {
   return (
@@ -58,7 +60,7 @@ export default function HomeNavigator() {
         options={({ route }) => ({
           headerShown: true,
           headerBackTitle: 'Inicio',
-          headerRight: () => renderShowAllRightButtons(),
+          headerRight: () => renderShowAllRightButtons(route.params.type),
           title: route.params.title,
         })}
       />

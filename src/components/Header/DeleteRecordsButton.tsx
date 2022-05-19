@@ -6,7 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import { useAuth } from '../../contexts/AuthContext';
 
 // services
-import { deleteAllRecords } from '../../services/historyService';
+import { deleteAllHistoryRecords } from '../../services/historyService';
+import { deleteAllFavourites } from '../../services/favouritesService';
 
 // types
 import type { HomeStackProps } from '../../navigation/HomeNavigator';
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function DeleteRecordsButton() {
+function DeleteRecordsButton({ type }: { type: string }) {
   // hooks
   const { authData } = useAuth();
   const { navigate } = useNavigation<HomeStackProps>();
@@ -33,7 +34,11 @@ function DeleteRecordsButton() {
   // functions
   const deleteRecordsApiCall = async () => {
     try {
-      await deleteAllRecords(authData!.user.id);
+      if (type === 'history') {
+        await deleteAllHistoryRecords(authData!.user.id);
+      } else {
+        await deleteAllFavourites(authData!.user.id);
+      }
 
       navigate('HomeLanding');
     } catch (err) {
@@ -45,7 +50,9 @@ function DeleteRecordsButton() {
     // Pregunta si se desea eliminar todos los registros
     Alert.alert(
       'Eliminar registros',
-      '¿Estás seguro de que quieres eliminar tu historial de visitas?',
+      type === 'history'
+        ? '¿Estás seguro de eliminar todos los registros de tu historial?'
+        : '¿Estás seguro de eliminar todos los registros de tus favoritos?',
       [
         {
           text: 'Cancelar',

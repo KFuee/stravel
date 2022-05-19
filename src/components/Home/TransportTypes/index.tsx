@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { transportTypes } from '../../../data/homeData';
 
 // components
-import TypeItem from './TypeItem';
+import TransportTypeItem from './TransportTypeItem';
 
 const styles = StyleSheet.create({
   container: {
@@ -36,7 +36,12 @@ function TransportTypes() {
 
       <View style={styles.itemsContainer}>
         {transportTypes.map(type => (
-          <TypeItem key={type.id} iconName={type.iconName} title={type.title} />
+          <TransportTypeItem
+            key={type.id}
+            iconName={type.iconName}
+            title={type.title}
+            screen={type.screen}
+          />
         ))}
       </View>
     </View>

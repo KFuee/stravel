@@ -1,5 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
+
+// types
+import { TabNavigatorProps } from '../../../navigation/TabNavigator';
 
 const styles = StyleSheet.create({
   container: {
@@ -25,15 +29,22 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function TypeItem({
+function TransportTypeItem({
   iconName,
   title,
+  screen,
 }: {
   iconName: string;
   title: string;
+  screen: string;
 }) {
+  const { navigate } = useNavigation<TabNavigatorProps>();
+
   return (
-    <View style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => navigate('Transport', { screen })}
+    >
       <View style={styles.iconContainer}>
         <View>
           <FontAwesome5 name={iconName} size={32} color="#FF4760" />
@@ -43,6 +54,8 @@ export default function TypeItem({
       <Text style={styles.text} adjustsFontSizeToFit numberOfLines={1}>
         {title}
       </Text>
-    </View>
+    </TouchableOpacity>
   );
 }
+
+export default TransportTypeItem;

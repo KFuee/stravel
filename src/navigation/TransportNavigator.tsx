@@ -31,7 +31,7 @@ const TransportStack = createNativeStackNavigator<TransportStackParamList>();
 
 export default function TransportNavigator() {
   return (
-    <TransportStack.Navigator>
+    <TransportStack.Navigator initialRouteName="TransportLanding">
       <TransportStack.Screen
         name="TransportLanding"
         component={TransportScreen}

@@ -3,11 +3,23 @@ export type Category = {
   title: string;
 };
 
-export const transportTypes = [
-  { id: 1, iconName: 'bus', title: 'Аutobús' },
-  { id: 2, iconName: 'tram', title: 'Tranvía' },
-  { id: 3, iconName: 'taxi', title: 'Taxi' },
-  { id: 4, iconName: 'bicycle', title: 'Bicicletas' },
+type TransportType = {
+  id: number;
+  title: string;
+  iconName: string;
+  screen: string;
+};
+
+export const transportTypes: TransportType[] = [
+  { id: 1, iconName: 'bus', title: 'Аutobús', screen: 'TransportBus' },
+  { id: 2, iconName: 'tram', title: 'Tranvía', screen: 'TransportLanding' },
+  { id: 3, iconName: 'taxi', title: 'Taxi', screen: 'TransportLanding' },
+  {
+    id: 4,
+    iconName: 'bicycle',
+    title: 'Bicicletas',
+    screen: 'TransportLanding',
+  },
 ];
 
 export const categories: Category[] = [

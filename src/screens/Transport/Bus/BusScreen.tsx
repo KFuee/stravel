@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Tabs, MaterialTabBar } from 'react-native-collapsible-tab-view';
-
 import SearchBusBanner from '../../../components/Transport/Bus/SearchBanner';
 import BusStops from '../../../components/Transport/Bus/Stops';
 

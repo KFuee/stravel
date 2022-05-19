@@ -1,13 +1,24 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 // Navigation Stacks
 import HomeNavigator from './HomeNavigator';
 import ExploreNavigator from './ExploreNavigator';
 import TransportNavigator from './TransportNavigator';
 
-const Tab = createBottomTabNavigator();
+export type TabNavigatorParamList = {
+  Home: undefined;
+  Explore: undefined;
+  Transport: {
+    screen: string;
+  };
+};
+export type TabNavigatorProps =
+  NativeStackNavigationProp<TabNavigatorParamList>;
+
+const Tab = createBottomTabNavigator<TabNavigatorParamList>();
 
 function TabNavigator() {
   const renderTabBarIcon = (

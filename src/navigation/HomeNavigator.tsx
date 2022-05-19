@@ -36,6 +36,7 @@ const renderShowAllRightButtons = () => <DeleteRecordsButton />;
 export default function HomeNavigator() {
   return (
     <HomeStack.Navigator
+      initialRouteName="HomeLanding"
       screenOptions={{
         headerShown: false,
       }}

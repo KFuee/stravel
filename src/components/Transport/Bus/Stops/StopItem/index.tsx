@@ -12,8 +12,7 @@ type BusStopItemProps = NativeStackNavigationProp<TransportStackParamList>;
 
 const styles = StyleSheet.create({
   item: {
-    paddingBottom: 8,
-    paddingHorizontal: 16,
+    padding: 16,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -37,7 +36,7 @@ export default function BusStopItem({ stop }: any) {
       onPress={() => navigate('TransportBusStop', { stop })}
       activeOpacity={0.8}
     >
-      <View style={[styles.item, { paddingTop: stop.id === 1 ? 16 : 8 }]}>
+      <View style={[styles.item]}>
         <View>
           <Text style={styles.title}>{stop.name}</Text>
 

@@ -10,8 +10,7 @@ type BusLineItemProps = NativeStackNavigationProp<TransportStackParamList>;
 
 const styles = StyleSheet.create({
   item: {
-    paddingBottom: 8,
-    paddingHorizontal: 16,
+    padding: 16,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
@@ -33,7 +32,7 @@ export default function LineItem({ line }: any) {
       onPress={() => navigate('TransportBusLine', { line })}
       activeOpacity={0.8}
     >
-      <View style={[styles.item, { paddingTop: line.id === 1 ? 16 : 8 }]}>
+      <View style={[styles.item]}>
         <Text style={styles.text}>Línea {line.name}</Text>
 
         <View style={styles.icon}>

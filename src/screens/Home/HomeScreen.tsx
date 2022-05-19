@@ -6,6 +6,7 @@ import { useAuth } from '../../contexts/AuthContext';
 
 // services
 import { getUserRecords } from '../../services/historyService';
+import { getUserFavourites } from '../../services/favouritesService';
 
 // components
 import Loading from '../../components/General/Loading';
@@ -15,7 +16,8 @@ import TransportTypes from '../../components/Home/TransportTypes';
 import UserFavourites from '../../components/Home/Favourites';
 
 // types
-import HistoryRecord from '../../types/HistoryRecord';
+import type HistoryRecord from '../../types/HistoryRecord';
+import type Favourite from '../../types/favourite';
 
 const styles = StyleSheet.create({
   container: {
@@ -34,13 +36,17 @@ function HomeScreen() {
   const [historyRecords, setHistoryRecords] = useState<HistoryRecord[]>(
     {} as HistoryRecord[],
   );
+  const [favourites, setFavourites] = useState<Favourite[]>({} as Favourite[]);
 
   // callbacks
   const fetchData = useCallback(async () => {
     try {
       const userHistoryRecords = await getUserRecords(userId, 5);
 
+      const userFavourites = await getUserFavourites(userId, 5);
+
       setHistoryRecords(userHistoryRecords);
+      setFavourites(userFavourites);
 
       setLoading(false);
     } catch (err) {
@@ -66,7 +72,7 @@ function HomeScreen() {
 
         <UserHistory records={historyRecords} />
 
-        <UserFavourites />
+        <UserFavourites favourites={favourites} />
       </ScrollView>
     </SafeAreaView>
   );

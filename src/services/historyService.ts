@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // types
-import HistoryRecord from '../types/HistoryRecord';
+import type HistoryRecord from '../types/HistoryRecord';
 
 // instancia de la api
 const instance = axios.create({

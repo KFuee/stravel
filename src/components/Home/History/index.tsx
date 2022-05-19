@@ -70,20 +70,27 @@ function UserHistory({ records }: { records: HistoryRecord[] }) {
               overflow: 'visible',
             }}
           >
-            {records.map((record, index) => (
-              <HistoryRecordCard
-                key={record.item.id}
-                id={record.item.id}
-                image={record.item.image_url}
-                location={record.item.location.address1}
-                title={record.item.name}
-                isLast={index === records.length - 1}
-              />
-            ))}
+            {records.map((record, index) => {
+              const { item } = record;
+
+              return (
+                <HistoryRecordCard
+                  key={item.id}
+                  id={item.id}
+                  image={item.image_url}
+                  location={item.location.address1}
+                  title={item.name}
+                  isLast={index === records.length - 1}
+                />
+              );
+            })}
           </ScrollView>
         </View>
       ) : (
-        <NoRecordsFound />
+        <NoRecordsFound
+          icon="history"
+          title="Aún no has visitado ningún lugar"
+        />
       )}
     </View>
   );

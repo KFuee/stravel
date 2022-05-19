@@ -17,12 +17,12 @@ const styles = StyleSheet.create({
   },
 });
 
-function NoRecordsFound() {
+function NoRecordsFound({ icon, title }: { icon: string; title: string }) {
   return (
     <View style={styles.container}>
       <View style={styles.row}>
-        <FontAwesome5 name="history" size={24} color="#FF4760" />
-        <Text style={{ marginLeft: 16 }}>Aún no has visitado ningún lugar</Text>
+        <FontAwesome5 name={icon} size={24} color="#FF4760" />
+        <Text style={{ marginLeft: 16 }}>{title}</Text>
       </View>
     </View>
   );

@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-// data
-import { dataExample } from '../../../data/homeData';
-
 // components
 import SuggestedAttractionCard from '../../Explore/SuggestedAttractions/SuggestedAttractionCard';
+import NoRecordsFound from '../History/NoRecordsFound';
+
+// types
+import type Favourite from '../../../types/favourite';
 
 const styles = StyleSheet.create({
   container: {
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function UserFavourites() {
+function UserFavourites({ favourites }: { favourites: Favourite[] }) {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -46,16 +47,28 @@ function UserFavourites() {
         </View>
       </View>
 
-      {dataExample.businesses.map(business => (
-        <SuggestedAttractionCard
-          key={business.id}
-          id={business.id}
-          category={business.categories[0].title}
-          title={business.name}
-          rating={business.rating}
-          image={business.image_url}
-        />
-      ))}
+      {favourites.length > 0 ? (
+        <View>
+          {favourites.map(business => {
+            const { item } = business;
+
+            return (
+              <SuggestedAttractionCard
+                key={item.id}
+                id={item.id}
+                category={item.categories[0].title}
+                title={item.name}
+                rating={item.rating}
+                image={item.image_url}
+              />
+            );
+          })}
+        </View>
+      ) : (
+        <View style={{ paddingBottom: 16 }}>
+          <NoRecordsFound icon="bookmark" title="No tienes favoritos" />
+        </View>
+      )}
     </View>
   );
 }

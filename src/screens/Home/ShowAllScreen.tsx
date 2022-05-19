@@ -21,13 +21,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFF',
-    padding: 16,
   },
 
   listTitle: {
     fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 16,
+    paddingTop: 16,
+    paddingHorizontal: 16,
   },
 });
 
@@ -68,10 +69,6 @@ function ShowAllScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.listTitle}>
-        {attractions.length} resultados encontrados
-      </Text>
-
       <FlatList
         data={attractions}
         keyExtractor={item => item.id}
@@ -79,21 +76,28 @@ function ShowAllScreen() {
           const { item: record } = item;
 
           return (
-            <SuggestedAttractionCard
-              id={record.id}
-              onPress={() =>
-                navigate('HomeAttraction', {
-                  screen: 'AttractionLanding',
-                  params: { id: record.id },
-                })
-              }
-              category={record.categories[0].title}
-              title={record.name}
-              rating={record.rating}
-              image={record.image_url}
-            />
+            <View style={{ paddingHorizontal: 16 }}>
+              <SuggestedAttractionCard
+                id={record.id}
+                onPress={() =>
+                  navigate('HomeAttraction', {
+                    screen: 'AttractionLanding',
+                    params: { id: record.id },
+                  })
+                }
+                category={record.categories[0].title}
+                title={record.name}
+                rating={record.rating}
+                image={record.image_url}
+              />
+            </View>
           );
         }}
+        ListHeaderComponent={
+          <Text style={styles.listTitle}>
+            {attractions.length} resultados encontrados
+          </Text>
+        }
       />
     </View>
   );

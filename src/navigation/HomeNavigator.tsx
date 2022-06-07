@@ -7,6 +7,7 @@ import {
 import DeleteRecordsButton from '../components/Header/DeleteRecordsButton';
 
 // screens
+import ScannerScreen from '../screens/ScannerScreen';
 import HomeScreen from '../screens/Home/HomeScreen';
 import ShowAllScreen from '../screens/Home/ShowAllScreen';
 import UserProfile from '../screens/Home/UserProfile';
@@ -19,6 +20,7 @@ import type { AttractionStackParamList } from './AttractionNavigator';
 
 // Definición de tipos para las rutas del stack
 export type HomeStackParamList = {
+  HomeScanner: undefined;
   HomeLanding: undefined;
   HomeAttraction: {
     screen: string;
@@ -46,6 +48,16 @@ export default function HomeNavigator() {
         headerShown: false,
       }}
     >
+      <HomeStack.Screen
+        name="HomeScanner"
+        component={ScannerScreen}
+        options={{
+          headerShown: true,
+          headerBackTitle: 'Inicio',
+          headerTitle: 'Escaner QR',
+        }}
+      />
+
       <HomeStack.Screen name="HomeLanding" component={HomeScreen} />
 
       <HomeStack.Screen

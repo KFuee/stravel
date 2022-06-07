@@ -80,7 +80,7 @@ function Welcome({ username }: { username: string }) {
 
       <TouchableOpacity
         style={styles.qrIconContainer}
-        onPress={() => {}}
+        onPress={() => navigate('HomeScanner')}
         activeOpacity={0.8}
       >
         <View>

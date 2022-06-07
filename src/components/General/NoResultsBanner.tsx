@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 function NoResultsBanner() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Ops, no se encontraron resultados</Text>
+      <Text style={styles.text}>Oops, no se encontraron resultados</Text>
 
       <Image
         source={require('../../assets/images/illustrations/no-results.png')}

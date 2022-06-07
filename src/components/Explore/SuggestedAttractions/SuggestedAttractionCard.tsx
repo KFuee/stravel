@@ -5,10 +5,10 @@ import {
   ImageBackground,
   TouchableOpacity,
 } from 'react-native';
-import { FontAwesome } from '@expo/vector-icons';
 
 // components
 import StarRating from '../../General/StarRating';
+import FavouriteButton from '../../General/FavouriteButton';
 
 const styles = StyleSheet.create({
   container: {
@@ -78,13 +78,7 @@ const styles = StyleSheet.create({
   bookmarkContainer: {
     top: 12,
     right: 12,
-    width: 32,
-    height: 32,
     position: 'absolute',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'rgba(252, 252, 253, 0.2)',
-    borderRadius: 80,
   },
 });
 
@@ -106,7 +100,10 @@ function SuggestedAttractionCard({
           </View>
 
           <View style={styles.bookmarkContainer}>
-            <FontAwesome name="bookmark-o" size={20} color="#FFF" />
+            <FavouriteButton
+              backgroundColor="rgba(252, 252, 253, 0.2)"
+              iconColor="#FFF"
+            />
           </View>
 
           <View style={styles.ratingContainer}>

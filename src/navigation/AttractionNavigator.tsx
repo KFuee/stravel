@@ -6,7 +6,7 @@ import AttractionScreen from '../screens/AttractionScreen';
 
 // Components
 import BackButton from '../components/Header/BackButton';
-import BookmarkButton from '../components/Header/BookmarkButton';
+import FavouriteButton from '../components/General/FavouriteButton';
 import CloseButton from '../components/Header/CloseButton';
 import AttractionInfoModal from '../components/Attraction/Information/InfoModal';
 
@@ -22,8 +22,8 @@ const renderAttractionLeftButtons = (navigation: any) => (
   <BackButton navigation={navigation} />
 );
 
-const renderAttractionRightButtons = (navigation: any) => (
-  <BookmarkButton navigation={navigation} />
+const renderAttractionRightButtons = () => (
+  <FavouriteButton backgroundColor="#FFF" iconColor="#000" />
 );
 
 const renderAttractionInfoLeftButtons = (navigation: any) => {
@@ -46,7 +46,7 @@ export default function AttractionNavigator() {
           headerTransparent: true,
           title: '',
           headerLeft: () => renderAttractionLeftButtons(navigation),
-          headerRight: () => renderAttractionRightButtons(navigation),
+          headerRight: () => renderAttractionRightButtons(),
         })}
       />
 

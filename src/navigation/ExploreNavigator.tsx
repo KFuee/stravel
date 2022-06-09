@@ -69,7 +69,7 @@ export default function ExploreNavigator() {
       setSearchText(text);
 
       const response = await axios.get(
-        `http://192.168.1.15:3001/v1/places/autocomplete`,
+        `http://localhost:3001/v1/places/autocomplete`,
         {
           headers: {
             Authorization: `Bearer ${authData?.tokens.access}`,

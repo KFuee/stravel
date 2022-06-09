@@ -84,11 +84,19 @@ const styles = StyleSheet.create({
 
 function SuggestedAttractionCard({
   onPress,
+  // itemId,
   category,
   title,
   rating,
   image,
-}: any) {
+}: {
+  onPress: () => void;
+  // itemId: string;
+  category: string;
+  title: string;
+  rating: number;
+  image: string;
+}) {
   return (
     <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
       <View style={styles.container}>
@@ -101,6 +109,7 @@ function SuggestedAttractionCard({
 
           <View style={styles.bookmarkContainer}>
             <FavouriteButton
+              // itemId={itemId}
               backgroundColor="rgba(252, 252, 253, 0.2)"
               iconColor="#FFF"
             />

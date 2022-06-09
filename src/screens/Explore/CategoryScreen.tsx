@@ -72,7 +72,7 @@ function CategoryScreen({ route }: any) {
   const fetchData = useCallback(async () => {
     try {
       const attractionResponse = await axios.get(
-        'http://192.168.1.15:3001/v1/places/search',
+        'http://localhost:3001/v1/places/search',
         {
           params: {
             term: alias,

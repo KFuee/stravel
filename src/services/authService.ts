@@ -5,7 +5,7 @@ import { AuthData } from '../types/auth';
 
 // instancia de la api
 const instance = axios.create({
-  baseURL: 'http://192.168.1.15:3001/v1/auth',
+  baseURL: 'http://localhost:3001/v1/auth',
 });
 
 export const register = async (

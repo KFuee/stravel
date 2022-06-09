@@ -33,7 +33,7 @@ function ExploreScreen({
   const fetchData = useCallback(async () => {
     try {
       const suggestedAttractionsResponse = await axios.get(
-        'http://192.168.1.15:3001/v1/places/search',
+        'http://localhost:3001/v1/places/search',
         {
           params: {
             latitude: '41.651365271764284',

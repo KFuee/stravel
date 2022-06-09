@@ -68,7 +68,7 @@ function UserFavourites({ favourites }: { favourites: Favourite[] }) {
             return (
               <SuggestedAttractionCard
                 key={item.id}
-                id={item.id}
+                itemId={item.id}
                 category={item.categories[0].title}
                 title={item.name}
                 rating={item.rating}

@@ -40,6 +40,7 @@ function SuggestedAttractions({ attractions }: { attractions: Attraction[] }) {
               params: { id: attraction.id },
             })
           }
+          // itemId={attraction.id}
           category={attraction.categories[0].title}
           title={attraction.name}
           rating={attraction.rating}

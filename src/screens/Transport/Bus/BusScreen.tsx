@@ -37,6 +37,7 @@ export default function BusScreen() {
 
   return (
     <Tabs.Container
+      lazy
       TabBarComponent={renderTabBar}
       renderHeader={(props: any) => (
         <SearchBusBanner
@@ -49,7 +50,8 @@ export default function BusScreen() {
       headerHeight={HEADER_HEIGHT}
       allowHeaderOverscroll={false}
       revealHeaderOnScroll
-      snapThreshold={0.5}
+      snapThreshold={0.25}
+      containerStyle={{ backgroundColor: '#FFF' }}
       initialTabName="Paradas"
       onTabChange={onTabChange}
     >

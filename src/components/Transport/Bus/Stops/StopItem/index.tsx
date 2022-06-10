@@ -37,8 +37,8 @@ export default function BusStopItem({ stop }: any) {
       activeOpacity={0.8}
     >
       <View style={[styles.item]}>
-        <View>
-          <Text style={styles.title}>{stop.name}</Text>
+        <View style={{ width: '85%' }}>
+          <Text style={styles.title}>{stop.title}</Text>
 
           <StopItemLines lines={stop.lines} />
         </View>

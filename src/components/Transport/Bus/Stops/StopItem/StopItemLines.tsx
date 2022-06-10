@@ -4,7 +4,6 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    justifyContent: 'space-between',
   },
 
   lineContainer: {
@@ -25,8 +24,8 @@ export default function StopItemLines({ lines }: any) {
   return (
     <View style={styles.container}>
       {lines.map((line: any) => (
-        <View key={line.id} style={styles.lineContainer}>
-          <Text style={styles.text}>{line.name}</Text>
+        <View key={line} style={styles.lineContainer}>
+          <Text style={styles.text}>{line}</Text>
         </View>
       ))}
     </View>

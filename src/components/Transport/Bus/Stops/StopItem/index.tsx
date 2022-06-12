@@ -6,6 +6,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import StopItemLines from './StopItemLines';
 
 // types
+import type { BusStop } from '../../../../../types/transport';
 import type { TransportStackParamList } from '../../../../../navigation/TransportNavigator';
 
 type BusStopItemProps = NativeStackNavigationProp<TransportStackParamList>;
@@ -28,12 +29,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function BusStopItem({ stop }: any) {
+export default function BusStopItem({ stop }: { stop: BusStop }) {
   const { navigate } = useNavigation<BusStopItemProps>();
 
   return (
     <TouchableOpacity
-      onPress={() => navigate('TransportBusStop', { stop })}
+      onPress={() => navigate('TransportBusStop', { stop: stop.id })}
       activeOpacity={0.8}
     >
       <View style={[styles.item]}>

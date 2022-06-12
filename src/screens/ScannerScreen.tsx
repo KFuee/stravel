@@ -17,6 +17,13 @@ const styles = StyleSheet.create({
     borderTopColor: '#FF4760',
     borderTopWidth: 6,
   },
+
+  infoContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#FFF',
+  },
 });
 
 export default function ScannerScreen() {
@@ -44,15 +51,21 @@ export default function ScannerScreen() {
   };
 
   if (hasPermission === null) {
-    return <Text>Solicitando permiso para el escaneo...</Text>;
+    return (
+      <View style={styles.infoContainer}>
+        <Text>Solicitando permiso para el escaneo...</Text>
+      </View>
+    );
   }
 
   if (hasPermission === false) {
     return (
-      <Text>
-        Debes aceptar el permiso de acceso a la cámara para usar esta
-        funcionalidad
-      </Text>
+      <View style={styles.infoContainer}>
+        <Text>
+          Debes aceptar el permiso de acceso a la cámara para usar esta
+          funcionalidad
+        </Text>
+      </View>
     );
   }
 

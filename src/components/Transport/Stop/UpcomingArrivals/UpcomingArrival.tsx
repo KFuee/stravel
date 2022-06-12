@@ -64,7 +64,7 @@ export default function UpcomingArrival({ arrival, renderSeparator }: any) {
   return (
     <View>
       <View style={styles.container}>
-        <TransportBadge name={arrival.line.name} />
+        <TransportBadge name={arrival.line} />
 
         <View style={styles.destinationContainer}>
           <Text style={{ fontSize: 16 }}>{arrival.destination}</Text>
@@ -77,10 +77,14 @@ export default function UpcomingArrival({ arrival, renderSeparator }: any) {
               setCurrentParenthesis={setCurrentParenthesis}
             />
 
-            <Text style={styles.timeLeftText}>{arrival.timeLeft} min</Text>
+            <Text style={styles.timeLeftText}>
+              {arrival.firstArrivalTime} min
+            </Text>
           </View>
 
-          <Text style={styles.nextArrivalText}>{arrival.nextArrival} min</Text>
+          <Text style={styles.nextArrivalText}>
+            {arrival.secondArrivalTime} min
+          </Text>
         </View>
       </View>
 

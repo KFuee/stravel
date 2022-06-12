@@ -1,9 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native';
 
+// components
 import UpcomingArrival from './UpcomingArrival';
 import Separator from '../../../General/Separator';
 
-import { busArrivals } from '../../../../data/transportData';
+// type
+import type { BusStopArrival } from '../../../../types/transport';
 
 const styles = StyleSheet.create({
   container: {
@@ -22,7 +24,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function StopUpcomingArrivals() {
+export default function StopUpcomingArrivals({
+  arrivals,
+}: {
+  arrivals: BusStopArrival[];
+}) {
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -30,11 +36,11 @@ export default function StopUpcomingArrivals() {
         <Text>Basado en las señales de GPS</Text>
       </View>
 
-      {busArrivals.map(arrival => (
+      {arrivals.map((arrival, index) => (
         <UpcomingArrival
-          key={arrival.id}
+          key={arrival.line}
           arrival={arrival}
-          renderSeparator={arrival.id !== busArrivals.length && <Separator />}
+          renderSeparator={index + 1 !== arrivals.length && <Separator />}
         />
       ))}
     </View>

@@ -12,3 +12,9 @@ interface Geometry {
   type: string;
   coordinates: number[];
 }
+
+export interface BusStopArrival {
+  line: string;
+  firstArrivalTime: string;
+  secondArrivalTime: string;
+}

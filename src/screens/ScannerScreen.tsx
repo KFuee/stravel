@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { useEffect, useState } from 'react';
+import { URL, URLSearchParams } from 'react-native-url-polyfill';
 
 const styles = StyleSheet.create({
   container: {
@@ -30,11 +31,16 @@ export default function ScannerScreen() {
   });
 
   const handleBarCodeScanned = ({ type, data }: any) => {
-    setScanned(true);
-
     if (type === 'org.iso.QRCode') {
-      console.log(data);
+      const url = new URL(data);
+      const urlParams = new URLSearchParams(url.search);
+
+      if (urlParams.has('poste')) {
+        console.log(urlParams.get('poste'));
+      }
     }
+
+    setScanned(true);
   };
 
   if (hasPermission === null) {

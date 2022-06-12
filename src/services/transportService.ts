@@ -5,7 +5,7 @@ import type { BusStop, BusStopArrival } from '../types/transport';
 
 // instancia de la api
 const instance = axios.create({
-  baseURL: 'http://localhost:3001/v1/transport',
+  baseURL: 'http://192.168.1.15:3001/v1/transport',
 });
 
 // eslint-disable-next-line import/prefer-default-export

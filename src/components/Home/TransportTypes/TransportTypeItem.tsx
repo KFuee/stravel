@@ -3,7 +3,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 // types
-import { TabNavigatorProps } from '../../../navigation/TabNavigator';
+import type { TabNavigatorProps } from '../../../navigation/TabNavigator';
 
 const styles = StyleSheet.create({
   container: {

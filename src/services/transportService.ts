@@ -15,6 +15,12 @@ export const getAllBusStops = async (): Promise<BusStop[]> => {
   return response.data;
 };
 
+export const getBusStopById = async (id: string): Promise<BusStop> => {
+  const response = await instance.get(`/bus-stops/${id}`);
+
+  return response.data;
+};
+
 export const getBusStopArrivals = async (
   busStopId: string,
 ): Promise<BusStopArrival[]> => {

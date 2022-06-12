@@ -2,7 +2,10 @@ import { useCallback, useEffect, useState } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 
 // services
-import { getBusStopArrivals } from '../../../services/transportService';
+import {
+  getBusStopById,
+  getBusStopArrivals,
+} from '../../../services/transportService';
 
 // components
 import CustomRefreshControl from '../../../components/General/CustomRefreshControl';
@@ -21,23 +24,31 @@ const styles = StyleSheet.create({
 });
 
 export default function BusStopScreen({ route }: any) {
-  const { stop }: { stop: BusStop } = route.params;
+  const { stop: stopId }: { stop: string } = route.params;
 
   // states
   const [loading, setLoading] = useState(true);
+  const [busStop, setBusStop] = useState<BusStop | null>(null);
   const [arrivals, setArrivals] = useState([] as BusStopArrival[]);
 
   // callbacks
+  const fetchBusStop = useCallback(async () => {
+    const response = await getBusStopById(stopId);
+    setBusStop(response);
+  }, [stopId]);
+
   const updateUpcomingArrivals = useCallback(async () => {
-    const response = await getBusStopArrivals(stop.id);
+    const response = await getBusStopArrivals(stopId);
     setArrivals(response);
+
     setLoading(false);
-  }, [stop.id]);
+  }, [stopId]);
 
   // effects
   useEffect(() => {
+    fetchBusStop();
     updateUpcomingArrivals();
-  }, [updateUpcomingArrivals]);
+  }, [fetchBusStop, updateUpcomingArrivals]);
 
   if (loading) {
     return <Loading />;
@@ -50,7 +61,7 @@ export default function BusStopScreen({ route }: any) {
         <CustomRefreshControl screenOnRefresh={updateUpcomingArrivals} />
       }
     >
-      <StopInfoBanner name={stop.title} id={stop.id} />
+      <StopInfoBanner name={busStop?.title} id={busStop?.id} />
 
       <StopUpcomingArrivals arrivals={arrivals} />
     </ScrollView>

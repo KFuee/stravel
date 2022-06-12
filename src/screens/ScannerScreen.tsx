@@ -2,6 +2,10 @@ import { StyleSheet, Text, View } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { useEffect, useState } from 'react';
 import { URL, URLSearchParams } from 'react-native-url-polyfill';
+import { useNavigation } from '@react-navigation/native';
+
+// types
+import type { TabNavigatorProps } from '../navigation/TabNavigator';
 
 const styles = StyleSheet.create({
   container: {
@@ -20,6 +24,7 @@ const styles = StyleSheet.create({
 
   infoContainer: {
     flex: 1,
+    padding: 16,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#FFF',
@@ -27,6 +32,9 @@ const styles = StyleSheet.create({
 });
 
 export default function ScannerScreen() {
+  const { navigate } = useNavigation<TabNavigatorProps>();
+
+  // states
   const [hasPermission, setHasPermission] = useState(false as boolean | null);
   const [scanned, setScanned] = useState(false);
 
@@ -43,7 +51,13 @@ export default function ScannerScreen() {
       const urlParams = new URLSearchParams(url.search);
 
       if (urlParams.has('poste')) {
-        console.log(urlParams.get('poste'));
+        navigate('Transport', {
+          screen: 'TransportBusStop',
+          initial: false,
+          params: {
+            stop: `tuzsa-${urlParams.get('poste')}`,
+          },
+        });
       }
     }
 

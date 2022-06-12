@@ -14,6 +14,7 @@ export type TabNavigatorParamList = {
   Transport: {
     screen: string;
     initial: boolean;
+    params?: any;
   };
 };
 export type TabNavigatorProps =

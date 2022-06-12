@@ -31,7 +31,7 @@ export default function BusStops() {
     fetchStops();
   }, [fetchStops]);
 
-  const renderItem = ({ item }: any) => <BusStopItem stop={item} />;
+  const renderItem = ({ item }: any) => <BusStopItem stop={item.id} />;
 
   return (
     <Tabs.FlatList

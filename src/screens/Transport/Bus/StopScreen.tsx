@@ -25,7 +25,7 @@ export default function BusStopScreen({ route }: any) {
         <CustomRefreshControl screenOnRefresh={updateUpcomingArrivals} />
       }
     >
-      <StopInfoBanner name={stop.name} id={stop.id} />
+      <StopInfoBanner name={stop.title} id={stop.id} />
 
       <StopUpcomingArrivals />
     </ScrollView>

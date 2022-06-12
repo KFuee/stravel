@@ -31,7 +31,7 @@ export default function StopInfoBanner({ id, name }: any) {
   return (
     <View style={styles.container}>
       <View style={styles.contentContainer}>
-        <View>
+        <View style={{ width: '75%' }}>
           <Text style={styles.name}>{name}</Text>
           <Text style={styles.id}>ID {id}</Text>
         </View>

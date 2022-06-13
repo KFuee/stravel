@@ -6,8 +6,13 @@ import BottomSheet from '@gorhom/bottom-sheet';
 import { useHeaderHeight } from '@react-navigation/elements';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 
+// services
+import { getBusLineById } from '../../../services/transportService';
+
+// components
 import RouteMap from '../../../components/Transport/Line/RouteMap';
 import RouteBottomSheet from '../../../components/Transport/Line/RouteBottomSheet';
+import Loading from '../../../components/General/Loading';
 
 const styles = StyleSheet.create({
   container: {
@@ -33,6 +38,9 @@ export default function BusLineScreen({ route }: any) {
   const [mapPadding, setMapPadding] = useState<EdgePadding>();
   const [currentSheetIndex, setCurrentSheetIndex] = useState(0);
 
+  const [loading, setLoading] = useState(true);
+  const [lineFinal, setLineFinal] = useState({} as any);
+
   // hooks
   const headerHeight = useHeaderHeight();
   const tabBarHeight = useBottomTabBarHeight();
@@ -43,14 +51,12 @@ export default function BusLineScreen({ route }: any) {
   const viewHeight =
     SCREEN_HEIGHT - headerHeight - tabBarHeight + statusBarHeight;
 
-  useEffect(() => {
-    setMapPadding({
-      top: 0,
-      bottom: viewHeight * 0.25,
-      left: 6,
-      right: 6,
-    });
-  }, [viewHeight]);
+  // callbacks
+  const fetchLine = useCallback(async () => {
+    const response = await getBusLineById(line);
+    setLineFinal(response);
+    setLoading(false);
+  }, [line]);
 
   const handleSheetChange = useCallback(
     (index: number) => {
@@ -68,6 +74,21 @@ export default function BusLineScreen({ route }: any) {
     [viewHeight],
   );
 
+  // effects
+  useEffect(() => {
+    fetchLine();
+    setMapPadding({
+      top: 0,
+      bottom: viewHeight * 0.25,
+      left: 6,
+      right: 6,
+    });
+  }, [fetchLine, viewHeight]);
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <GestureHandlerRootView style={styles.container}>
       <RouteMap
@@ -75,15 +96,15 @@ export default function BusLineScreen({ route }: any) {
         mapPadding={mapPadding}
         latitudeDelta={LATITUDE_DELTA}
         longitudeDelta={LONGITUDE_DELTA}
-        coordinates={line.route.coordinates}
+        coordinates={lineFinal.geometry}
       />
 
       <RouteBottomSheet
         sheetRef={sheetRef}
         index={currentSheetIndex}
         onChange={handleSheetChange}
-        lineName={line.name}
-        stops={line.route.stops}
+        lineName={lineFinal.title}
+        stops={lineFinal.lineStops}
       />
     </GestureHandlerRootView>
   );

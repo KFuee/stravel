@@ -28,14 +28,13 @@ export default function RouteBottomSheet({
   stops,
 }: any) {
   // memoized values
-  const data = useMemo(() => stops, [stops]);
   const snapPoints = useMemo(() => ['25%', '50%', '100%'], []);
 
   const renderItem = useCallback(
     ({ item: stop, index: itemIndex }) => (
-      <LineStopItem stop={stop} isLast={itemIndex === data.length - 1} />
+      <LineStopItem stop={stop} isLast={itemIndex === stops.length - 1} />
     ),
-    [data.length],
+    [stops.length],
   );
 
   return (
@@ -47,11 +46,12 @@ export default function RouteBottomSheet({
       backgroundStyle={{ borderRadius: index !== 2 ? 16 : 0 }}
     >
       <Text style={styles.listTitle}>
-        {data.length} paradas de la línea {lineName}
+        {stops.length} paradas de la línea {lineName}
       </Text>
 
       <BottomSheetFlatList
-        data={data}
+        data={stops}
+        keyExtractor={(item: any) => stops.indexOf(item).toString()}
         renderItem={renderItem}
         contentContainerStyle={styles.contentContainer}
       />

@@ -1,5 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
-import { StyleSheet, SafeAreaView, ScrollView, View } from 'react-native';
+import {
+  StyleSheet,
+  SafeAreaView,
+  ScrollView,
+  View,
+  RefreshControl,
+} from 'react-native';
 
 // contexts
 import { useAuth } from '../../contexts/AuthContext';
@@ -34,6 +40,7 @@ function HomeScreen() {
 
   // states
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [historyRecords, setHistoryRecords] = useState<HistoryRecord[]>(
     {} as HistoryRecord[],
   );
@@ -55,6 +62,12 @@ function HomeScreen() {
     }
   }, [userId]);
 
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    fetchData();
+    setRefreshing(false);
+  }, [fetchData]);
+
   useEffect(() => {
     fetchData();
   }, [fetchData]);
@@ -66,7 +79,12 @@ function HomeScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView
+        style={{ flex: 1 }}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      >
         <Welcome username={authData!.user.name} />
 
         <TransportTypes />

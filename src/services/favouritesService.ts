@@ -5,7 +5,7 @@ import type Favourite from '../types/favourite';
 
 // instancia de la api
 const instance = axios.create({
-  baseURL: 'http://192.168.1.15:3001/v1/favourites',
+  baseURL: 'http://localhost:3001/v1/favourites',
 });
 
 export const checkIfFavourite = async (

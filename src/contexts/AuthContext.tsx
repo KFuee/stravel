@@ -2,9 +2,6 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// types
-import { AuthContextData, AuthData } from '../types/auth';
-
 // services
 import {
   register as authServiceRegister,
@@ -12,13 +9,16 @@ import {
   signOut as authServiceSignOut,
 } from '../services/authService';
 
+// types
+import { AuthContextData, AuthData } from '../types/auth';
+
 export const AuthContext = createContext<AuthContextData>(
   {} as AuthContextData,
 );
 
 export function AuthProvider({ children }: any) {
-  const [authData, setAuthData] = useState<AuthData>();
   const [loading, setLoading] = useState(true);
+  const [authData, setAuthData] = useState<AuthData>();
 
   async function loadStorageData(): Promise<void> {
     try {
@@ -33,6 +33,7 @@ export function AuthProvider({ children }: any) {
     }
   }
 
+  // effects
   useEffect(() => {
     loadStorageData();
   });
@@ -89,8 +90,9 @@ export function AuthProvider({ children }: any) {
     <AuthContext.Provider
       // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
-        authData,
         loading,
+
+        authData,
         register,
         signIn,
         signOut,

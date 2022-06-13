@@ -22,11 +22,13 @@ const styles = StyleSheet.create({
 export default function BusStops() {
   const [stops, setStops] = useState([] as BusStop[]);
 
+  // callbacks
   const fetchStops = useCallback(async () => {
     const allStops = await getAllBusStops();
     setStops(allStops);
   }, []);
 
+  // effects
   useEffect(() => {
     fetchStops();
   }, [fetchStops]);

@@ -37,7 +37,6 @@ export default function BusScreen() {
 
   return (
     <Tabs.Container
-      lazy
       TabBarComponent={renderTabBar}
       renderHeader={(props: any) => (
         <SearchBusBanner

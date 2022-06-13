@@ -47,7 +47,7 @@ export default function ResetPasswordScreen({ route, navigation }: any) {
   const handleReset = async (data: { password: string }) => {
     try {
       await axios.post(
-        'http://192.168.1.15:3001/v1/auth/reset-password',
+        'http://localhost:3001/v1/auth/reset-password',
         { password: data.password },
         {
           params: { token },

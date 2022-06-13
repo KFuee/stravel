@@ -23,8 +23,9 @@ export type AuthData = {
 };
 
 export type AuthContextData = {
-  authData?: AuthData;
   loading: boolean;
+
+  authData?: AuthData;
   register: (name: string, email: string, password: string) => Promise<void>;
   signIn: (email: string, password: string) => Promise<void>;
   signOut(): void;

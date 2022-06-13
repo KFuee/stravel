@@ -33,7 +33,7 @@ export default function LineItem({ line }: any) {
       activeOpacity={0.8}
     >
       <View style={[styles.item]}>
-        <Text style={styles.text}>Línea {line.name}</Text>
+        <Text style={styles.text}>Línea {line}</Text>
 
         <View style={styles.icon}>
           <FontAwesome5 name="chevron-right" size={18} color="#FF4760" />

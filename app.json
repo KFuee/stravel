@@ -24,7 +24,8 @@
         "backgroundColor": "#FFFFFF"
       },
       "softwareKeyboardLayoutMode": "pan",
-      "permissions": ["ACCESS_NETWORK_STATE"]
+      "permissions": ["ACCESS_NETWORK_STATE", "CAMERA"],
+      "package": "com.kfuee.Stravel"
     },
     "web": {
       "favicon": "./src/assets/favicon.png"

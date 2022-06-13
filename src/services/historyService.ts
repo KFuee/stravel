@@ -5,7 +5,7 @@ import type HistoryRecord from '../types/HistoryRecord';
 
 // instancia de la api
 const instance = axios.create({
-  baseURL: 'http://192.168.1.15:3001/v1/history',
+  baseURL: 'http://localhost:3001/v1/history',
 });
 
 export const getUserRecords = async (

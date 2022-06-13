@@ -5,7 +5,7 @@ import type { BusStop, BusStopArrival } from '../types/transport';
 
 // instancia de la api
 const instance = axios.create({
-  baseURL: 'http://192.168.1.15:3001/v1/transport',
+  baseURL: 'http://localhost:3001/v1/transport',
 });
 
 // eslint-disable-next-line import/prefer-default-export
@@ -25,6 +25,12 @@ export const getBusStopArrivals = async (
   busStopId: string,
 ): Promise<BusStopArrival[]> => {
   const response = await instance.get(`/bus-stops/${busStopId}/arrival-times`);
+
+  return response.data;
+};
+
+export const getAllBusLines = async (): Promise<string[]> => {
+  const response = await instance.get(`/bus-lines`);
 
   return response.data;
 };
